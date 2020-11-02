@@ -1,0 +1,37 @@
+<div class="container">
+
+  <div class="row">
+      <div class="col">
+     
+            <div class="overflow-auto">   
+                <h2 class="text-center">PASO 2 DE 4 COMPLETADO  </h2>
+                <h4 class="text-center"> Documento en proceso de Inscripción: {{documento_inscrip}}</h4>
+                <BR>
+                <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                </div>
+                </BR>
+                <div class="card text-white bg-primary">
+                                    <div class="card-header">
+                                        <h3>INFORMAR PAGO </h3>
+                                    </div>
+                                    <div class="card-body bg-light text-secondary">
+                                        <h5 class="card-title">Comprobante de Pago de la Inscripción</h5>
+                                        <p class="card-text">Se podrá informar archivos de imágen o pdf del comprobante de pago de inscripción. </p>
+                                        <p class="card-text">Si es una imágen la misma debe ser clara, nitida y sin recortes. </p>
+                                        <p class="card-text">IMPORTANTE : El comprobante de pago puede ser de una transferencia bancaria, pagomiscuentas.com o imagen de recibo oficial de la Institución. El archivo no puede supear un (1) megabyte.  </p>
+                                        <p class="card-text">Nota: El comprobante será validado por la Secretaria del Nivel que corresponda </p>
+                                        <br>
+                                        <form action="/inscripcion/informa_pago" method="POST" enctype="multipart/form-data">
+                                            <input type="file" name="image">
+                                            <button class="btn btn-success">
+                                                Informar
+                                            </button>
+                                        </form>
+
+                                    </div>
+                </div>
+            </div>
+    </div>
+   </div>
+</div>

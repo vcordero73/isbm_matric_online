@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+      <div class="col">
+     
+            <div class="overflow-auto">   
+                <h2 class="text-center">SOLICITUD DE MATRICULACIÓN EN PROCESO  </h2>
+                <h4 class="text-center"> Documento en proceso de Matriculación: {{documento_inscrip}}</h4>
+                <br>
+                 <div class="card text-white btn btn-danger">
+                    <div class="card-header">
+                        <h3>ERRROR: EDITAR FORMULARIO SOLICITUD DE MATRICULACIÓN </h3>
+                    </div>
+                    <div class="card-body bg-light text-secondary">
+                        <h5 class="card-title">Error al procesar Formulario</h5>
+                        <p class="card-text"> Se ha producido un error al cargar la edición del formulario de solicitud de matriculación. Las opciones son volver a editar o ir al inicio de inscripción</p>
+                        <br>
+                        <a href="/inscripcion/edit" class="btn btn-danger" >Volver a Editar Formulario</a>
+                        <a href="/inscripcion" class="btn btn-success" >Volver Inicio Solitud</a>
+                        </div>
+                </div>
+                <br>
+                <div class="card text-white bg-primary">
+                    <div class="card-header">
+                        <h3>INFORMAR PAGO DE LA INSCRIPCIÓN </h3>
+                    </div>
+                    <div class="card-body bg-light text-secondary">
+                        <h5 class="card-title">Informar Pago</h5>
+                        <p class="card-text">Si para terminar el proceso de matriculación le falta informar el pago de la matricula presione el botón Informar Pago.</p>
+                        <br>
+                        <a href="/inscripcion/informa_pago" class="btn btn-success" > Informar Pago</a>
+                        <a href="/inscripcion" class="btn btn-success" >Volver Inicio Solitud</a>
+                        </div>
+                </div>
+            </div>
+    </div>
+   </div>
+</div>

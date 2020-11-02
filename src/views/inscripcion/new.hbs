@@ -1,0 +1,618 @@
+<div class="container">
+
+  <div class="row">
+      <div class="col">
+     
+     <div class="overflow-auto">   
+        <form action="/inscripcion" method="POST">
+        
+                <div class="card text-white bg-primary">
+                <div class="card-header">
+                    <h3>Datos del Alumno/a </h3>
+                </div>
+                <div class="card-body bg-light text-secondary">
+                
+                    <div class="form-row">
+                        <div class="form-group col-md-6 ">
+                            <label for="fr_s1_apellido">Apellido :</label>
+                            <input type="text" class="form-control" id="fr_s1_apellido" name="fr_s1_apellido" value="Ingrese Apellido/s ..." class="form-control" autofocus>
+                        </div>
+                        <div class="form-group col-md-6 ">
+                            <label for="fr_s1_nombre">Nombre :</label>
+                            <input type="text" class="form-control" id="fr_s1_nombre" name="fr_s1_nombre" value="Ingrese Nombre completo ..." class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="fr_s1_grado">Grado: </label>
+                            <select id="fr_s1_grado" name="fr_s1_grado">
+                                <option value="1°">1°</option>
+                                <option value="2°">2°</option>
+                                <option value="3°">3°</option>
+                                <option value="4°">4°</option>
+                                <option value="5°">5°</option>
+                                <option value="6°">6°</option>
+                                <option value="7°">7°</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="fr_s1_seccion">Sección: </label>
+                            <select id="fr_s1_seccion" name="fr_s1_seccion">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="fr_s1_turno">Turno: </label>
+                            <select id="fr_s1_turno" name="fr_s1_turno">
+                                <option value="MAÑANA">MAÑANA</option>
+                                <option value="TARDE">TARDE</option>
+                            </select>
+                        </div>
+                    </div>
+
+                     <div class="form-row">
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_tipo_doc">Tipo Documento :</label>
+                            <select id="fr_s1_tipo_doc" name="fr_s1_tipo_doc">
+                                <option value="DNI">DNI</option>
+                                <option value="CEDULA">CEDULA</option>
+                                <option value="PASAPORTE">PASAPORTE</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_documento">NRO. DOCUMENTO :</label>
+                            <input type="text" class="form-control" id="fr_s1_documento" name="fr_s1_documento" value="Ingrese el Nro. de Documento ..." class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_nacionalidad">NACIONALIDAD :</label>
+                            <input type="text" class="form-control" id="fr_s1_nacionalidad" name="fr_s1_nacionalidad" value="Ingrese Nacionalidad ..." class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_cuil">CUIL :</label>
+                            <input type="text" class="form-control" id="fr_s1_cuil" name="fr_s1_cuil" value="Ingrese CUIL ..." class="form-control">
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_fr_s1_nacido_en">NACIDO EN :</label>
+                            <input type="text" class="form-control" id="fr_s1_fr_s1_nacido_en" name="fr_s1_fr_s1_nacido_en" value="Ingrese lugar donde nació ..." class="form-control">
+                        </div>
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_provincia">PROVINCIA :</label>
+                            <input type="text" class="form-control" id="fr_s1_provincia" name="fr_s1_provincia" value="Ingrese Provincia donde nació ..." class="form-control">
+                        </div>
+                        <div class="form-group col-md-2 ">
+                            <label for="fr_s1_dia_nac">DIA DE NACIMIENTO :</label>
+                            <input type="text" class="form-control" id="fr_s1_dia_nac" name="fr_s1_dia_nac" value="DIA" class="form-control">
+                       </div>
+                        <div class="form-group col-md-2 ">
+                            <label for="fr_s1_mes_nac">MES DE NACIMIENTO :</label>
+                            <input type="text" class="form-control" id="fr_s1_mes_nac" name="fr_s1_mes_nac" value="MES" class="form-control">
+                          </div>
+                        <div class="form-group col-md-2 ">
+                            <label for="fr_s1_anio_nac">AÑO DE NACIMIENTO :</label>
+                             <input type="text" class="form-control" id="fr_s1_anio_nac" name="fr_s1_anio_nac" value="AÑO" class="form-control">
+                            
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_domi_calle">DOMICILIO CALLE :</label>
+                            <input type="text" class="form-control" id="fr_s1_domi_calle" name="fr_s1_domi_calle" value="Ingrese calle del domicilio ..." class="form-control">
+                        </div>
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_domi_nro">DOMICILIO NRO :</label>
+                            <input type="text" class="form-control" id="fr_s1_domi_nro" name="fr_s1_domi_nro" value="Ingrese nro de Casa ..." class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-4 ">
+                            <label for="fr_s1_domi_barrio">BARRIO - MZA :</label>
+                            <input type="text" class="form-control" id="fr_s1_domi_barrio" name="fr_s1_domi_barrio" value="Ingrese Barrio - Manzana ..." class="form-control">
+                       </div>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_telef_fijo">TELÉFONO FIJO :</label>
+                            <input type="text" class="form-control" id="fr_s1_telef_fijo" name="fr_s1_telef_fijo" value="Ingrese teléfono fijo." class="form-control">
+                        </div>
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_telef_celu">TELÉFONO CELULAR :</label>
+                            <input type="text" class="form-control" id="fr_s1_telef_celu" name="fr_s1_telef_celu" value="Ingrese teléfono celuar." class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_telef_contacto">TELÉFONO COMTACTO :</label>
+                            <input type="text" class="form-control" id="fr_s1_telef_contacto" name="fr_s1_telef_contacto" value="Ingrese teléfono contacto." class="form-control">
+                       </div>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_bauti_dia">BAUTISMO DIA :</label>
+                            <input type="text" class="form-control" id="fr_s1_bauti_dia" name="fr_s1_bauti_dia" value="Ingrese día del Bautismo." class="form-control">
+                        </div>
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_bauti_mes">BAUTISMO MES :</label>
+                            <input type="text" class="form-control" id="fr_s1_bauti_mes" name="fr_s1_bauti_mes" value="Ingrese mes del Bautismo" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_bauti_anio">BAUTISMO AÑO :</label>
+                            <input type="text" class="form-control" id="fr_s1_bauti_anio" name="fr_s1_bauti_anio" value="Ingrese año del Bautismo" class="form-control">
+                       </div>
+
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_bauti_parroquia">PARROQUIA DONDE SE BAUTIZÓ :</label>
+                            <input type="text" class="form-control" id="fr_s1_bauti_parroquia" name="fr_s1_bauti_parroquia" value="Ingrese Parroquia donde fue Bautizado" class="form-control">
+                       </div>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_comu_dia">COMUNIÓN DIA :</label>
+                            <input type="text" class="form-control" id="fr_s1_comu_dia" name="fr_s1_comu_dia" value="Ingrese día de la Comunióm." class="form-control">
+                        </div>
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_comu_mes">COMUNIÓN MES :</label>
+                            <input type="text" class="form-control" id="fr_s1_comu_mes" name="fr_s1_comu_mes" value="Ingrese mes de la Comunión" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_comu_anio">COMUNIÓN AÑO :</label>
+                            <input type="text" class="form-control" id="fr_s1_comu_anio" name="fr_s1_comu_anio" value="Ingrese año de la Comunión" class="form-control">
+                       </div>
+
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_comu_parroquia">PARROQUIA - COMUNIÓN :</label>
+                            <input type="text" class="form-control" id="fr_s1_comu_parroquia" name="fr_s1_comu_parroquia" value="Ingrese Parroquia donde tomó la Comunión" class="form-control">
+                       </div>
+                        
+                    </div>
+
+                     <div class="form-row">
+                        <div class="form-group col-md-8 ">
+                            <label for="fr_s1_inst_proviene">INSTITUCION DE LA QUE PROVIENTE :</label>
+                            <input type="text" class="form-control" id="fr_s1_inst_proviene" name="fr_s1_inst_proviene" value="Ingrese Nombre de la Institución si proviene de otro colegio" class="form-control">
+                        </div>
+                                               
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-8 ">
+                            <label for="fr_s1_observ">OBSERVACIONES :</label>
+                            <input type="text" class="form-control" id="fr_s1_observ" name="fr_s1_observ" value="Ingrese Observaciones" class="form-control">
+                        </div>
+                                               
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-8 ">
+                            <label for="fr_s1_correo_educa">CORREO ELECTRONICO EDUCATIVO :</label>
+                             <input type="email" class="form-control" id="fr_s1_correo_educa`" name="fr_s1_correo_educa`" value="Ingrese correo electrónico del Alumno/a">
+                             <small id="emailHelp" class="form-text text-muted">Correo Electrónico exclusivo para actividades educativas</small>
+                        </div>
+                                               
+                    </div>
+                
+                    <div class="form-row">
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_medio_conect">MEDIO DE CONECTIVIDAD :</label>
+                             <select id="fr_s1_medio_conect" name="fr_s1_medio_conect">
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_equipo_conect">EQUIPO USADO PARA CONECTIVIDAD :</label>
+                             <select id="fr_s1_equipo_conect" name="fr_s1_equipo_conect">
+                                <option value="CELULAR">CELULAR</option>
+                                <option value="PC">PC</option>
+                                <option value="NOTEBOOK">NOTEBOOK</option>
+                                <option value="TABLET">TABLET</option>
+                                <option value="NETEBOOK">NETEBOOK</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_medio_conect_o">OTRO MEDIO DE CONECTIVIDAD :</label>
+                             <input type="text" class="form-control" id="fr_s1_medio_conect_o`" name="fr_s1_medio_conect_o`" value="Ingrese otro dispositivo usado ...">
+                        </div>
+
+                        <div class="form-group col-md-3 ">
+                            <label for="fr_s1_acceso_internet">ACCESO A INTERNET :</label>
+                             <select id="fr_s1_acceso_internet" name="fr_s1_acceso_internet">
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
+                                               
+                    </div>
+                     <div class="form-row">
+                        <div class="form-group col-md-4 ">
+                            <label for="fr_s1_celular_alum">TELÉFONO CELUAR DEL ALUMNO/A :</label>
+                            <input type="text" class="form-control" id="fr_s1_celular_alum" name="fr_s1_celular_alum" value="Ingrese Teléfono Celular del Alumno/a" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-4 ">
+                            <label for="fr_s1_medio_traslado">MEDIO DE TRASLADO AL COLEGIO :</label>
+                                <div class="form-control custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">Caminando</label>
+                                </div>
+
+                                <div class="form-control custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                <label class="custom-control-label" for="customCheck2">Medio Propio</label>
+                                </div>
+
+                                
+                                <div class="form-control custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                <label class="custom-control-label" for="customCheck3">Transporte</label>
+                                </div>
+                        </div>
+                                               
+                    </div>
+                    <div class="text-center"><h4>(Informar inmediatamente en caso de cambio de domicilio y/o teléfono) </h4></div>
+                    
+
+                </div>
+                </div>
+                <br>
+        
+                <div class="card text-white bg-primary">
+                    <div class="card-header">
+                        <h3>Datos de los Padres del alumno/a </h3>
+                    </div>
+                    <div class="card-body bg-light text-secondary">
+                    
+                        <div class="form-row">
+                            <div class="form-group col-md-6 ">
+                                <label for="fr_s2_apellido_padre">Apellido del Padre :</label>
+                                <input type="text" class="form-control" id="fr_s2_apellido_padre" name="fr_s2_apellido_padre" value="Ingrese Apellido/s ..." class="form-control" autofocus>
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="fr_s2_nombre_padre">Nombre del Padre :</label>
+                                <input type="text" class="form-control" id="fr_s2_nombre_padre" name="fr_s2_nombre_padre" value="Ingrese Nombre completo ..." class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_nacionalidad_padre">Nacionalidad del Padre:</label>
+                                <input type="text" class="form-control" id="fr_s2_nacionalidad_padre" name="fr_s2_nacionalidad_padre" value="Ingrese la Nacionalidad" class="form-control">
+                            </div>
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_tipo_doc_padre">Tipo Documento del Padre :</label>
+                                 <select id="fr_s2_tipo_doc_padre" name="fr_s2_tipo_doc_padre">
+                                    <option value="DNI">DNI</option>
+                                    <option value="CEDULA">CEDULA</option>
+                                    <option value="PASAPORTE">PASAPORTE</option>
+                                 </select>
+                            </div>
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_documento_padre">Documento Nro del Padre :</label>
+                                <input type="text" class="form-control" id="fr_s2_documento_padre" name="fr_s2_documento_padre" value="Ingrese el número de documento" class="form-control">
+                            </div>
+                        </div>
+
+                         <div class="form-row">
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_profesion_padre">Profesión del Padre:</label>
+                                <input type="text" class="form-control" id="fr_s2_profesion_padre" name="fr_s2_profesion_padre" value="Ingrese la Prefesión" class="form-control">
+                            </div>
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_celular_padre">Teléfono Celular del Padre:</label>
+                                <input type="text" class="form-control" id="fr_s2_celular_padre" name="fr_s2_celular_padre" value="Ingrese el Teléfono Celular del Padre" class="form-control">
+                            </div>
+                            
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_telef_lab_padre">Teléfono Laboral del Padre :</label>
+                                <input type="text" class="form-control" id="fr_s2_telef_lab_padre" name="fr_s2_telef_lab_padre" value="Ingrese el Teléfono Laboral del Padre" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_email_padre">Correo Electrónico del Padre :</label>
+                                <input type="text" class="form-control" id="fr_s2_email_padre" name="fr_s2_email_padre" value="Ingrese correo electrónico del Padre" class="form-control">
+                            </div>
+                        </div>  
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 ">
+                                <label for="fr_s2_apellido_madre">Apellido de la Madre :</label>
+                                <input type="text" class="form-control" id="fr_s2_apellido_madre" name="fr_s2_apellido_madre" value="Ingrese Apellido/s de la Madre..." class="form-control" autofocus>
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="fr_s2_nombre_madre">Nombre de la Madre :</label>
+                                <input type="text" class="form-control" id="fr_s2_nombre_madre" name="fr_s2_nombre_madre" value="Ingrese Nombre completo de la Madre..." class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_nacionalidad_madre">Nacionalidad de la Madre:</label>
+                                <input type="text" class="form-control" id="fr_s2_nacionalidad_madre" name="fr_s2_nacionalidad_madre" value="Ingrese la Nacionalidad de la Madre" class="form-control">
+                            </div>
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_tipo_doc_madre">Tipo Documento de la Madre :</label>
+                                 <select id="fr_s2_tipo_doc_madre" name="fr_s2_tipo_doc_madre">
+                                    <option value="DNI">DNI</option>
+                                    <option value="CEDULA">CEDULA</option>
+                                    <option value="PASAPORTE">PASAPORTE</option>
+                                 </select>
+                            </div>
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_documento_madre">Documento Nro de la Madre :</label>
+                                <input type="text" class="form-control" id="fr_s2_documento_madre" name="fr_s2_documento_madre" value="Ingrese el número de documento de la Madre" class="form-control">
+                            </div>
+                        </div>
+
+                         <div class="form-row">
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_profesion_madre">Profesión del Madre:</label>
+                                <input type="text" class="form-control" id="fr_s2_profesion_madre" name="fr_s2_profesion_madre" value="Ingrese la Prefesión de la Madre" class="form-control">
+                            </div>
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_celular_madre">Teléfono Celular de la Madre:</label>
+                                <input type="text" class="form-control" id="fr_s2_celular_madre" name="fr_s2_celular_madre" value="Ingrese el Teléfono Celular de la Madre" class="form-control">
+                            </div>
+                            
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_telef_lab_madre">Teléfono Laboral del Madre :</label>
+                                <input type="text" class="form-control" id="fr_s2_telef_lab_madre" name="fr_s2_telef_lab_madre" value="Ingrese el Teléfono Laboral del Madre" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_email_madre">Correo Electrónico de la Madre :</label>
+                                <input type="text" class="form-control" id="fr_s2_email_madre" name="fr_s2_email_madre" value="Ingrese correo electrónico del Madre" class="form-control">
+                            </div>
+                        </div>
+
+                         <div class="form-row">
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_religion_profesan">Religión que profesan :</label>
+                                <input type="text" class="form-control" id="fr_s2_religion_profesan" name="fr_s2_religion_profesan" value="Ingrese la religión que profesan" class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-4 ">
+                                <label for="fr_s2_matrimonio_iglesia">Matrimonio por Iglesia :</label>
+                                 <select id="fr_s2_matrimonio_iglesia" name="fr_s2_matrimonio_iglesia">
+                                    <option value="S">SI</option>
+                                    <option value="N">NO</option>
+                                 </select>
+                            </div>
+                        </div>
+
+                           <div class="text-left"><h4>Actual grupo Familiar Conviviente: </h4></div>
+
+                            <table id="tabla1" class="table table-hover table-responsive-sm table-bordered table-sm">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Apelliod y Nombre</th>
+                                    <th scope="col">Parentesco</th>
+                                    <th scope="col">Edad</th>
+                                    <th scope="col">Grupo Riesgo (SI/NO)</th>
+                                </tr>
+                                </thead>
+                                <tbody>   </tbody>
+                            </table>    
+                             <div class="text-center"><h5>Para adicionar un integrande del grupo Familiar completar los campos siguientes y haga click en el boton Adicionar Familiar: </h5></div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-3 ">
+                                    <label for="fr3_apynom">Apellido y Nombre </label>
+                                    <input type="text" class="form-control" id="fr3_apynom" name="fr3_apynom" value="Ingrese Apellido y Nombre Fam." class="form-control" autofocus>
+                                </div>
+                                <div class="form-group col-md-3 ">
+                                    <label for="fr3_parent">Parentesco </label>
+                                    <input type="text" class="form-control" id="fr3_parent" name="fr3_parent" value="Ingrese Parentesco" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2 ">
+                                    <label for="fr3_edad">edad </label>
+                                    <input type="text" class="form-control" id="fr3_edad" name="fr3_edad" value="Ingrese Edad" class="form-control">
+                                </div>
+                                <div class="form-group col-md-2 ">
+                                <label for="fr3_gr">Grupo Riesgo</label>
+                                 <select id="fr3_gr" name="fr3_gr">
+                                    <option value="S">SI</option>
+                                    <option value="N">NO</option>
+                                 </select>
+                                 </div>
+                                 <div class="form-group col-md-2 ">
+                                    <input type="button" class="form-control" value="Adicionar Familiar" onclick="addRow('tabla1',document.getElementById('fr3_apynom').value,document.getElementById('fr3_parent').value,document.getElementById('fr3_edad').value,document.getElementById('fr3_gr').value);" />
+                                    
+                                </div>
+                            </div>
+                
+
+                     </div>
+                </div>      
+
+                <br>
+        
+                <div class="card text-white bg-primary">
+                    <div class="card-header">
+                        <h3>Adhesión al ideario - Registro de Firma del TUTOR/RA </h3>
+                    </div>
+                    <div class="card-body bg-light text-secondary">
+                    
+                    <h5 class="text-justify">Teniendo pleno conocimiento del Ideario, Acuerdos de Convivencia, Protocolos Sanitarios y reglamentaciones específicas, opto por este Instituto Confesional Católico y me comprometo a respetar junto a mi hijo/a todo lo establecido, conforme al Sistema de Servicios Educativos que las autoridades Jurisdiccionales autoricen.</h5>
+                    <br>
+                    <h5>Antecedentes Médicos</h5>
+                    <h6 class="text-justify">Marcar en la siguiente tabla si el alumno/a es una persona incluida en los grupos de riesgo que define la autoridad sanitaria nacional.</h6> 
+                    <table id="tabla2" class="table table-hover table-responsive-sm table-bordered table-sm">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Enfermedad</th>
+                                    <th scope="col">SI - NO</th>
+                                </tr>
+                                </thead>
+                                <tbody>  <tr> 
+                                            <td> <h6 class="text-justify">Enfermedades respiratorias crónicas: enfermedad pulmonar obstructivas crónica (EPOC), 
+enfisema congénito, displasia broncopulmonar, Bronquiectasias, fibrosis quística y asma moderado o severo.</h6>
+                                           </td>
+                                           <td>  <select id="fr3_gr" name="fr3_gr">
+                                                    <option value="S">SI</option>
+                                                    <option value="N">NO</option>
+                                                </select>
+                                           </td>
+                                          </tr> 
+
+                                          <tr> 
+                                            <td> <h6 class="text-justify">Enfermedades cardíacas: Insuficiencia cardíaca, enfermedad coronaria, valvulopatías y cardiopatías congénitas.</h6>
+                                           </td>
+                                           <td>  <select id="fr3_gr" name="fr3_gr">
+                                                    <option value="S">SI</option>
+                                                    <option value="N">NO</option>
+                                                </select>
+                                           </td>
+                                          </tr> 
+
+                                          <tr> 
+                                            <td> <h6 class="text-justify">Inmunodeficiencias</h6>
+                                           </td>
+                                           <td>  <select id="fr3_gr" name="fr3_gr">
+                                                    <option value="S">SI</option>
+                                                    <option value="N">NO</option>
+                                                </select>
+                                           </td>
+                                          </tr> 
+
+                                          <tr> 
+                                            <td> <h6 class="text-justify">Diabéticos, personas con insuficiencia renal crónica en diálisis o con expectativas de ingresar a diálisis en los siguientes seis meses.</h6>
+                                           </td>
+                                           <td>  <select id="fr3_gr" name="fr3_gr">
+                                                    <option value="S">SI</option>
+                                                    <option value="N">NO</option>
+                                                </select>
+                                           </td>
+                                          </tr> 
+                                </tbody>
+                            </table>
+                    
+                        <div class="form-row">
+                            <div class="form-group col-md-6 ">
+                                <label for="fr_s3_apellido_tutor">Apellido del Tutor :</label>
+                                <input type="text" class="form-control" id="fr_s3_apellido_tutor" name="fr_s3_apellido_tutor" value="Ingrese Apellido/s ..." class="form-control" autofocus>
+                            </div>
+                            <div class="form-group col-md-6 ">
+                                <label for="fr_s3_nombre_tutor">Nombre del Tutor :</label>
+                                <input type="text" class="form-control" id="fr_s3_nombre_tutor" name="fr_s3_nombre_tutor" value="Ingrese Nombre completo ..." class="form-control">
+                            </div>
+                        </div>
+                         <div class="form-row">
+                             <div class="form-group col-md-3 ">
+                                <label for="fr_s3_tipo_doc_tutor">Tipo Documento del Tutor :</label>
+                                 <select id="fr_s3_tipo_doc_tutor" name="fr_s3_tipo_doc_tutor">
+                                    <option value="DNI">DNI</option>
+                                    <option value="CEDULA">CEDULA</option>
+                                    <option value="PASAPORTE">PASAPORTE</option>
+                                 </select>
+                            </div>
+                            <div class="form-group col-md-3 ">
+                                <label for="fr_s3_documento_tutor">Documento Nro del Tutor :</label>
+                                <input type="text" class="form-control" id="fr_s3_documento_tutor" name="fr_s3_documento_tutor" value="Ingrese el número de documento del Tutor" class="form-control">
+                            </div>
+                            <div class="form-group col-md-3 ">
+                                <label for="fr_s3_telefono_tutor">Teléfono del Tutor :</label>
+                                <input type="text" class="form-control" id="fr_s3_telefono_tutor" name="fr_s3_telefono_tutor" value="Ingrese el teléfono del Tutor" class="form-control">
+                            </div>
+                            <div class="form-group col-md-3 ">
+                                <label for="fr_s3_celular_tutor">Teléfono  Celular del Tutor :</label>
+                                <input type="text" class="form-control" id="fr_s3_celular_tutor" name="fr_s3_celular_tutor" value="Ingrese celular del Tutor en el formato: 376-4XXXXXX" class="form-control">
+                            </div>
+                            
+                        </div>
+
+                         <div class="form-row">
+                            
+                            <div class="form-group col-md-6 ">
+                                <label for="fr_s3_domicilio_tutor">Domicilio del Tutor :</label>
+                                <input type="text" class="form-control" id="fr_s3_domicilio_tutor" name="fr_s3_domicilio_tutor" value="Ingrese el domicilio del Tutor" class="form-control">
+                            </div>
+                            <div class="form-group col-md-3 ">
+                                <label for="fr_s3_email_tutor">Correo Electrónico del Tutor :</label>
+                                <input type="text" class="form-control" id="fr_s3_email_tutor" name="fr_s3_email_tutor" value="Ingrese el correo electrónico del Tutor" class="form-control">
+                            </div>
+                            
+                        </div>
+                        
+                
+
+                     </div>
+                </div>  
+                 <br>
+        
+                <div class="card text-white bg-primary">
+                    <div class="card-header">
+                        <h3>AUTORIZACIÓN: AUTORIZO a retirar a mi hijo/ja del Instituto en compañia de: </h3>
+                    </div>
+                    <div class="card-body bg-light text-secondary">
+                    
+                        <table id="tabla3" class="table table-hover table-responsive-sm table-bordered table-sm">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Apelliod y Nombre</th>
+                                    <th scope="col">D.N.I.</th>
+                                    <th scope="col">Parentesco</th>
+                                    <th scope="col">Teléfono</th>
+                                </tr>
+                                </thead>
+                                <tbody>   </tbody>
+                            </table>    
+                             <div class="text-center"><h5>Para adicionar un persona autorizada completar los campos siguientes y haga click en el boton Adicionar : </h5></div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-3 ">
+                                    <label for="fr4_apynom">Apellido y Nombre </label>
+                                    <input type="text" class="form-control" id="fr4_apynom" name="fr4_apynom" value="Ingrese Apellido y Nombre" class="form-control" autofocus>
+                                </div>
+                                <div class="form-group col-md-2 ">
+                                    <label for="fr4_dni">D.N.I. </label>
+                                    <input type="text" class="form-control" id="fr4_dni" name="fr4_dni" value="Ingrese el DNI" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3 ">
+                                    <label for="fr4_parent">Parentesco </label>
+                                    <input type="text" class="form-control" id="fr4_parent" name="fr4_parent" value="Ingrese Parentesco" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3 ">
+                                    <label for="fr4_telef">Telefono</label>
+                                    <input type="text" class="form-control" id="fr4_telef" name="fr4_telef" value="Ingrese Teléfono" class="form-control">
+                                </div>
+                                
+                                 <div class="form-group col-md-2 ">
+                                    <input type="button" class="form-control" value="Adicionar" onclick="addRow2('tabla3',document.getElementById('fr4_apynom').value,document.getElementById('fr4_dni').value,document.getElementById('fr4_parent').value,document.getElementById('fr4_telef').value);" />
+                                    
+                                </div>
+                            </div>
+                       
+                        
+                
+
+                     </div>
+                </div>  
+        </form>
+        </div>
+    
+   </div>
+  </div>
+  
+</div>

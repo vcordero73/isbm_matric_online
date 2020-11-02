@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+   <title>Servicio Inscripción Online</title>
+  <meta name="description" content="ISBM Servicio Online Inscripción">
+
+  <meta name="theme-color" content="#F0DB4F">
+  <meta name="MobileOptimized" content="width">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="shortcut icon" type="image/png" href="./img/ProgramadorFitness.png">
+  <link rel="apple-touch-icon" href="./ProgramadorFitness.png">
+  <link rel="apple-touch-startup-image" href="./ProgramadorFitness.png">
+  
+  {{!-- GOOGLE FONTS --}}
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  {{!-- BOOTSTRAP 4 --}}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+   {{!-- FONT AWESOME 5 --}}
+  {{!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous">--}}
+  {{!-- STYLES --}}
+  <link rel="stylesheet" href="/css/styles.css">
+  {{!-- SCRIPT KIT FONT AWESOME --}}
+  <script src="https://kit.fontawesome.com/5881060d3c.js" crossorigin="anonymous"></script>
+
+   <script data-require="jquery@2.2.4" data-semver="2.2.4" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+function addRow(tableID, col1, col2, col3, col4) {
+  // Obtiene una referencia a la tabla
+  var tableRef = document.getElementById(tableID);
+
+  var rowCount = tableRef.rows.length;
+
+   // Inserta una fila en la tabla, en el índice del ultimo elemento
+  var newRow   = tableRef.insertRow(rowCount);
+
+  // Inserta una celda en la fila, en el índice 0, representa primer columna
+  var newCell  = newRow.insertCell(0);
+
+  // Añade un nodo de texto a la celda
+   var newText  = document.createTextNode(col1);
+  newCell.appendChild(newText);
+
+  // Inserta una celda en la fila, en el índice 1, representa segunda columna
+  var newCell1  = newRow.insertCell(1);
+  
+  // Añade un nodo de texto a la celda
+  var newText1  = document.createTextNode(col2);
+  newCell1.appendChild(newText1);
+
+  // Inserta una celda en la fila, en el índice 2, representa terer columna
+  var newCell2  = newRow.insertCell(2);
+ 
+  // Añade un nodo de texto a la celda
+  var newText2  = document.createTextNode(col3);
+  newCell2.appendChild(newText2);
+
+   // Inserta una celda en la fila, en el índice 3, representa cuarta columna
+  var newCell3  = newRow.insertCell(3);
+  // Añade un nodo de texto a la celda
+  var newText3  = document.createTextNode(col4);
+  newCell3.appendChild(newText3);
+
+  var newColBotom  = newRow.insertCell(4);
+  var btn = document.createElement("BUTTON");   // Create a <button> element
+  btn.innerHTML = "ELIMINAR "; 
+  btn.className = "btn btn-danger";
+  btn.onclick = function(){deleteRow();}; 
+  newColBotom.appendChild(btn);
+ 
+ //var newCell4  = newRow.insertCell(4);
+ var input1 = document.createElement("input");
+ input1.type = "hidden";
+ input1.value = col1
+ input1.name = 'fr_s2_apynom_fam';
+ //newCell4.appendChild(input1);
+ newRow.appendChild(input1);
+
+ 
+
+ //var newCell5  = newRow.insertCell(5);
+ var input2 = document.createElement("input");
+ input2.type = "hidden";
+ input2.value = col2
+ input2.name = 'fr_s2_parentesco';
+ //newCell5.appendChild(input2);
+ newRow.appendChild(input2);
+
+ //var newCell6  = newRow.insertCell(6);
+ var input3 = document.createElement("input");
+ input3.type = "hidden";
+ input3.value = col3
+ input3.name = 'fr_s2_edad';
+ //newCell6.appendChild(input3);
+ newRow.appendChild(input3);
+
+//var newCell7  = newRow.insertCell(6);
+ var input4 = document.createElement("input");
+ input4.type = "hidden";
+ input4.value = col4
+ input4.name = 'fr_s2_grupo_riesgo';
+ //newCell7.appendChild(input4);
+ newRow.appendChild(input4);
+
+}
+
+
+function addRow2(tableID2, col12, col22, col32, col42) {
+  // Obtiene una referencia a la tabla
+  var tableRef = document.getElementById(tableID2);
+
+  var rowCount = tableRef.rows.length;
+
+   // Inserta una fila en la tabla, en el índice del ultimo elemento
+  var newRow   = tableRef.insertRow(rowCount);
+
+  // Inserta una celda en la fila, en el índice 0, representa primer columna
+  var newCell  = newRow.insertCell(0);
+  
+  // Añade un nodo de texto a la celda
+   var newText  = document.createTextNode(col12);
+  newCell.appendChild(newText);
+
+  // Inserta una celda en la fila, en el índice 1, representa segunda columna
+  var newCell1  = newRow.insertCell(1);
+  
+  // Añade un nodo de texto a la celda
+  var newText1  = document.createTextNode(col22);
+  newCell1.appendChild(newText1);
+
+  // Inserta una celda en la fila, en el índice 2, representa terer columna
+  var newCell2  = newRow.insertCell(2);
+ 
+  // Añade un nodo de texto a la celda
+  var newText2  = document.createTextNode(col32);
+  newCell2.appendChild(newText2);
+
+   // Inserta una celda en la fila, en el índice 3, representa cuarta columna
+  var newCell3  = newRow.insertCell(3);
+  // Añade un nodo de texto a la celda
+  var newText3  = document.createTextNode(col42);
+  newCell3.appendChild(newText3);
+
+  var newColBotom  = newRow.insertCell(4);
+  var btn = document.createElement("BUTTON");   // Create a <button> element
+  btn.innerHTML = "ELIMINAR "; 
+  btn.className = "btn btn-danger";
+  btn.onclick = function(){deleteRow2();}; 
+  newColBotom.appendChild(btn);
+
+ //var newCell4  = newRow.insertCell(4);
+ var input1 = document.createElement("input");
+ input1.type = "hidden";
+ input1.value = col12
+ input1.name = 'fr_s5_apynom_autoriz';
+ //newCell4.appendChild(input1);
+ newRow.appendChild(input1);
+
+ //var newCell5  = newRow.insertCell(5);
+ var input2 = document.createElement("input");
+ input2.type = "hidden";
+ input2.value = col22
+ input2.name = 'fr_s5_dni_autoriz';
+ //newCell5.appendChild(input2);
+ newRow.appendChild(input2);
+
+ //var newCell6  = newRow.insertCell(6);
+ var input3 = document.createElement("input");
+ input3.type = "hidden";
+ input3.value = col32
+ input3.name = 'fr_s5_parentesco_autoriz';
+ //newCell6.appendChild(input3);
+ newRow.appendChild(input3);
+
+  //var newCell7  = newRow.insertCell(6);
+ var input4 = document.createElement("input");
+ input4.type = "hidden";
+ input4.value = col42
+ input4.name = 'fr_s5_telef_autoriz';
+ //newCell7.appendChild(input4);
+ newRow.appendChild(input4);
+
+}  
+</script>
+
+</head>
+
+<body>
+  {{>navigation}}
+  {{>message}} 
+  {{{ body }}}
+
+  {{!-- SCRIPTS --}}
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
