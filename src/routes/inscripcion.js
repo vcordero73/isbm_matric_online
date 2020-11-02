@@ -143,7 +143,7 @@ router.post('/',[
                     res.redirect('/inscripcion');
                    }
                 }
-                
+                                 
 
                   
               }
