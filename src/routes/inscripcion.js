@@ -86,9 +86,10 @@ router.post('/',[
               if ((deuda.length > 0)&&( deuda[0].importe > 0 )) {
                 console.log('Alumno con deuda');
                 req.flash('message', 'El Alumno registra deuda, regularizar primero y luego  iniciar la solicitud de matriculación online');
-                res.redirect('/inscripcion');
+                   res.redirect('/inscripcion');
               }
-              // Consulto por inscripcion
+              else{
+                      // Consulto por inscripcion
               const datos = await pool.query('select * from inscripciones i inner join ciclo_inscrip c on c.id_cilco = i.id_ciclo inner join nivel_educacion n on n.id_nivel = i.id_nivel where c.ciclo_lectivo=? and i.fr_alu_docu=? and n.cod_nivel=?  LIMIT 1', [ciclo_lectivo, documento, nivel]);
               if (datos.length > 0) {
                 console.log('Encontro inscripciones');
@@ -123,30 +124,14 @@ router.post('/',[
                 }
                 else
                 {
-                    // Consulta por documento tutor si exite
-                    const bdtutor = await pool.query('select * FROM bd_alumno where documento_tutor=? limit 1', [documento_tutor]);
-                    if (bdtutor.length > 0) {
-                     //req.flash('message', 'Inscripción nueva');
-                       if (nivel === 'I') {
-                         console.log('Inscripcion Nueva : NIVEL INICIAL');
-                         res.redirect('/inscripcion/new_inicial');
-                       } else  if (nivel === 'P'){
-                         console.log('Inscripcion Nueva : NIVEL PRIMARIA');
-                         res.redirect('/inscripcion/new_primaria');
-                       } else {
-                         console.log('Inscripcion Nueva : NIVEL SECUNDARIA');
-                         res.redirect('/inscripcion/new_secundaria');
-                       }
-                    }
-                    else{
-                     req.flash('message', 'El Alumno y/o Tutor no se enuentra en la Base de Datos de Alumno. Si es alumno nuevo en la Institución deberá  hacer la inscripción de forma presencial presentando toda la documentación requerida. Si no es un alumno nuevo informar a la Secretaria del Nivel de Enseñanza.');
+                  req.flash('message', 'El Alumno no se enuentra en la Base de Datos de Alumno. Si es alumno nuevo en la Institución deberá  hacer la inscripción de forma presencial presentando toda la documentación requerida. Si no es un alumno nuevo informar a la Secretaria del Nivel de Enseñanza.');
                     res.redirect('/inscripcion');
                    }
+                                 
                 }
                                  
-
-                  
               }
+                  
             }
     });
 
