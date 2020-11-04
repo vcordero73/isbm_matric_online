@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row">
+      <div class="col">
+            <div class="overflow-auto">   
+                
+				<h2 class="text-center">MODULO DE AUTORIA DE MATRICULAS ONLINE </h2>
+                <h3 class="text-center">Ciclo Lectivo : {{ciclo_lectivo}}</h3>
+                <h4 class="text-center"> Nivel de Enseñanza: {{nivel_ense}}</h4>
+                <br>
+                  <div class="card text-white bg-primary">
+                                    <div class="card-header">
+                                        <h3>SECCION DE FILTROS </h3>
+                                    </div>
+                                    <div class="card-body bg-light text-secondary">
+                                     <h5 class="card-title">Filtros disponbiles para gestionar los datos</h5>
+                                     
+                                        <p class="card-text">Para filtrar cargue los campos o selecciones un valor y luego presione filtrar</p>
+                                        
+                                     </div>
+                </div>
+
+
+                 <div class="card text-white bg-primary">
+                                    <div class="card-header">
+                                        <h3>LISTADO DE SOLICITUD DE MATRICULACIÓN </h3>
+                                    </div>
+                                    <div class="card-body bg-light text-secondary">
+                                        
+										<table class="table table-hover table-responsive-sm table-bordered table-sm">
+                                            <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Estado</th>  
+                                                <th scope="col">Orientación</th>  
+                                                <th scope="col">Año</th>  
+                                                <th scope="col">División</th>
+                                                <th scope="col">Turno</th>
+                                                <th scope="col">DNI Alumno</th>
+                                                <th scope="col">Apellido y Nombre Alumno</th>
+                                                <th scope="col">Ver Formulario Matricula</th>
+                                                <th scope="col">Ver Pago</th>
+                                                <th scope="col">Enviar Observación</th>
+                                                <th scope="col">Auditoria</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{#each recibos}}
+                                            <tr>
+                                                <td>{{estado}}</td> 
+                                                <td>{{orientacion}}</td>
+                                                <td>{{anio}}</td>
+                                                <td>{{division}}</td>
+                                                <td>{{turno}}</td>
+                                                <td>{{documento_alu}}</td>
+                                                <td>{{apynom_alu}}</td>
+                                                <td><a href="/auditedit_sec" class="btn btn-success" role="button" aria-pressed="true"> Ver Matricula</a></td>
+                                                <td><a href="/auditpago" class="btn btn-success" role="button" aria-pressed="true"> Ver Comp. Pago</a></td>
+                                                <td><a href="/auditgral" class="btn btn-success" role="button" aria-pressed="true"> Auditaria</a></td>
+                                                
+                                            </tr>
+                                            {{else}}
+                                                <td></td> 
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a href="#" class="btn btn-success" role="button" aria-pressed="true"> Ver Matricula</a></td>
+                                                <td><a href="#" class="btn btn-success" role="button" aria-pressed="true"> Ver Comp. Pago</a></td>
+                                                <td><a href="#" class="btn btn-success" role="button" aria-pressed="true"> Auditaria</a></td>
+                                    
+                                            {{/each}}
+                                            </tbody>
+                                        </table>   
+                                     </div>
+                </div>
+            </div>
+    </div>
+   </div>
+</div>
