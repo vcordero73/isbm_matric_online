@@ -8,7 +8,7 @@
           <h2 class="text-center">EDICION DEL FORMULARIO DE SOLICITUD DE MATRICULACIÓN ONLINE </h2>
           <h2 class="text-center"> NIVEL SECUNDARIA - CICLO LECTIVO: {{ciclo_inscrip}}</h2>
          <BR></BR>
-        <form role="form" action="/inscripcion/edit_primaria" method="POST">
+        <form role="form" action="/inscripcion/edit_secundaria" method="POST">
         
                 <div class="card text-white bg-primary">
                 <div class="card-header">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="form-row">
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-5">
                             <label for="fr_s1_orientacion_sec">Orientación : </label>
                             <select id="fr_s1_orientacion_sec" name="fr_s1_orientacion_sec">
                                 <option value="Ciclo Básico">Ciclo Básico</option>
@@ -42,7 +42,7 @@
                                 <option value="Ciencias Naturales">Ciencias Naturales</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                             <label for="fr_s1_anio_sec">Año : </label>
                             <select id="fr_s1_anio_sec" name="fr_s1_anio_sec">
                                 <option value="1">1ro</option>
@@ -52,11 +52,13 @@
                                 <option value="5">5to</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-2">
                             <label for="fr_s1_division_sec">División : </label>
                             <select id="fr_s1_division_sec" name="fr_s1_division_sec">
                                 <option value="A">A</option>
-                                <option value="B">B°</option>
+                                <option value="B">B</option>
+                                 <option value="C">C</option>
+                                 <option value="D">C</option>
                              </select>
                         </div>
                         <div class="form-group col-md-3">
@@ -67,7 +69,6 @@
                             </select>
                         </div>
                     </div>
-
                      <div class="form-row">
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_tipo_doc">TIPO DOCUMENTO :</label>

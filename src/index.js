@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan  = require('morgan');
 const exphbs= require('express-handlebars');
+const passport = require('passport');
 const path = require('path');
 const session = require('express-session');
 const validator = require('express-validator');
@@ -16,6 +17,7 @@ const multer = require('multer');
 
 //Iniciarlizar express
 const app = express();
+require('./lib/passport');
 
 //Configuraciones que necesita el servidor
 // 1) en que puerto va funcionar, basicamente dice voy a definir un puerto si el server existe tomalo sino usa el 3000
@@ -51,6 +53,8 @@ app.use(session({
   store: new MySQLStore(database)
 }));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 //app.use(multer({storage1}).single('image'));
 
@@ -62,12 +66,14 @@ app.use((req, res, next) => {
   app.locals.message = req.flash('message');
   app.locals.success = req.flash('success');
   app.locals.user = req.user;
-        next();
+          next();
   });
 //Rutas
 //vamos a definir las url de nuestro servidor
 //que es lo que van hacer cuando un usuario visite esas url
 app.use(require('./routes/index.js'));
+app.use(require('./routes/authentication.js'));
+app.use(require('./routes/auditoria.js'));
 app.use('/inscripcion', require('./routes/inscripcion.js'));
 
 
