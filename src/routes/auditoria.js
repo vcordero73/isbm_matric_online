@@ -86,13 +86,16 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
     const { id } = req.params;
     const nivel = req.user.nivel;
     console.log('entro en edit modal valor id =  ', id);
-    console.log('nivel inscrip =  ', nivel);
+    console.log('nivel  =  ', nivel);
     var nivel_inscrip = '';
    if (nivel === 'T')
    {
     nivel_inscrip = 'S';
     
+   }else{
+    nivel_inscrip = nivel;
    }
+     console.log('nivel inscrip =  ', nivel_inscrip);
 
     const alumno = await pool.query('select * from fr_s1_alumno where id_inscripcion= ? limit 1', [id]);
     const padres = await pool.query('select * from fr_s2_padres where id_inscripcion= ? limit 1', [id]);
