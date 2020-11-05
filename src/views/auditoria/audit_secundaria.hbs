@@ -63,7 +63,7 @@
                                                 <th scope="col">Turno</th>
                                                 <th scope="col">DNI Alumno</th>
                                                 <th scope="col">Apellido y Nombre Alumno</th>
-                                                <th scope="col">Ver Formulario Matricula</th>
+                                                <th scope="col">Ver Formulario</th>
                                                 <th scope="col">Ver Pago</th>
                                                 <th scope="col">Enviar Observación</th>
                                                 <th scope="col">Auditoria</th>
@@ -95,7 +95,7 @@
 
                                                     </script>
                                                     <td><a href="/audit_email?email={{email_tutor}}" target="_blank" class="btn btn-success" role="button" aria-pressed="true"> Enviar Email</a></td>
-                                                    <td><a href="/auditgral" class="btn btn-success" role="button" aria-pressed="true"> Auditaria</a></td>
+                                                    <td><a href="/audit_autoriz?id={{id_inscripcion}}&email={{email_tutor}}&dni={{documento_alu}}" class="btn btn-success" role="button" aria-pressed="true"> Autorizar</a></td>
                                                      <input type="hidden" id='fr_id_inscrip' name='fr_id_inscrip'   value="{{id_inscripcion}}">
                                                 </tr>
                                                 {{else}}

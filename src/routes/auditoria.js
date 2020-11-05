@@ -449,43 +449,239 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
 
   router.post('/audit_email', isLoggedIn, async (req, res) => {
     const { recipient_name,message_text } = req.body;
+    const nivel = req.user.nivel;
     console.log(recipient_name);
     console.log(message_text);
-    contentHTML = ' <h1> MENSAJE DE LA SECRETARIA NIVEL SECUNDARIO </h1> <u> <li> email tutor: ${recipient_name}</li></u> <h2> Observaciones:</h2> <p>${recipient_name}</p>';
+    
+    var user_email=' ';
+    var pass_email=' ';
+    
+    console.log('nivel leido =  ', nivel);
+
+    if (nivel === 'I') {
+      console.log('entro en email inicial  ');
+      user_email='administracion_ni@isbm.edu.ar';
+      pass_email='Niveli#2020';
+     
+    } else if (nivel === 'P') {
+      console.log('entro en email primaria  ');
+      user_email='administracion_np@isbm.edu.ar';
+      pass_email='IDZG@Qc8iF';
+      
+    } else if (nivel === 'S') {
+      console.log('entro en email secundaria  '); 
+      user_email='administracion_ns@isbm.edu.ar';
+      pass_email='isbms2020';
+     
+    }
+    console.log('valor de usuario email = ',user_email);
+    console.log('valor de pass email = ',pass_email);
+
     
     const transporter = nodemailer.createTransport({
-                       host: 'vps-1715654-x.dattaweb.com',
-                       port: 465,
-                       secure: true,
-                       auth: {
-                         type: 'login',
-                         user: 'administracion_ns@isbm.edu.ar',
-                         pass: '*2U8ms22jW'
-                       }
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
+      auth: {
+        user: user_email,
+        pass: pass_email
+      }
     });
 
   // verify connection configuration
 transporter.verify(function(error, success) {
   if (error) {
+      console.log('Error al verificar correo');
        console.log(error);
   } else {
        console.log('Server is ready to take our messages');
   }
 });
 console.log('antes de enviar correo');
+console.log('valor de to email = ',recipient_name);
 
-   const info = await transporter.sendMail({
-          from: "'ISBM - Secretaria Nivel Secundario' <administracion_ns@isbm.edu.ar>",
-          to: 'recipient_name',
-          subject: 'Contacto por Matriculación Online',
-          text: 'Hola'
-    });
 
-   console.log('mensaje respuesta = ', info.messageId);
+     // setup e-mail data with unicode symbols
+     var mailOptions = { };
+    
+if (nivel === 'I') {
+  mailOptions = {
+    from: '"ISBM - Secretaria Nivel Inicial" <administracion_ni@isbm.edu.ar>',
+    to: recipient_name,
+    subject: 'Contacto por Matriculación Online',
+    text: message_text
+    //html: '<b>Hello world ?</b>' // html body
+  };
+}
+else if (nivel === 'P') {
+  mailOptions = {
+    from: '"ISBM - Secretaria Nivel Primario" <administracion_np@isbm.edu.ar>',
+    to: recipient_name,
+    subject: 'Contacto por Matriculación Online',
+    text: message_text
+    //html: '<b>Hello world ?</b>' // html body
+  };
+}
+else{
+  mailOptions = {
+    from: '"ISBM - Secretaria Nivel Secundario\" <administracion_ns@isbm.edu.ar>',
+    to: recipient_name,
+    subject: 'Contacto por Matriculación Online',
+    text: message_text
+    //html: '<b>Hello world ?</b>' // html body
+  };
 
-   res.send('recibido');
+}
+  console.log('options = ', mailOptions);
+// send mail with defined transport object
+transporter.sendMail(mailOptions, function(error, info){
+  if(error){
+      console.log(error);
+      res.render('auditoria/audit_email_error');
+  }
+  console.log('mensaje respuesta = ', info.messageId);
+  res.render('auditoria/audit_email_ok');
+});
+
+});
+
+
+
+
+router.get('/audit_autoriz', isLoggedIn, async (req, res) => {
+    const id_inscrip = req.query.id;
+    const  recipient_name  = req.query.email;
+    const  dni_alumno  = req.query.dni;
+    const nivel = req.user.nivel;
+    console.log('entro en audit_autoriz con id =', id_inscrip);
+    console.log('entro en audit_autoriz con email tutor =', recipient_name);
+    console.log('entro en audit_autoriz con nivel =', nivel);
+
+    var nivel_ense='';
+    
+       //primero actualiza la base 
+      // Actualiza el registro de inscripcion para indicar que fue autorizado e inscripto
+           
+      await pool.query('UPDATE inscripciones set inscripto=?,  auditado=?, autorizado=? WHERE id_inscripcion=?',  ['S','S','S', id_inscrip], function (err, result) {
+          if (err) throw err;
+          console.log(result.affectedRows + " record(s) updated");
+          if(result.affectedRows>0)
+          {
+              //Segundo : Envio correo de que esta autorizado
+              
+                    
+                    
+                    console.log(recipient_name);
+                                    
+                    var user_email=' ';
+                    var pass_email=' ';
+                    
+                    
+                    if (nivel === 'I') {
+                      console.log('entro en email inicial  ');
+                      user_email='administracion_ni@isbm.edu.ar';
+                      pass_email='Niveli#2020';
+                      nivel_ense='INICIAL';
+                    } else if (nivel === 'P') {
+                      console.log('entro en email primaria  ');
+                      user_email='administracion_np@isbm.edu.ar';
+                      pass_email='IDZG@Qc8iF';
+                      nivel_ense='PRIMARIO';
+                      
+                    } else if (nivel === 'S') {
+                      console.log('entro en email secundaria  '); 
+                      user_email='administracion_ns@isbm.edu.ar';
+                      pass_email='isbms2020';
+                      nivel_ense='SECUNDARIO';
+                    }
+                    console.log('valor de usuario email = ',user_email);
+                    console.log('valor de pass email = ',pass_email);
+                    console.log('valor de nivel ense = ',nivel_ense);
+                     
+                    const mensaje_html= `
+                    <h1 class="font-weight-bold"> Notificación del Instituo San Basilio Magno </h1>
+                    <p> <span class="font-weight-bold"> Correo electrónico del Tutor:</span> ${recipient_name} </p> 
+                    <p> <span class="font-weight-bold"> DNI del Alumno/a: </span> ${dni_alumno} </p>
+                    <br> <h2 class="font-weight-bold"> La Secretaría del Nivel ${nivel_ense} informa </h2>
+                    <p> La solicitud de matriculación ha sido Autorizada  </p>
+                    <p class="font-italic">Para cerrar el proceso ingrese a la matriculación online con los mismos datos: DNI alumno/a y Tutor; Nivel de Enseñanza. Luego imprima y firme el formulario; y luego llevar y dejar dentro del buzón de la Institución destinado para las matrículas online autorizadas </p>
+                    `;
+                    
+                    console.log(mensaje_html);
+
+                    const transporter = nodemailer.createTransport({
+                      host: 'smtp.gmail.com',
+                      port: 465,
+                      secure: true,
+                      auth: {
+                        user: user_email,
+                        pass: pass_email
+                      }
+                    });
+
+                  // verify connection configuration
+                    transporter.verify(function(error, success) {
+                      if (error) {
+                          console.log('Error al verificar correo');
+                          console.log(error);
+                      } else {
+                          console.log('Server is ready to take our messages');
+                      }
+                    });
+                    console.log('antes de enviar correo');
+                    console.log('valor de to email = ',recipient_name);
+
+
+                    // setup e-mail data with unicode symbols
+                    var mailOptions = { };
+                    
+                    if (nivel === 'I') {
+                      mailOptions = {
+                        from: '"ISBM - Secretaria Nivel Inicial" <administracion_ni@isbm.edu.ar>',
+                        to: recipient_name,
+                        subject: 'Contacto por Matriculación Online',
+                        //text: message_text
+                        html: mensaje_html // html body
+                      };
+                    }
+                    else if (nivel === 'P') {
+                      mailOptions = {
+                        from: '"ISBM - Secretaria Nivel Primario" <administracion_np@isbm.edu.ar>',
+                        to: recipient_name,
+                        subject: 'Contacto por Matriculación Online',
+                        //text: message_text
+                        html: mensaje_html // html body
+                      };
+                    }
+                    else{
+                      mailOptions = {
+                        from: '"ISBM - Secretaria Nivel Secundario\" <administracion_ns@isbm.edu.ar>',
+                        to: recipient_name,
+                        subject: 'Contacto por Matriculación Online',
+                        //text: message_text
+                        html: mensaje_html // html body
+                      };
+
+                    }
+                    console.log('options = ', mailOptions);
+                    // send mail with defined transport object
+                    transporter.sendMail(mailOptions, function(error, info){
+                      if(error){
+                          console.log(error);
+                          res.render('auditoria/audit_inscrip_error');
+                      }
+                      console.log('mensaje respuesta = ', info.messageId);
+                      res.render('auditoria/audit_inscrip_ok');
+                    });
+               
+               
+          }
+      });
   
   });
+
+  
+  
 
 
 module.exports = router;
