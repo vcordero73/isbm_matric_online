@@ -1036,7 +1036,7 @@ router.post('/informa_pago', async  (req, res) => {
     else
     {
       const  { image } = req.body;
-      const archivo = req.file.path;
+      const archivo = documento_inscrip+"_"+file.originalname;
       const  id  = id_inscripcion;
       console.log('id inscrip en informa pago - ',id);
       console.log('id inscrip en informa pago - ', id_inscripcion);
