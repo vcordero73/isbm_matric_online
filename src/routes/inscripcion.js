@@ -1036,17 +1036,36 @@ router.post('/informa_pago', async  (req, res) => {
     else
     {
       const  { image } = req.body;
-      const archivo = documento_inscrip+"_"+file.originalname;
+      console.log(image);
+      console.log('***************************************************');
+      console.log(req.body);
+
+      const archivo = req.file.originalname;
       const  id  = id_inscripcion;
+      const mimetype = req.file.mimetype;
+      var ext_pago='';
+
+      if(mimetype === 'application/pdf')
+      {
+        ext_pago='PDF';
+      }
+      else { ext_pago='IMAGE';  }
       console.log('id inscrip en informa pago - ',id);
       console.log('id inscrip en informa pago - ', id_inscripcion);
       
-      console.log(req.file);
-      console.log(archivo);
-      console.log(image);
+      console.log('req_file = ',req.file);
+      console.log('archivo = ',archivo);
+      //console.log(image);
   
-      await pool.query('UPDATE inscripciones set pago_inscrip=?, url_pago=? WHERE id_inscripcion = ?', ['S',archivo,id_inscripcion]);
-      res.redirect('/inscripcion/pre-inscripcion_ok');
+      await pool.query('UPDATE inscripciones set pago_inscrip=?, url_pago=?, ext_pago=? WHERE id_inscripcion = ?', ['S',archivo,ext_pago,id_inscripcion], function (err, result) {
+        if (err) { console.log('error update inscripciones '); console.log(err);  throw err;} 
+        
+        if(result.affectedRows>0)
+        {   console.log(result.affectedRows + " record(s) updated");
+            res.redirect('/inscripcion/pre-inscripcion_ok');
+            }
+        });
+      
     }
     
 });
