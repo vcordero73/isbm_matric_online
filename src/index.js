@@ -80,7 +80,8 @@ app.use('/inscripcion', require('./routes/inscripcion.js'));
 //Public
 // una carpeta donde estara todo el codigo que el servidor podra acceder
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, 'pdfjs')));
+app.use(express.static(path.join(__dirname, 'public/uploads/pagos')));
 
 //Iniciar Servidor
 // una seccion para iniciar nuestro servidor

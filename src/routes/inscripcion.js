@@ -1077,7 +1077,7 @@ router.post('/informa_pago', async  (req, res) => {
       console.log('***************************************************');
       console.log(req.body);
 
-      const archivo = req.file.filename;
+      var archivo = req.file.filename;
       const  id  = id_inscripcion;
       const mimetype = req.file.mimetype;
       var ext_pago='';
@@ -1085,6 +1085,7 @@ router.post('/informa_pago', async  (req, res) => {
       if(mimetype === 'application/pdf')
       {
         ext_pago='PDF';
+        archivo = req.file.path;
       }
       else { ext_pago='IMAGE';  }
       console.log('id inscrip en informa pago - ',id);

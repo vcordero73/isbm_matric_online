@@ -3,6 +3,7 @@ const router = express.Router();
 const pool = require('../database');
 const { isLoggedIn } = require('../lib/auth');
 const { isNotLoggedIn } = require('../lib/auth');
+const path = require('path');
 
 const { database } = require('../keys');
 const util = require( 'util' );
@@ -10,6 +11,7 @@ const mysql = require( 'mysql' );
 const { Http2ServerRequest } = require('http2');
 const nodemailer = require('nodemailer');
 
+const origen = path.join(__dirname, '../public/uploads/pagos')
 
 function makeDb( config ) {
   const connection = mysql.createConnection( config );
@@ -66,7 +68,8 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
     console.log('nivel del usuario = ', nivel);
     const inscripcion = await pool.query('select i.id_inscripcion, case when i.inscripto=\'S\' then \'INSCRIPTO\' when i.inscripto=\'N\' and i.auditado=\'N\' then \'NO AUDIT\' else \'AUDIT/RECHAZADO\' end as estado, fr_s1_orientacion_sec orientacion, fr_s1_anio_sec anio, fr_s1_division_sec division,fr_s1_turno turno, a.fr_s1_documento documento_alu, concat_ws(\',\',fr_s1_apellido,fr_s1_nombre) apynom_alu, i.url_pago, i.ext_pago, t.fr_s3_email_tutor email_tutor  from inscripciones i inner join ciclo_inscrip c on i.id_ciclo=c.id_cilco inner join nivel_educacion n on i.id_nivel = n.id_nivel inner join fr_s1_alumno a on a.id_inscripcion=i.id_inscripcion inner join fr_s3_tutor t on i.id_inscripcion = t.id_inscripcion where n.cod_nivel= ? ',[nivel]);
     console.log('registro = ', inscripcion);
-    res.render('auditoria/audit_secundaria',{ciclo_lectivo, nivel_ense,inscripcion});
+    console.log('origen = ', origen);
+    res.render('auditoria/audit_secundaria',{ciclo_lectivo, nivel_ense,inscripcion, origen});
   }
     
   });

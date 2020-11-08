@@ -6,6 +6,7 @@
 				<h2 class="text-center">MODULO DE AUTORIA DE MATRICULAS ONLINE </h2>
                 <h3 class="text-center">Ciclo Lectivo : {{ciclo_lectivo}}</h3>
                 <h4 class="text-center"> Nivel de Enseñanza: {{nivel_ense}}</h4>
+                <h3> origen = {{origen}}</h3>
                 <br>
                   <div class="card text-white bg-primary">
                                     <div class="card-header">
@@ -84,6 +85,8 @@
                                                     <td> <div id="container{{id_inscripcion}}"> </div> </td>
                                                     <script type="text/javascript">
                                                         var container = document.getElementById('container{{id_inscripcion}}');
+                                                        //var ruta = {{origen}}+'\\'+{{url_pago}};
+                                                        //console.log('ruta para leer = ', ruta);
                                                         if("{{ext_pago}}"==="IMAGE")
                                                         {
                                                        
