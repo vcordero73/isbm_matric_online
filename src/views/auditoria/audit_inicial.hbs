@@ -79,9 +79,9 @@
                                                     <td>{{apynom_alu}}</td>
                                                     <!-- Button trigger modal -->
 	                                                <td><a href="/edit/{{id_inscripcion}}" target="_blank" class="btn btn-success" role="button" aria-pressed="true"> Ver Formulario</a></td>
-                                                    <td> <div id="container"> </div> </td></div>
+                                                    <td> <div id="container{{id_inscripcion}}"> </div> </td>
                                                     <script type="text/javascript">
-                                                        var container = document.getElementById('container');
+                                                        var container = document.getElementById('container{{id_inscripcion}}');
                                                         if("{{ext_pago}}"==="IMAGE")
                                                         {
                                                        

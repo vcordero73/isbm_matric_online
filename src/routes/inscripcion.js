@@ -159,7 +159,7 @@ router.post('/',[
       if (inscripto.length > 0) 
       {
             // ya esta inscripto no puede volver a inscribir
-            req.flash('message', "El Alumno/a ya se encuentra inscripto. No puede volver a inscribirlo");
+            req.flash('message', "El Alumno/a ya se encuentra inscripto en otro Nivel de Enseñanza. No puede volver a inscribirlo");
             res.redirect('/inscripcion');
       }
       else{
@@ -196,7 +196,7 @@ router.post('/',[
       if (inscripto.length > 0) 
       {
             // ya esta inscripto no puede volver a inscribir
-            req.flash('message', "El Alumno/a ya se encuentra inscripto. No puede volver a inscribirlo");
+            req.flash('message', "El Alumno/a ya se encuentra inscripto en otro Nivel de Enseñanza. No puede volver a inscribirlo");
             res.redirect('/inscripcion');
       }
       else{
@@ -234,7 +234,7 @@ router.post('/',[
        if (inscripto.length > 0) 
        {
              // ya esta inscripto no puede volver a inscribir
-             req.flash('message', "El Alumno/a ya se encuentra inscripto. No puede volver a inscribirlo");
+             req.flash('message', "El Alumno/a ya se encuentra inscripto en otro Nivel de Enseñanza. No puede volver a inscribirlo");
              res.redirect('/inscripcion');
        }
        else{
