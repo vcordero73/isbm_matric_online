@@ -28,7 +28,23 @@
   <script src="https://kit.fontawesome.com/5881060d3c.js" crossorigin="anonymous"></script>
 
    <script data-require="jquery@2.2.4" data-semver="2.2.4" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
+<script type="text/javascript">
+   function nobackbutton(){
+    history.pushState(null, null, location.href);
+    history.back();
+    history.forward();
+    window.onpopstate = function () { history.go(1); };
+    console.log('Intentando hacer clikc atas .... ' );
+   /* var es_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+      if(es_chrome){
+               console.log("El navegador que se está utilizando es Chrome");
+      }
+      else{
+            console.log("El navegador es = " +navigator.userAgent.toLowerCase());
+      }
+      */
+}
+</script>
 <script type="text/javascript">
 
 function addRow(tableID, col1, col2, col3, col4) {
@@ -191,7 +207,7 @@ function addRow2(tableID2, col12, col22, col32, col42) {
 
 </head>
 
-<body>
+<body onload="nobackbutton()">
   {{>navigation}}
   {{>message}} 
   {{{ body }}}
