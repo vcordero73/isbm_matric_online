@@ -152,22 +152,36 @@ router.post('/',[
       console.log('valor cilo', ciclo_lectivo);
       console.log('valor documento', documento);
       console.log('valor documento tutor', documento_tutor);
+     
+      //consulto si el DNI no esta inscripto ya. Si esta inscripto mando mensaje y lo mando al inicio
+      const inscripto = await pool.query('select * from inscripciones where fr_alu_docu=?', [documento]);
 
-      const alumno = await pool.query('select documento, apellido, nom2 as nombre, sexo, SUBSTRING(fecha_nacimiento, 9,2) dia_nac, SUBSTRING(fecha_nacimiento, 6,2) mes_nac, SUBSTRING(fecha_nacimiento, 1,4) anio_nac, domicilio, localidad, provincia, telefono, lugar_nacimiento, nacionalidad,SUBSTRING(bautismo_fecha, 9,2) dia_bauti,SUBSTRING(bautismo_fecha, 6,2) mes_bauti,SUBSTRING(bautismo_fecha, 1,4) anio_bauti, bautismo_lugar,SUBSTRING(comunion_fecha, 9,2) dia_comuni, SUBSTRING(comunion_fecha, 6,2) mes_comuni, SUBSTRING(comunion_fecha, 1,4) anio_comuni,comunion_lugar FROM bd_alumno where documento=? limit 1', [documento]);
-      const padre = await pool.query('select a.apellido apellido_padre, a.nom2 nombre_padre, a.nacionalidad nacionalidad_padre, b.documento_padre, a.domicilio domi_padre, a.localidad localidad_padre, a.provincia provincia_padre, a.profesion profesion_padre, a.telefono_particular telef_padre,  celular celular_padre, a.telefono_laboral telef_laboral_padre, a.E_MAIL email_padre from bd_padre a inner join bd_alumno b on a.documento=b.documento_padre and b.documento=? limit 1', [documento]);
-      const madre = await pool.query('select a.apellido apellido_madre, a.nom2 nombre_madre, a.nacionalidad nacionalidad_madre, b.documento_madre, a.domicilio domi_madre, a.localidad localidad_madre, a.provincia provincia_madre, a.profesion profesion_madre, a.telefono_particular telef_madre,  celular celular_madre, a.telefono_laboral telef_laboral_madre, a.E_MAIL email_madre from bd_padre a inner join bd_alumno b on a.documento=b.documento_madre and b.documento=? limit 1', [documento]);
-      const tutor = await pool.query('select a.apellido apellido_tutor, a.nom2 nombre_tutor, a.nacionalidad nacionalidad_tutor, a.documento documento_tutor, a.domicilio domi_tutor, a.localidad localidad_tutor, a.provincia provincia_tutor, a.profesion profesion_tutor, a.telefono_particular telef_tutor,  celular celular_tutor, a.telefono_laboral telef_laboral_tutor, a.E_MAIL email_tutor from bd_padre a where a.documento=?  limit 1', [documento_tutor]);
+      if (inscripto.length > 0) 
+      {
+            // ya esta inscripto no puede volver a inscribir
+            req.flash('message', "El Alumno/a ya se encuentra inscripto. No puede volver a inscribirlo");
+            res.redirect('/inscripcion');
+      }
+      else{
+
+        const alumno = await pool.query('select documento, apellido, nom2 as nombre, sexo, SUBSTRING(fecha_nacimiento, 9,2) dia_nac, SUBSTRING(fecha_nacimiento, 6,2) mes_nac, SUBSTRING(fecha_nacimiento, 1,4) anio_nac, domicilio, localidad, provincia, telefono, lugar_nacimiento, nacionalidad,SUBSTRING(bautismo_fecha, 9,2) dia_bauti,SUBSTRING(bautismo_fecha, 6,2) mes_bauti,SUBSTRING(bautismo_fecha, 1,4) anio_bauti, bautismo_lugar,SUBSTRING(comunion_fecha, 9,2) dia_comuni, SUBSTRING(comunion_fecha, 6,2) mes_comuni, SUBSTRING(comunion_fecha, 1,4) anio_comuni,comunion_lugar FROM bd_alumno where documento=? limit 1', [documento]);
+        const padre = await pool.query('select a.apellido apellido_padre, a.nom2 nombre_padre, a.nacionalidad nacionalidad_padre, b.documento_padre, a.domicilio domi_padre, a.localidad localidad_padre, a.provincia provincia_padre, a.profesion profesion_padre, a.telefono_particular telef_padre,  celular celular_padre, a.telefono_laboral telef_laboral_padre, a.E_MAIL email_padre from bd_padre a inner join bd_alumno b on a.documento=b.documento_padre and b.documento=? limit 1', [documento]);
+        const madre = await pool.query('select a.apellido apellido_madre, a.nom2 nombre_madre, a.nacionalidad nacionalidad_madre, b.documento_madre, a.domicilio domi_madre, a.localidad localidad_madre, a.provincia provincia_madre, a.profesion profesion_madre, a.telefono_particular telef_madre,  celular celular_madre, a.telefono_laboral telef_laboral_madre, a.E_MAIL email_madre from bd_padre a inner join bd_alumno b on a.documento=b.documento_madre and b.documento=? limit 1', [documento]);
+        const tutor = await pool.query('select a.apellido apellido_tutor, a.nom2 nombre_tutor, a.nacionalidad nacionalidad_tutor, a.documento documento_tutor, a.domicilio domi_tutor, a.localidad localidad_tutor, a.provincia provincia_tutor, a.profesion profesion_tutor, a.telefono_particular telef_tutor,  celular celular_tutor, a.telefono_laboral telef_laboral_tutor, a.E_MAIL email_tutor from bd_padre a where a.documento=?  limit 1', [documento_tutor]);
+        
+        console.log(alumno);
+        var datos={
+          ciclo_lectivo: ciclo_lectivo,
+          alumno: alumno,
+          padre: padre,
+          madre: madre,
+          tutor: tutor
+        };
+        console.log(datos);
+        res.render('inscripcion/new_inicial.hbs', datos );
+
+      }
       
-      console.log(alumno);
-      var datos={
-        ciclo_lectivo: ciclo_lectivo,
-        alumno: alumno,
-        padre: padre,
-        madre: madre,
-        tutor: tutor
-    };
-    console.log(datos);
-      res.render('inscripcion/new_inicial.hbs', datos );
     });
 
     
@@ -176,26 +190,37 @@ router.post('/',[
       var documento = documento_inscrip;
       var documento_tutor = documento_tutor_inscrip;
 
-      console.log('entro en inscripcion nueva primaria - ');
-      console.log('valor cilo', ciclo_lectivo);
-      console.log('valor documento', documento);
-      console.log('valor documento tutor', documento_tutor);
+      //consulto si el DNI no esta inscripto ya. Si esta inscripto mando mensaje y lo mando al inicio
+      const inscripto = await pool.query('select * from inscripciones where fr_alu_docu=?', [documento]);
 
-      const alumno = await pool.query('select documento, apellido, nom2 as nombre, sexo, SUBSTRING(fecha_nacimiento, 9,2) dia_nac, SUBSTRING(fecha_nacimiento, 6,2) mes_nac, SUBSTRING(fecha_nacimiento, 1,4) anio_nac, domicilio, localidad, provincia, telefono, lugar_nacimiento, nacionalidad,SUBSTRING(bautismo_fecha, 9,2) dia_bauti,SUBSTRING(bautismo_fecha, 6,2) mes_bauti,SUBSTRING(bautismo_fecha, 1,4) anio_bauti, bautismo_lugar,SUBSTRING(comunion_fecha, 9,2) dia_comuni, SUBSTRING(comunion_fecha, 6,2) mes_comuni, SUBSTRING(comunion_fecha, 1,4) anio_comuni,comunion_lugar FROM bd_alumno where documento=? limit 1', [documento]);
-      const padre = await pool.query('select a.apellido apellido_padre, a.nom2 nombre_padre, a.nacionalidad nacionalidad_padre, b.documento_padre, a.domicilio domi_padre, a.localidad localidad_padre, a.provincia provincia_padre, a.profesion profesion_padre, a.telefono_particular telef_padre,  celular celular_padre, a.telefono_laboral telef_laboral_padre, a.E_MAIL email_padre from bd_padre a inner join bd_alumno b on a.documento=b.documento_padre and b.documento=? limit 1', [documento]);
-      const madre = await pool.query('select a.apellido apellido_madre, a.nom2 nombre_madre, a.nacionalidad nacionalidad_madre, b.documento_madre, a.domicilio domi_madre, a.localidad localidad_madre, a.provincia provincia_madre, a.profesion profesion_madre, a.telefono_particular telef_madre,  celular celular_madre, a.telefono_laboral telef_laboral_madre, a.E_MAIL email_madre from bd_padre a inner join bd_alumno b on a.documento=b.documento_madre and b.documento=? limit 1', [documento]);
-      const tutor = await pool.query('select a.apellido apellido_tutor, a.nom2 nombre_tutor, a.nacionalidad nacionalidad_tutor, a.documento documento_tutor, a.domicilio domi_tutor, a.localidad localidad_tutor, a.provincia provincia_tutor, a.profesion profesion_tutor, a.telefono_particular telef_tutor,  celular celular_tutor, a.telefono_laboral telef_laboral_tutor, a.E_MAIL email_tutor from bd_padre a where a.documento=?  limit 1', [documento_tutor]);
-      
-      console.log(alumno);
-      var datos={
-        ciclo_lectivo: ciclo_lectivo,
-        alumno: alumno,
-        padre: padre,
-        madre: madre,
-        tutor: tutor
-    };
-    console.log(datos);
-      res.render('inscripcion/new_primaria.hbs', datos );
+      if (inscripto.length > 0) 
+      {
+            // ya esta inscripto no puede volver a inscribir
+            req.flash('message', "El Alumno/a ya se encuentra inscripto. No puede volver a inscribirlo");
+            res.redirect('/inscripcion');
+      }
+      else{
+            console.log('entro en inscripcion nueva primaria - ');
+            console.log('valor cilo', ciclo_lectivo);
+            console.log('valor documento', documento);
+            console.log('valor documento tutor', documento_tutor);
+
+            const alumno = await pool.query('select documento, apellido, nom2 as nombre, sexo, SUBSTRING(fecha_nacimiento, 9,2) dia_nac, SUBSTRING(fecha_nacimiento, 6,2) mes_nac, SUBSTRING(fecha_nacimiento, 1,4) anio_nac, domicilio, localidad, provincia, telefono, lugar_nacimiento, nacionalidad,SUBSTRING(bautismo_fecha, 9,2) dia_bauti,SUBSTRING(bautismo_fecha, 6,2) mes_bauti,SUBSTRING(bautismo_fecha, 1,4) anio_bauti, bautismo_lugar,SUBSTRING(comunion_fecha, 9,2) dia_comuni, SUBSTRING(comunion_fecha, 6,2) mes_comuni, SUBSTRING(comunion_fecha, 1,4) anio_comuni,comunion_lugar FROM bd_alumno where documento=? limit 1', [documento]);
+            const padre = await pool.query('select a.apellido apellido_padre, a.nom2 nombre_padre, a.nacionalidad nacionalidad_padre, b.documento_padre, a.domicilio domi_padre, a.localidad localidad_padre, a.provincia provincia_padre, a.profesion profesion_padre, a.telefono_particular telef_padre,  celular celular_padre, a.telefono_laboral telef_laboral_padre, a.E_MAIL email_padre from bd_padre a inner join bd_alumno b on a.documento=b.documento_padre and b.documento=? limit 1', [documento]);
+            const madre = await pool.query('select a.apellido apellido_madre, a.nom2 nombre_madre, a.nacionalidad nacionalidad_madre, b.documento_madre, a.domicilio domi_madre, a.localidad localidad_madre, a.provincia provincia_madre, a.profesion profesion_madre, a.telefono_particular telef_madre,  celular celular_madre, a.telefono_laboral telef_laboral_madre, a.E_MAIL email_madre from bd_padre a inner join bd_alumno b on a.documento=b.documento_madre and b.documento=? limit 1', [documento]);
+            const tutor = await pool.query('select a.apellido apellido_tutor, a.nom2 nombre_tutor, a.nacionalidad nacionalidad_tutor, a.documento documento_tutor, a.domicilio domi_tutor, a.localidad localidad_tutor, a.provincia provincia_tutor, a.profesion profesion_tutor, a.telefono_particular telef_tutor,  celular celular_tutor, a.telefono_laboral telef_laboral_tutor, a.E_MAIL email_tutor from bd_padre a where a.documento=?  limit 1', [documento_tutor]);
+            
+            console.log(alumno);
+            var datos={
+              ciclo_lectivo: ciclo_lectivo,
+              alumno: alumno,
+              padre: padre,
+              madre: madre,
+              tutor: tutor
+          };
+          console.log(datos);
+            res.render('inscripcion/new_primaria.hbs', datos );
+    }
   });
 
   router.get('/new_secundaria', async (req, res) => {
@@ -203,26 +228,38 @@ router.post('/',[
       var documento = documento_inscrip;
       var documento_tutor = documento_tutor_inscrip;
 
-      console.log('entro en inscripcion nueva primaria - ');
-      console.log('valor cilo', ciclo_lectivo);
-      console.log('valor documento', documento);
-      console.log('valor documento tutor', documento_tutor);
+       //consulto si el DNI no esta inscripto ya. Si esta inscripto mando mensaje y lo mando al inicio
+       const inscripto = await pool.query('select * from inscripciones where fr_alu_docu=?', [documento]);
 
-      const alumno = await pool.query('select documento, apellido, nom2 as nombre, sexo, SUBSTRING(fecha_nacimiento, 9,2) dia_nac, SUBSTRING(fecha_nacimiento, 6,2) mes_nac, SUBSTRING(fecha_nacimiento, 1,4) anio_nac, domicilio, localidad, provincia, telefono, lugar_nacimiento, nacionalidad,SUBSTRING(bautismo_fecha, 9,2) dia_bauti,SUBSTRING(bautismo_fecha, 6,2) mes_bauti,SUBSTRING(bautismo_fecha, 1,4) anio_bauti, bautismo_lugar,SUBSTRING(comunion_fecha, 9,2) dia_comuni, SUBSTRING(comunion_fecha, 6,2) mes_comuni, SUBSTRING(comunion_fecha, 1,4) anio_comuni,comunion_lugar FROM bd_alumno where documento=? limit 1', [documento]);
-      const padre = await pool.query('select a.apellido apellido_padre, a.nom2 nombre_padre, a.nacionalidad nacionalidad_padre, b.documento_padre, a.domicilio domi_padre, a.localidad localidad_padre, a.provincia provincia_padre, a.profesion profesion_padre, a.telefono_particular telef_padre,  celular celular_padre, a.telefono_laboral telef_laboral_padre, a.E_MAIL email_padre from bd_padre a inner join bd_alumno b on a.documento=b.documento_padre and b.documento=? limit 1', [documento]);
-      const madre = await pool.query('select a.apellido apellido_madre, a.nom2 nombre_madre, a.nacionalidad nacionalidad_madre, b.documento_madre, a.domicilio domi_madre, a.localidad localidad_madre, a.provincia provincia_madre, a.profesion profesion_madre, a.telefono_particular telef_madre,  celular celular_madre, a.telefono_laboral telef_laboral_madre, a.E_MAIL email_madre from bd_padre a inner join bd_alumno b on a.documento=b.documento_madre and b.documento=? limit 1', [documento]);
-      const tutor = await pool.query('select a.apellido apellido_tutor, a.nom2 nombre_tutor, a.nacionalidad nacionalidad_tutor, a.documento documento_tutor, a.domicilio domi_tutor, a.localidad localidad_tutor, a.provincia provincia_tutor, a.profesion profesion_tutor, a.telefono_particular telef_tutor,  celular celular_tutor, a.telefono_laboral telef_laboral_tutor, a.E_MAIL email_tutor from bd_padre a where a.documento=?  limit 1', [documento_tutor]);
-      
-      console.log(alumno);
-      var datos={
-        ciclo_lectivo: ciclo_lectivo,
-        alumno: alumno,
-        padre: padre,
-        madre: madre,
-        tutor: tutor
-    };
-    console.log(datos);
-      res.render('inscripcion/new_secundaria.hbs', datos );
+       if (inscripto.length > 0) 
+       {
+             // ya esta inscripto no puede volver a inscribir
+             req.flash('message', "El Alumno/a ya se encuentra inscripto. No puede volver a inscribirlo");
+             res.redirect('/inscripcion');
+       }
+       else{
+
+            console.log('entro en inscripcion nueva primaria - ');
+            console.log('valor cilo', ciclo_lectivo);
+            console.log('valor documento', documento);
+            console.log('valor documento tutor', documento_tutor);
+
+            const alumno = await pool.query('select documento, apellido, nom2 as nombre, sexo, SUBSTRING(fecha_nacimiento, 9,2) dia_nac, SUBSTRING(fecha_nacimiento, 6,2) mes_nac, SUBSTRING(fecha_nacimiento, 1,4) anio_nac, domicilio, localidad, provincia, telefono, lugar_nacimiento, nacionalidad,SUBSTRING(bautismo_fecha, 9,2) dia_bauti,SUBSTRING(bautismo_fecha, 6,2) mes_bauti,SUBSTRING(bautismo_fecha, 1,4) anio_bauti, bautismo_lugar,SUBSTRING(comunion_fecha, 9,2) dia_comuni, SUBSTRING(comunion_fecha, 6,2) mes_comuni, SUBSTRING(comunion_fecha, 1,4) anio_comuni,comunion_lugar FROM bd_alumno where documento=? limit 1', [documento]);
+            const padre = await pool.query('select a.apellido apellido_padre, a.nom2 nombre_padre, a.nacionalidad nacionalidad_padre, b.documento_padre, a.domicilio domi_padre, a.localidad localidad_padre, a.provincia provincia_padre, a.profesion profesion_padre, a.telefono_particular telef_padre,  celular celular_padre, a.telefono_laboral telef_laboral_padre, a.E_MAIL email_padre from bd_padre a inner join bd_alumno b on a.documento=b.documento_padre and b.documento=? limit 1', [documento]);
+            const madre = await pool.query('select a.apellido apellido_madre, a.nom2 nombre_madre, a.nacionalidad nacionalidad_madre, b.documento_madre, a.domicilio domi_madre, a.localidad localidad_madre, a.provincia provincia_madre, a.profesion profesion_madre, a.telefono_particular telef_madre,  celular celular_madre, a.telefono_laboral telef_laboral_madre, a.E_MAIL email_madre from bd_padre a inner join bd_alumno b on a.documento=b.documento_madre and b.documento=? limit 1', [documento]);
+            const tutor = await pool.query('select a.apellido apellido_tutor, a.nom2 nombre_tutor, a.nacionalidad nacionalidad_tutor, a.documento documento_tutor, a.domicilio domi_tutor, a.localidad localidad_tutor, a.provincia provincia_tutor, a.profesion profesion_tutor, a.telefono_particular telef_tutor,  celular celular_tutor, a.telefono_laboral telef_laboral_tutor, a.E_MAIL email_tutor from bd_padre a where a.documento=?  limit 1', [documento_tutor]);
+            
+            console.log(alumno);
+            var datos={
+              ciclo_lectivo: ciclo_lectivo,
+              alumno: alumno,
+              padre: padre,
+              madre: madre,
+              tutor: tutor
+          };
+          console.log(datos);
+            res.render('inscripcion/new_secundaria.hbs', datos );
+        }
 });
 
 router.post('/new_inicial', async (req, res) => {
@@ -1040,7 +1077,7 @@ router.post('/informa_pago', async  (req, res) => {
       console.log('***************************************************');
       console.log(req.body);
 
-      const archivo = req.file.originalname;
+      const archivo = req.file.filename;
       const  id  = id_inscripcion;
       const mimetype = req.file.mimetype;
       var ext_pago='';

@@ -51,20 +51,20 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
   {
     nivel_ense = 'INICIAL';
     console.log('nivel del usuario = ', nivel);
-    const inscripcion = await pool.query('select i.id_inscripcion, case when i.inscripto=\'S\' then \'INSCRIPTO\' when i.inscripto=\'N\' and i.auditado=\'N\' then \'NO AUDIT\' else \'AUDIT/RECHAZADO\' end as estado, fr_s1_sala sala, fr_s1_seccion seccion, fr_s1_turno turno,a.fr_s1_documento documento_alu, concat_ws(\',\',fr_s1_apellido,fr_s1_nombre) apynom_alu, i.url_pago, i.ext_pago , t.fr_s3_email_tutor email_tutor from inscripciones i inner join ciclo_inscrip c on i.id_ciclo=c.id_cilco inner join nivel_educacion n on i.id_nivel = n.id_nivel inner join fr_s1_alumno a on a.id_inscripcion=i.id_inscripcion inner join fr_s3_tutor t on i.id_inscripcion = t.id_inscripcion where n.cod_nivel= ? Limit 1',[nivel]);
+    const inscripcion = await pool.query('select i.id_inscripcion, case when i.inscripto=\'S\' then \'INSCRIPTO\' when i.inscripto=\'N\' and i.auditado=\'N\' then \'NO AUDIT\' else \'AUDIT/RECHAZADO\' end as estado, fr_s1_sala sala, fr_s1_seccion seccion, fr_s1_turno turno,a.fr_s1_documento documento_alu, concat_ws(\',\',fr_s1_apellido,fr_s1_nombre) apynom_alu, i.url_pago, i.ext_pago , t.fr_s3_email_tutor email_tutor from inscripciones i inner join ciclo_inscrip c on i.id_ciclo=c.id_cilco inner join nivel_educacion n on i.id_nivel = n.id_nivel inner join fr_s1_alumno a on a.id_inscripcion=i.id_inscripcion inner join fr_s3_tutor t on i.id_inscripcion = t.id_inscripcion where n.cod_nivel= ? ',[nivel]);
     console.log('registro = ', inscripcion);
     res.render('auditoria/audit_inicial',{ciclo_lectivo, nivel_ense, inscripcion});
   }
   else if (nivel === 'P') {
     nivel_ense = 'PRIMARIA';
     console.log('nivel del usuario = ', nivel);
-    const inscripcion = await pool.query('select i.id_inscripcion, case when i.inscripto=\'S\' then \'INSCRIPTO\' when i.inscripto=\'N\' and i.auditado=\'N\' then \'NO AUDIT\' else \'AUDIT/RECHAZADO\' end as estado, fr_s1_grado grado, fr_s1_seccion seccion, fr_s1_turno turno,a.fr_s1_documento documento_alu, concat_ws(\',\',fr_s1_apellido,fr_s1_nombre) apynom_alu, i.url_pago, i.ext_pago , t.fr_s3_email_tutor email_tutor from inscripciones i inner join ciclo_inscrip c on i.id_ciclo=c.id_cilco inner join nivel_educacion n on i.id_nivel = n.id_nivel inner join fr_s1_alumno a on a.id_inscripcion=i.id_inscripcion inner join fr_s3_tutor t on i.id_inscripcion = t.id_inscripcion where n.cod_nivel= ? Limit 1',[nivel]);
+    const inscripcion = await pool.query('select i.id_inscripcion, case when i.inscripto=\'S\' then \'INSCRIPTO\' when i.inscripto=\'N\' and i.auditado=\'N\' then \'NO AUDIT\' else \'AUDIT/RECHAZADO\' end as estado, fr_s1_grado grado, fr_s1_seccion seccion, fr_s1_turno turno,a.fr_s1_documento documento_alu, concat_ws(\',\',fr_s1_apellido,fr_s1_nombre) apynom_alu, i.url_pago, i.ext_pago , t.fr_s3_email_tutor email_tutor from inscripciones i inner join ciclo_inscrip c on i.id_ciclo=c.id_cilco inner join nivel_educacion n on i.id_nivel = n.id_nivel inner join fr_s1_alumno a on a.id_inscripcion=i.id_inscripcion inner join fr_s3_tutor t on i.id_inscripcion = t.id_inscripcion where n.cod_nivel= ? ',[nivel]);
     console.log('registro = ', inscripcion);
     res.render('auditoria/audit_primaria',{ciclo_lectivo, nivel_ense, inscripcion});
   } else {
     nivel_ense = 'SECUNDARIA';
     console.log('nivel del usuario = ', nivel);
-    const inscripcion = await pool.query('select i.id_inscripcion, case when i.inscripto=\'S\' then \'INSCRIPTO\' when i.inscripto=\'N\' and i.auditado=\'N\' then \'NO AUDIT\' else \'AUDIT/RECHAZADO\' end as estado, fr_s1_orientacion_sec orientacion, fr_s1_anio_sec anio, fr_s1_division_sec division,fr_s1_turno turno, a.fr_s1_documento documento_alu, concat_ws(\',\',fr_s1_apellido,fr_s1_nombre) apynom_alu, i.url_pago, i.ext_pago, t.fr_s3_email_tutor email_tutor  from inscripciones i inner join ciclo_inscrip c on i.id_ciclo=c.id_cilco inner join nivel_educacion n on i.id_nivel = n.id_nivel inner join fr_s1_alumno a on a.id_inscripcion=i.id_inscripcion inner join fr_s3_tutor t on i.id_inscripcion = t.id_inscripcion where n.cod_nivel= ? Limit 1',[nivel]);
+    const inscripcion = await pool.query('select i.id_inscripcion, case when i.inscripto=\'S\' then \'INSCRIPTO\' when i.inscripto=\'N\' and i.auditado=\'N\' then \'NO AUDIT\' else \'AUDIT/RECHAZADO\' end as estado, fr_s1_orientacion_sec orientacion, fr_s1_anio_sec anio, fr_s1_division_sec division,fr_s1_turno turno, a.fr_s1_documento documento_alu, concat_ws(\',\',fr_s1_apellido,fr_s1_nombre) apynom_alu, i.url_pago, i.ext_pago, t.fr_s3_email_tutor email_tutor  from inscripciones i inner join ciclo_inscrip c on i.id_ciclo=c.id_cilco inner join nivel_educacion n on i.id_nivel = n.id_nivel inner join fr_s1_alumno a on a.id_inscripcion=i.id_inscripcion inner join fr_s3_tutor t on i.id_inscripcion = t.id_inscripcion where n.cod_nivel= ? ',[nivel]);
     console.log('registro = ', inscripcion);
     res.render('auditoria/audit_secundaria',{ciclo_lectivo, nivel_ense,inscripcion});
   }
@@ -604,7 +604,9 @@ router.get('/audit_autoriz', isLoggedIn, async (req, res) => {
                     <p> <span class="font-weight-bold"> DNI del Alumno/a: </span> ${dni_alumno} </p>
                     <br> <h2 class="font-weight-bold"> La Secretaría del Nivel ${nivel_ense} informa </h2>
                     <p> La solicitud de matriculación ha sido Autorizada  </p>
-                    <p class="font-italic">Para cerrar el proceso ingrese a la matriculación online con los mismos datos: DNI alumno/a y Tutor; Nivel de Enseñanza. Luego imprima y firme el formulario; y luego llevar y dejar dentro del buzón de la Institución destinado para las matrículas online autorizadas </p>
+                    <p class="font-italic">Para cerrar el proceso de matriculación online dispone de dos(2) opicones :  </p>
+                    <p class="font-italic"> 1) Imprimir matricula y presentar en el colegio. Ingrese al sistema de matriculación online con los mismos datos: DNI alumno/a y Tutor; Nivel de Enseñanza. Luego imprima y firme el formulario; y luego llevar y dejar dentro del buzón de la Institución destinado para las matrículas online autorizadas </p>
+                    <p class="font-italic"> 2) El colegio imprimirá las fichas de matriculas aprobadas. En otra oportunidad solicitará la firma al tutor </p>
                     `;
                     
                     console.log(mensaje_html);

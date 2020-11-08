@@ -19,11 +19,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-5 ">
                             <label for="fr_s1_apellido">Apellido :</label>
-                            <input type="text" class="form-control" id="fr_s1_apellido" name="fr_s1_apellido" placeholder="Ingrese Apellido/s ..."  autofocus>
+                            <input type="text" required title="Ingresar el/los Apellido/s como figura en el DNI" class="form-control" id="fr_s1_apellido" name="fr_s1_apellido"  autofocus>
                         </div>
                         <div class="form-group col-md-5 ">
                             <label for="fr_s1_nombre">Nombre :</label>
-                            <input type="text" class="form-control" id="fr_s1_nombre" name="fr_s1_nombre" placeholder="Ingrese Nombre completo ..." >
+                            <input type="text" required title="Ingresar el/los Nombre/s como figura en el DNI" class="form-control" id="fr_s1_nombre" name="fr_s1_nombre"  >
                         </div>
                         <div class="form-group col-md-2 ">
                           <label for="fr_s1_sexo">Sexo : </label>
@@ -75,17 +75,17 @@
                         </div>
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_documento">NRO. DOCUMENTO :</label>
-                            <input type="text" class="form-control" id="fr_s1_documento" name="fr_s1_documento" placeholder="Ingrese el Nro. de Documento ..." >
+                            <input type="text" required pattern="[0-9]{7,9}" title="Ingresar el numero sin puntos como figura en el DNI" class="form-control" id="fr_s1_documento" name="fr_s1_documento"  >
                         </div>
 
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_nacionalidad">NACIONALIDAD :</label>
-                            <input type="text" class="form-control" id="fr_s1_nacionalidad" name="fr_s1_nacionalidad" placeholder="Ingrese Nacionalidad ..." >
+                            <input type="text" required title="Ingresar Nacionalidad del alumno/a" class="form-control" id="fr_s1_nacionalidad" name="fr_s1_nacionalidad" >
                         </div>
 
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_cuil">CUIL :</label>
-                            <input type="text" class="form-control" id="fr_s1_cuil" name="fr_s1_cuil" placeholder="Ingrese CUIL ..." >
+                            <input type="text" required pattern="[0-9]{10,12}" title="Ingresar el nro de cuil del alumno/a - si no lo sabe consulte al Ansess por internet, url: https://www.anses.gob.ar/consulta/constancia-de-cuil" class="form-control" id="fr_s1_cuil" name="fr_s1_cuil" >
                         </div>
 
                     </div>
@@ -93,23 +93,23 @@
                     <div class="form-row">
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_nacido_en">NACIDO/A EN :</label>
-                            <input type="text" class="form-control" id="fr_s1_nacido_en" name="fr_s1_nacido_en" placeholder="Ingrese lugar donde nació ..." >
+                            <input type="text" required title="Ingresar donde nació el alumno/a" class="form-control" id="fr_s1_nacido_en" name="fr_s1_nacido_en" >
                         </div>
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_provincia">PROVINCIA :</label>
-                            <input type="text" class="form-control" id="fr_s1_provincia" name="fr_s1_provincia" placeholder="Ingrese Provincia donde nació ..." >
+                            <input type="text" class="form-control" id="fr_s1_provincia" name="fr_s1_provincia" >
                         </div>
                         <div class="form-group col-md-2 ">
                             <label for="fr_s1_dia_nac">DIA DE NACIMIENTO :</label>
-                            <input type="text" class="form-control" id="fr_s1_dia_nac" name="fr_s1_dia_nac" placeholder="DIA" >
+                            <input type="text" required title="Ingresar día de nacimiento del alumno/a" class="form-control" id="fr_s1_dia_nac" name="fr_s1_dia_nac" >
                        </div>
                         <div class="form-group col-md-2 ">
                             <label for="fr_s1_mes_nac">MES DE NACIMIENTO :</label>
-                            <input type="text" class="form-control" id="fr_s1_mes_nac" name="fr_s1_mes_nac" placeholder="MES" >
+                            <input type="text" required title="Ingresar mes de nacimiento del alumno/a" class="form-control" id="fr_s1_mes_nac" name="fr_s1_mes_nac" >
                           </div>
                         <div class="form-group col-md-2 ">
                             <label for="fr_s1_anio_nac">AÑO DE NACIMIENTO :</label>
-                             <input type="text" class="form-control" id="fr_s1_anio_nac" name="fr_s1_anio_nac" placeholder="AÑO" >
+                             <input type="text" required title="Ingresar año de nacimiento del alumno/a" class="form-control" id="fr_s1_anio_nac" name="fr_s1_anio_nac" >
                             
                         </div>
                     </div>
@@ -117,16 +117,16 @@
                     <div class="form-row">
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_domi_calle">DOMICILIO CALLE :</label>
-                            <input type="text" class="form-control" id="fr_s1_domi_calle" name="fr_s1_domi_calle" placeholder="Ingrese calle del domicilio ..." >
+                            <input type="text" required title="Ingresar domicilio del alumno/a" class="form-control" id="fr_s1_domi_calle" name="fr_s1_domi_calle" >
                         </div>
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_domi_nro">DOMICILIO NRO :</label>
-                            <input type="text" class="form-control" id="fr_s1_domi_nro" name="fr_s1_domi_nro" placeholder="Ingrese nro de Casa ..." >
+                            <input type="text" required title="Ingresar el número de casa o departamento domicilio del alumno/a, caso contrario completar con S/N" class="form-control" id="fr_s1_domi_nro" name="fr_s1_domi_nro" >
                         </div>
 
                         <div class="form-group col-md-4 ">
                             <label for="fr_s1_domi_barrio">BARRIO - MZA :</label>
-                            <input type="text" class="form-control" id="fr_s1_domi_barrio" name="fr_s1_domi_barrio" placeholder="Ingrese Barrio - Manzana ..." >
+                            <input type="text" required title="Ingresar el barrio, mza, pasaje, etc del domicilio del alumno/a" class="form-control" id="fr_s1_domi_barrio" name="fr_s1_domi_barrio"  >
                        </div>
                         
                     </div>
@@ -134,16 +134,16 @@
                     <div class="form-row">
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_telef_fijo">TELÉFONO FIJO :</label>
-                            <input type="text" class="form-control" id="fr_s1_telef_fijo" name="fr_s1_telef_fijo" placeholder="Ingrese teléfono fijo." >
+                            <input type="text" class="form-control" id="fr_s1_telef_fijo" name="fr_s1_telef_fijo" >
                         </div>
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_telef_celu">TELÉFONO CELULAR :</label>
-                            <input type="text" class="form-control" id="fr_s1_telef_celu" name="fr_s1_telef_celu" placeholder="Ingrese teléfono celuar." >
+                            <input type="text" required title="Ingresar un número de celular de contacto, formato: código de area + número celular. 3764XXXXXX" class="form-control" id="fr_s1_telef_celu" name="fr_s1_telef_celu" >
                         </div>
 
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_telef_contacto">TELÉFONO COMTACTO :</label>
-                            <input type="text" class="form-control" id="fr_s1_telef_contacto" name="fr_s1_telef_contacto" placeholder="Ingrese teléfono contacto." >
+                            <input type="text" required title="Ingresar un número de teléfono de contacto, si es celular el formato es: 3764XXXXXX" class="form-control" id="fr_s1_telef_contacto" name="fr_s1_telef_contacto" >
                        </div>
                         
                     </div>
@@ -211,7 +211,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-8 ">
                             <label for="fr_s1_correo_educa">CORREO ELECTRONICO EDUCATIVO :</label>
-                             <input type="email" class="form-control" id="fr_s1_correo_educa" name="fr_s1_correo_educa" placeholder="Ingrese correo electrónico del Alumno/a">
+                             <input type="email" required title="Ingresar un correo electrónico del alumno/a. En caso de no disponer uno del tutor" class="form-control" id="fr_s1_correo_educa" name="fr_s1_correo_educa" >
                              <small id="emailHelp" class="form-text text-muted">Correo Electrónico exclusivo para actividades educativas</small>
                         </div>
                                                
@@ -262,7 +262,7 @@
                      <div class="form-row">
                         <div class="form-group col-md-4 ">
                             <label for="fr_s1_celular_alum">TELÉFONO CELUAR DEL ALUMNO/A :</label>
-                            <input type="text" class="form-control" id="fr_s1_celular_alum" name="fr_s1_celular_alum" placeholder="Ingrese Teléfono Celular del Alumno/a" >
+                            <input type="text" required title="Ingresar el número de celular del alumno/a. En caso de no disponer uno ingresar el número de celular del tutor. , formato: código de area + número celular. 3764XXXXXX" class="form-control" id="fr_s1_celular_alum" name="fr_s1_celular_alum" >
                         </div>
 
                         <div class="form-group col-md-4 ">
@@ -333,18 +333,18 @@
                         <div class="form-row">
                             <div class="form-group col-md-6 ">
                                 <label for="fr_s2_apellido_padre">Apellido del Padre :</label>
-                                <input type="text" class="form-control" id="fr_s2_apellido_padre" name="fr_s2_apellido_padre" placeholder="Ingrese Apellido/s ..."  autofocus>
+                                <input type="text" class="form-control" id="fr_s2_apellido_padre" name="fr_s2_apellido_padre"  autofocus>
                             </div>
                             <div class="form-group col-md-6 ">
                                 <label for="fr_s2_nombre_padre">Nombre del Padre :</label>
-                                <input type="text" class="form-control" id="fr_s2_nombre_padre" name="fr_s2_nombre_padre" placeholder="Ingrese Nombre completo ..." >
+                                <input type="text" required title="Ingresar el/los Nombre/s como figura en el DNI" class="form-control" id="fr_s2_nombre_padre" name="fr_s2_nombre_padre" >
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s2_nacionalidad_padre">Nacionalidad del Padre:</label>
-                                <input type="text" class="form-control" id="fr_s2_nacionalidad_padre" name="fr_s2_nacionalidad_padre" placeholder="Ingrese la Nacionalidad" >
+                                <input type="text" required title="Ingresar Nacionalidad del Padre" class="form-control" id="fr_s2_nacionalidad_padre" name="fr_s2_nacionalidad_padre" >
                             </div>
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s2_tipo_doc_padre">Tipo Documento del Padre :</label>
@@ -356,48 +356,48 @@
                             </div>
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s2_documento_padre">Documento Nro del Padre :</label>
-                                <input type="text" class="form-control" id="fr_s2_documento_padre" name="fr_s2_documento_padre" placeholder="Ingrese el número de documento" >
+                                <input type="text" required pattern="[0-9]{7,9}" title="Ingresar el numero sin puntos como figura en el DNI o Cedula. En caso de pasaporte ingresar solo los números y completar con ceros a la derecha completando los 7 dígitos" class="form-control" id="fr_s2_documento_padre" name="fr_s2_documento_padre" >
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s2_domicilio_padre">Domicilio del Padre:</label>
-                                <input type="text" class="form-control" id="fr_s2_domicilio_padre" name="fr_s2_domicilio_padre" placeholder="Ingrese domicilio del Padre" >
+                                <input type="text" required title="Ingresar Domicilio del Padre" class="form-control" id="fr_s2_domicilio_padre" name="fr_s2_domicilio_padre" >
                             </div>
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s2_localidad_padre">Localidad del Padre:</label>
-                                <input type="text" class="form-control" id="fr_s2_localidad_padre" name="fr_s2_localidad_padre" placeholder="Ingrese localidad del Padre" >
+                                <input type="text" required title="Ingresar Localidad del Padre. En caso de vivir en el extranjero ingresar lugar" class="form-control" id="fr_s2_localidad_padre" name="fr_s2_localidad_padre" >
                             </div>
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s2_provincia_padre">Provincia del Padre :</label>
-                                <input type="text" class="form-control" id="fr_s2_provincia_padre" name="fr_s2_provincia_padre" placeholder="Ingrese Provincia del Padre" >
+                                <input type="text" required title="Ingresar Provincia del Padre. En caso de vivir en el extranjero ingresar lugar" class="form-control" id="fr_s2_provincia_padre" name="fr_s2_provincia_padre" >
                             </div>
                         </div>
 
                          <div class="form-row">
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s2_profesion_padre">Profesión del Padre:</label>
-                                <input type="text" class="form-control" id="fr_s2_profesion_padre" name="fr_s2_profesion_padre" placeholder="Ingrese la Prefesión" >
+                                <input type="text" required title="Ingresar profesión del Padre. En caso de no disponer de una profesión ingresar: no posee" class="form-control" id="fr_s2_profesion_padre" name="fr_s2_profesion_padre"  >
                             </div>
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s2_celular_padre">Teléfono Celular del Padre:</label>
-                                <input type="text" class="form-control" id="fr_s2_celular_padre" name="fr_s2_celular_padre" placeholder="Ingrese el Teléfono Celular del Padre" >
+                                <input type="text" required title="Ingresar número de teléfono celular del Padre, el formato es: 3764XXXXXX" class="form-control" id="fr_s2_celular_padre" name="fr_s2_celular_padre" >
                             </div>
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s2_telef_contacto_padre">Teléfono Contacto del Padre:</label>
-                                <input type="text" class="form-control" id="fr_s2_telef_contacto_padre" name="fr_s2_telef_contacto_padre" placeholder="Ingrese el Teléfono de contacto del Padre" >
+                                <input type="text" required title="Ingresar número de teléfono celular de contacto al Padre, el formato es: 3764XXXXXX o un teléfono fijo" class="form-control" id="fr_s2_telef_contacto_padre" name="fr_s2_telef_contacto_padre" >
                             </div>
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s2_telef_lab_padre">Teléfono Laboral del Padre :</label>
-                                <input type="text" class="form-control" id="fr_s2_telef_lab_padre" name="fr_s2_telef_lab_padre" placeholder="Ingrese el Teléfono Laboral del Padre" >
+                                <input type="text" class="form-control" id="fr_s2_telef_lab_padre" name="fr_s2_telef_lab_padre"  >
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s2_email_padre">Correo Electrónico del Padre :</label>
-                                <input type="text" class="form-control" id="fr_s2_email_padre" name="fr_s2_email_padre" placeholder="Ingrese correo electrónico del Padre" >
+                                <input type="email" required title="Ingresar correo electronico del Padre, en caso de no disponer ingresar: ninguno@host.com" class="form-control" id="fr_s2_email_padre" name="fr_s2_email_padre" >
                             </div>
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s2_vive_padre">Vive el Padre :</label>
@@ -411,18 +411,18 @@
                         <div class="form-row">
                             <div class="form-group col-md-6 ">
                                 <label for="fr_s2_apellido_madre">Apellido de la Madre :</label>
-                                <input type="text" class="form-control" id="fr_s2_apellido_madre" name="fr_s2_apellido_madre" placeholder="Ingrese Apellido/s de la Madre..."  autofocus>
+                                <input type="text" required title="Ingresar el/los Apellido/s como figura en el DNI" class="form-control" id="fr_s2_apellido_madre" name="fr_s2_apellido_madre"  autofocus>
                             </div>
                             <div class="form-group col-md-6 ">
                                 <label for="fr_s2_nombre_madre">Nombre de la Madre :</label>
-                                <input type="text" class="form-control" id="fr_s2_nombre_madre" name="fr_s2_nombre_madre" placeholder="Ingrese Nombre completo de la Madre..." >
+                                <input type="text" required title="Ingresar el/los Nombre/s como figura en el DNI" class="form-control" id="fr_s2_nombre_madre" name="fr_s2_nombre_madre"  >
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s2_nacionalidad_madre">Nacionalidad de la Madre:</label>
-                                <input type="text" class="form-control" id="fr_s2_nacionalidad_madre" name="fr_s2_nacionalidad_madre" placeholder="Ingrese la Nacionalidad de la Madre" >
+                                <input type="text" required title="Ingresar Nacionalidad de la Madre" class="form-control" id="fr_s2_nacionalidad_madre" name="fr_s2_nacionalidad_madre" >
                             </div>
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s2_tipo_doc_madre">Tipo Documento de la Madre :</label>
@@ -434,46 +434,46 @@
                             </div>
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s2_documento_madre">Documento Nro de la Madre :</label>
-                                <input type="text" class="form-control" id="fr_s2_documento_madre" name="fr_s2_documento_madre" placeholder="Ingrese el número de documento de la Madre" >
+                                <input type="text" required pattern="[0-9]{7,9}" title="Ingresar el numero sin puntos como figura en el DNI o Cedula. En caso de pasaporte ingresar solo los números y completar con ceros a la derecha completando los 7 dígitos" class="form-control" id="fr_s2_documento_madre" name="fr_s2_documento_madre" >
                             </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4 ">
                                     <label for="fr_s2_domicilio_madre">Domicilio de la Madre:</label>
-                                    <input type="text" class="form-control" id="fr_s2_domicilio_madre" name="fr_s2_domicilio_madre" placeholder="Ingrese domicilio de la Madre" >
+                                    <input type="text" required title="Ingresar Domicilio de la Madre" class="form-control" id="fr_s2_domicilio_madre" name="fr_s2_domicilio_madre" >
                                 </div>
                                 <div class="form-group col-md-4 ">
                                     <label for="fr_s2_localidad_madre">Localidad de la Madre:</label>
-                                    <input type="text" class="form-control" id="fr_s2_localidad_madre" name="fr_s2_localidad_madre" placeholder="Ingrese localidad de la Madre" >
+                                    <input type="text" required title="Ingresar Localidad de la Madre. En caso de vivir en el extranjero ingresar lugar" class="form-control" id="fr_s2_localidad_madre" name="fr_s2_localidad_madre" >
                                 </div>
                                 <div class="form-group col-md-4 ">
                                     <label for="fr_s2_provincia_madre">Provincia de la Madre :</label>
-                                    <input type="text" class="form-control" id="fr_s2_provincia_madre" name="fr_s2_provincia_madre" placeholder="Ingrese Provincia de la Madre" >
+                                    <input type="text" required title="Ingresar Provincia de la Madre. En caso de vivir en el extranjero ingresar lugar" class="form-control" id="fr_s2_provincia_madre" name="fr_s2_provincia_madre" >
                                 </div>
                             </div>
                          <div class="form-row">
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s2_profesion_madre">Profesión del Madre:</label>
-                                <input type="text" class="form-control" id="fr_s2_profesion_madre" name="fr_s2_profesion_madre" placeholder="Ingrese la Prefesión de la Madre" >
+                                <input type="text" required title="Ingresar profesión de la Madre. En caso de no disponer de una profesión ingresar: no posee" class="form-control" id="fr_s2_profesion_madre" name="fr_s2_profesion_madre" >
                             </div>
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s2_celular_madre">Teléfono Celular de la Madre:</label>
-                                <input type="text" class="form-control" id="fr_s2_celular_madre" name="fr_s2_celular_madre" placeholder="Ingrese el Teléfono Celular de la Madre" >
+                                <input type="text" required title="Ingresar número de teléfono celular de la Madre, el formato es: 3764XXXXXX" class="form-control" id="fr_s2_celular_madre" name="fr_s2_celular_madre"  >
                             </div>
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s2_telef_contacto_madre">Teléfono Contacto de la Madre:</label>
-                                <input type="text" class="form-control" id="fr_s2_telef_contacto_madre" name="fr_s2_telef_contacto_madre" placeholder="Ingrese el Teléfono de contacto de la Madre" >
+                                <input type="text" required title="Ingresar número de teléfono celular de contacto a la Madre, el formato es: 3764XXXXXX o un teléfono fijo" class="form-control" id="fr_s2_telef_contacto_madre" name="fr_s2_telef_contacto_madre" >
                             </div>
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s2_telef_lab_madre">Teléfono Laboral del Madre :</label>
-                                <input type="text" class="form-control" id="fr_s2_telef_lab_madre" name="fr_s2_telef_lab_madre" placeholder="Ingrese el Teléfono Laboral del Madre" >
+                                <input type="text" class="form-control" id="fr_s2_telef_lab_madre" name="fr_s2_telef_lab_madre" >
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s2_email_madre">Correo Electrónico de la Madre :</label>
-                                <input type="text" class="form-control" id="fr_s2_email_madre" name="fr_s2_email_madre" placeholder="Ingrese correo electrónico del Madre" >
+                                <input type="email" required title="Ingresar correo electronico de la Madre, en caso de no disponer ingresar: ninguno@host.com" class="form-control" id="fr_s2_email_madre" name="fr_s2_email_madre" >
                             </div>
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s2_vive_madre">Vive la Madre :</label>
@@ -487,7 +487,7 @@
                          <div class="form-row">
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s2_religion_profesan">Religión que profesan :</label>
-                                <input type="text" class="form-control" id="fr_s2_religion_profesan" name="fr_s2_religion_profesan" placeholder="Ingrese la religión que profesan" >
+                                <input type="text" required title="Ingresar Religión que profesa la familia, o en su defecto : ninguno" class="form-control" id="fr_s2_religion_profesan" name="fr_s2_religion_profesan" >
                             </div>
 
                             <div class="form-group col-md-4 ">
@@ -678,21 +678,21 @@ enfisema congénito, displasia broncopulmonar, Bronquiectasias, fibrosis quísti
                         <div class="form-row">
                             <div class="form-group col-md-6 ">
                                 <label for="fr_s3_apellido_tutor">Apellido del Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_apellido_tutor" name="fr_s3_apellido_tutor" placeholder="Ingrese Apellido/s ..."  autofocus>
+                                <input type="text" required title="Ingresar el/los Apellido/s como figura en el DNI" class="form-control" id="fr_s3_apellido_tutor" name="fr_s3_apellido_tutor"   autofocus>
                             </div>
                             <div class="form-group col-md-6 ">
                                 <label for="fr_s3_nombre_tutor">Nombre del Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_nombre_tutor" name="fr_s3_nombre_tutor" placeholder="Ingrese Nombre completo ..." >
+                                <input type="text" required title="Ingresar el/los Nombre/s como figura en el DNI" class="form-control" id="fr_s3_nombre_tutor" name="fr_s3_nombre_tutor" >
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6 ">
                                 <label for="fr_s3_domicilio_tutor">Domicilio del Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_domicilio_tutor" name="fr_s3_domicilio_tutor" placeholder="Ingrese domicilio del Tutor"  autofocus>
+                                <input type="text" required title="Ingresar Domicilio del Tutor" class="form-control" id="fr_s3_domicilio_tutor" name="fr_s3_domicilio_tutor" autofocus>
                             </div>
                             <div class="form-group col-md-6 ">
                                 <label for="fr_s3_nacionalidad_tutor">Nacionalidad del Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_nacionalidad_tutor" name="fr_s3_nacionalidad_tutor" placeholder="Ingrese Nacionalidad del tutor" >
+                                <input type="text" required title="Ingresar Nacionalidad del Tutor" class="form-control" id="fr_s3_nacionalidad_tutor" name="fr_s3_nacionalidad_tutor" >
                             </div>
                         </div>
                          <div class="form-row">
@@ -706,17 +706,17 @@ enfisema congénito, displasia broncopulmonar, Bronquiectasias, fibrosis quísti
                             </div>
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s3_documento_tutor">Documento Nro del Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_documento_tutor" name="fr_s3_documento_tutor" placeholder="Ingrese el número de documento del Tutor" >
+                                <input type="text" required pattern="[0-9]{7,9}" title="Ingresar el numero sin puntos como figura en el DNI o Cedula. En caso de pasaporte ingresar solo los números y completar con ceros a la derecha completando los 7 dígitos" class="form-control" id="fr_s3_documento_tutor" name="fr_s3_documento_tutor" >
                             </div>
 
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s3_profesion_tutor">Profesión del Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_profesion_tutor" name="fr_s3_profesion_tutor" placeholder="Ingrese profesión del Tutor" >
+                                <input type="text" required title="Ingresar profesión del Tutor. En caso de no disponer de una profesión ingresar: no posee" class="form-control" id="fr_s3_profesion_tutor" name="fr_s3_profesion_tutor" >
                             </div>
 
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s3_lugartrabajo_tutor">Lugar de Trabajo del Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_lugartrabajo_tutor" name="fr_s3_lugartrabajo_tutor" placeholder="Ingrese lugar de trabajo del Tutor" >
+                                <input type="text" class="form-control" id="fr_s3_lugartrabajo_tutor" name="fr_s3_lugartrabajo_tutor" >
                             </div>
 
 
@@ -724,15 +724,15 @@ enfisema congénito, displasia broncopulmonar, Bronquiectasias, fibrosis quísti
                          <div class="form-row">
                              <div class="form-group col-md-4 ">
                                 <label for="fr_s3_celular_tutor">Teléfono  Celular del Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_celular_tutor" name="fr_s3_celular_tutor" placeholder="Ingrese celular del Tutor en el formato: 376-4XXXXXX" >
+                                <input type="text" required title="Ingresar número de teléfono celular del Tutor, el formato es: 3764XXXXXX" class="form-control" id="fr_s3_celular_tutor" name="fr_s3_celular_tutor"  >
                             </div>
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s3_telef_fijo_tutor">Teléfono Fijo del Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_telef_fijo_tutor" name="fr_s3_telef_fijo_tutor" placeholder="Ingrese el teléfono  fijo del Tutor" >
+                                <input type="text" class="form-control" id="fr_s3_telef_fijo_tutor" name="fr_s3_telef_fijo_tutor" >
                             </div>
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s3_telef_lab_tutor">Teléfono  Laboral del Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_telef_lab_tutor" name="fr_s3_telef_lab_tutor" placeholder="Ingrese Laboral del Tutor" >
+                                <input type="text" class="form-control" id="fr_s3_telef_lab_tutor" name="fr_s3_telef_lab_tutor"  >
                             </div>
                             
                         </div>
@@ -740,7 +740,7 @@ enfisema congénito, displasia broncopulmonar, Bronquiectasias, fibrosis quísti
                         <div class="form-row">
                              <div class="form-group col-md-4 ">
                                 <label for="fr_s3_horario_contacto_tutor">Horario de contacto al Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_horario_contacto_tutor" name="fr_s3_horario_contacto_tutor" placeholder="Ingrese Horario de contacto al Tutor" >
+                                <input type="text" required title="Ingresar los horarios de contactos, rango de que hora a que hora ; o disponible" class="form-control" id="fr_s3_horario_contacto_tutor" name="fr_s3_horario_contacto_tutor" >
                             </div>
                             <div class="form-group col-md-2 ">
                                 <label for="fr_s3_parentesco_tutor">Parentesco del Tutor</label>
@@ -752,7 +752,7 @@ enfisema congénito, displasia broncopulmonar, Bronquiectasias, fibrosis quísti
 
                             <div class="form-group col-md-4 ">
                                 <label for="fr_s3_tipo_parentesco_tutor">Tipo de Parentesco del Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_tipo_parentesco_tutor" name="fr_s3_tipo_parentesco_tutor" placeholder="Ingrese el tipo de parentesco del Tutor" >
+                                <input type="text" required title="Ingresar el parentesco del Tutor con el alumno/a" class="form-control" id="fr_s3_tipo_parentesco_tutor" name="fr_s3_tipo_parentesco_tutor"  >
                             </div>
                             
                         </div>
@@ -760,12 +760,12 @@ enfisema congénito, displasia broncopulmonar, Bronquiectasias, fibrosis quísti
                          <div class="form-row">
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s3_acredit_parent_tutor">Acreditación del Parentesco del Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_acredit_parent_tutor" name="fr_s3_acredit_parent_tutor" placeholder="Ingrese como acredita parentesco del Tutor" >
+                                <input type="text" required title="Ingresar como acredita parentesco: DNI, Partida Nacimiento, Custodia, etc" class="form-control" id="fr_s3_acredit_parent_tutor" name="fr_s3_acredit_parent_tutor"  >
                             </div>
 
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s3_email_tutor">Correo Electrónico del Tutor :</label>
-                                <input type="text" class="form-control" id="fr_s3_email_tutor" name="fr_s3_email_tutor" placeholder="Ingrese el correo electrónico del Tutor" >
+                                <input type="email" required title="Ingresar correo electronico del Tutor. Importante aqui llegará notificaciones de la matricula y otras notificaciones de la Institución" class="form-control" id="fr_s3_email_tutor" name="fr_s3_email_tutor" >
                             </div>
                             
                         </div>
