@@ -124,6 +124,609 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
   });
 
 
+  router.post('/audit_edit_inicial', async (req, res) => {
+    const datos = req.body; 
+    const id  = datos.id_inscripcion;
+    const id_inscripcion= id;
+
+    const db = makeDb( database );
+  
+    console.log('entro en audit_edit_inicial ');
+    console.log('valor de datos ');
+    console.log(datos);
+    
+    var id_frs2padres=0;
+    var id_transac=0;
+  
+    try {
+      await db.beginTransaction();
+    
+          console.log('id inscripcion a procesar = ', id);
+          // consulto primero si el alumno existe
+          const bdalu = await db.query('select id_frs1alumno from fr_s1_alumno where id_inscripcion= ? LIMIT 1', [id]);
+        
+          if (bdalu.length > 0) {
+            console.log('Alumno existe actualizando ');
+            var alumno ={
+              id_inscripcion,
+              fr_s1_apellido: datos.fr_s1_apellido,
+              fr_s1_nombre  : datos.fr_s1_nombre,
+              fr_s1_sexo    : datos.fr_s1_sexo,
+              fr_s1_sala   : datos.fr_s1_sala,
+              fr_s1_seccion : datos.fr_s1_seccion,
+              fr_s1_turno   : datos.fr_s1_turno,
+              fr_s1_tipo_doc : datos.fr_s1_tipo_doc,
+              fr_s1_documento : datos.fr_s1_documento,
+              fr_s1_nacionalidad : datos.fr_s1_nacionalidad,
+              fr_s1_cuil         : datos.fr_s1_cuil,
+              fr_s1_nacido_en    : datos.fr_s1_nacido_en,
+              fr_s1_provincia    : datos.fr_s1_provincia,
+              fr_s1_dia_nac      : datos.fr_s1_dia_nac,
+              fr_s1_mes_nac      : datos.fr_s1_mes_nac,
+              fr_s1_anio_nac     : datos.fr_s1_anio_nac,
+              fr_s1_domi_calle   : datos.fr_s1_domi_calle,
+              fr_s1_domi_nro     : datos.fr_s1_domi_nro,
+              fr_s1_domi_barrio  : datos.fr_s1_domi_barrio,
+              fr_s1_telef_fijo   : datos.fr_s1_telef_fijo,
+              fr_s1_telef_celu   : datos.fr_s1_telef_celu,
+              fr_s1_telef_contacto : datos.fr_s1_telef_contacto,
+              fr_s1_bauti_dia      : datos.fr_s1_bauti_dia,
+              fr_s1_bauti_mes      : datos.fr_s1_bauti_mes,
+              fr_s1_bauti_anio     : datos.fr_s1_bauti_anio,
+              fr_s1_bauti_parroquia : datos.fr_s1_bauti_parroquia,
+              fr_s1_comu_dia        : datos.fr_s1_comu_dia,
+              fr_s1_comu_mes        : datos.fr_s1_comu_mes,
+              fr_s1_comu_anio       : datos.fr_s1_comu_anio,
+              fr_s1_comu_parroquia  : datos.fr_s1_comu_parroquia,
+              fr_s1_inst_proviene   : datos.fr_s1_inst_proviene,
+              fr_s1_observ          : datos.fr_s1_observ,
+              fr_s1_correo_educa    : datos.fr_s1_correo_educa,
+              fr_s1_medio_conect : datos.fr_s1_medio_conect,
+              fr_s1_equipo_conect_celu : datos.fr_s1_equipo_conect_celu,
+              fr_s1_equipo_conect_pc  : datos.fr_s1_equipo_conect_pc,
+              fr_s1_equipo_conect_noteb : datos.fr_s1_equipo_conect_noteb,
+              fr_s1_detalle_otro        : datos.fr_s1_detalle_otro,
+              fr_s1_acceso_internet     : datos.fr_s1_acceso_internet,
+              fr_s1_celular_alum        : datos.fr_s1_celular_alum,
+              fr_s1_mediotras_caminando : datos.fr_s1_mediotras_caminando,
+              fr_s1_mediotras_medioprop : datos.fr_s1_mediotras_medioprop,
+              fr_s1_mediotras_transp    : datos.fr_s1_mediotras_transp
+            };
+              
+            console.log('id_frs1lumno a procesar = ', bdalu[0].id_frs1alumno);
+            console.log('datos del alumno = ', alumno);
+        
+            await db.query('UPDATE fr_s1_alumno set ? WHERE id_frs1alumno =?', [alumno, bdalu[0].id_frs1alumno]);
+        
+          }
+          else{
+            console.log('Alumno NO existe lo carga ');
+            console.log('datos del alumno = ', alumno);
+            await db.query('INSERT INTO fr_s1_alumno set ?', [alumno]);
+        }
+  
+      //Actualiza padres
+      console.log('procesando padres');
+      // consulto primero si registro de padre existe
+      const bdpadres = await db.query('select id_frs2padres from fr_s2_padres where id_inscripcion= ? LIMIT 1', [id]);
+      var padres ={
+        id_inscripcion: id,
+        fr_s1_documento : datos.fr_s1_documento,
+        fr_s2_apellido_padre : datos.fr_s2_apellido_padre,
+        fr_s2_nombre_padre : datos.fr_s2_nombre_padre,
+        fr_s2_nacionalidad_padre : datos.fr_s2_nacionalidad_padre,
+        fr_s2_tipo_doc_padre : datos.fr_s2_tipo_doc_padre,
+        fr_s2_documento_padre : datos.fr_s2_documento_padre,
+        fr_s2_domicilio_padre : datos.fr_s2_domicilio_padre,
+        fr_s2_localidad_padre : datos.fr_s2_localidad_padre,
+        fr_s2_provincia_padre : datos.fr_s2_provincia_padre,
+        fr_s2_profesion_padre : datos.fr_s2_profesion_padre,
+        fr_s2_celular_padre : datos.fr_s2_celular_padre,
+        fr_s2_telef_contacto_padre : datos.fr_s2_telef_contacto_padre,
+        fr_s2_telef_lab_padre : datos.fr_s2_telef_lab_padre,
+        fr_s2_email_padre : datos.fr_s2_email_padre,
+        fr_s2_vive_padre : datos.fr_s2_vive_padre,
+        fr_s2_apellido_madre : datos.fr_s2_apellido_madre,
+        fr_s2_nombre_madre : datos.fr_s2_nombre_madre,
+        fr_s2_nacionalidad_madre : datos.fr_s2_nacionalidad_madre,
+        fr_s2_tipo_doc_madre : datos.fr_s2_tipo_doc_madre,
+        fr_s2_documento_madre : datos.fr_s2_documento_madre,
+        fr_s2_domicilio_madre : datos.fr_s2_domicilio_madre,
+        fr_s2_localidad_madre : datos.fr_s2_localidad_madre,
+        fr_s2_provincia_madre : datos.fr_s2_provincia_madre,
+        fr_s2_profesion_madre : datos.fr_s2_profesion_madre,
+        fr_s2_celular_madre : datos.fr_s2_celular_madre,
+        fr_s2_telef_contacto_madre : datos.fr_s2_telef_contacto_madre,
+        fr_s2_telef_lab_madre : datos.fr_s2_telef_lab_madre,
+        fr_s2_email_madre : datos.fr_s2_email_madre,
+        fr_s2_vive_madre : datos.fr_s2_vive_madre,
+        fr_s2_religion_profesan : datos.fr_s2_religion_profesan,
+        fr_s2_matrimonio_iglesia : datos.fr_s2_matrimonio_iglesia
+       }
+  
+      if (bdpadres.length > 0) {
+        console.log('Registro de Padres existe actualizando ');
+        id_frs2padres=bdpadres[0].id_frs2padres;
+       
+        console.log('id_frs2padres = ', id_frs2padres);
+        console.log('detos de los padres= ',padres);
+  
+        await db.query('UPDATE fr_s2_padres set ? WHERE id_frs2padres=?',  [padres, id_frs2padres]);
+         
+      }
+      else{
+          // no existe inserta
+          console.log('Registro de Padres NO existe INSERTANDO ');
+          console.log('detos de los padres= ',padres);
+          await db.query('INSERT INTO fr_s2_padres  set ?',  [padres, id_frs2padres]);
+      }
+  
+       //Actualiza grupo familiar
+       console.log('GRUPO FAMILIAR ');
+       //Borra primero todo el grupo familiar cargado
+       await db.query('DELETE FROM fr_s2_grupofamiliar WHERE id_inscripcion= ?',[id]); 
+       
+         console.log('GRUPO FAMILIAR - BORRADO AHORA INSERTA');
+          var frs2_apynom_fam = datos.fr_s2_apynom_fam;
+          var frs2_parentesco = datos.fr_s2_parentesco;
+          var frs2_edad  = datos.fr_s2_edad;
+          var frs2_grupo_riesgo = datos.fr_s2_grupo_riesgo;
+          console.log('grupo fam - fr_s2_apynom ', frs2_apynom_fam);
+          if (typeof(frs2_apynom_fam) != "undefined")
+          {
+            if (frs2_apynom_fam.length > 1)
+            {
+                  
+                  // Hay grupo familiar procede a cargar
+                  for (var i=1; i<frs2_apynom_fam.length; i++) 
+                  { 
+                    
+                    var grupofarm = {
+                      fr_s1_documento : datos.fr_s1_documento,
+                      id_frs2padres,
+                      id_inscripcion : id,
+                      fr_s2_apynom_fam : frs2_apynom_fam[i],
+                      fr_s2_parentesco : frs2_parentesco[i],
+                      fr_s2_edad       : frs2_edad[i],
+                      fr_s2_grupo_riesgo : frs2_grupo_riesgo[i]
+                    };
+                    console.log('GRUPO FAMILIAR REGISTRO A INSERTAR = ', grupofarm);
+                     await db.query('INSERT INTO fr_s2_grupofamiliar set ?', [grupofarm]);
+                  }
+               
+             }
+          }
+          
+          
+       //Actualiza Tutor
+       console.log('Tutor consultando ');
+       const bdtutor = await db.query('select id_frs3tutor from fr_s3_tutor where id_inscripcion=? LIMIT 1', [id]);
+  
+        if (bdtutor.length > 0) {
+          console.log('Tutor existe actualizando ');
+          var tutor = {
+            fr_s1_documento : datos.fr_s1_documento,
+            id_inscripcion : id,
+            fr_s3_apellido_tutor : datos.fr_s3_apellido_tutor,
+            fr_s3_nombre_tutor   : datos.fr_s3_nombre_tutor,
+            fr_s3_domicilio_tutor : datos.fr_s3_domicilio_tutor,
+            fr_s3_nacionalidad_tutor : datos.fr_s3_nacionalidad_tutor,
+            fr_s3_tipo_doc_tutor  : datos.fr_s3_tipo_doc_tutor,
+            fr_s3_documento_tutor : datos.fr_s3_documento_tutor,
+            fr_s3_profesion_tutor : datos.fr_s3_profesion_tutor,
+            fr_s3_lugartrabajo_tutor : datos.fr_s3_lugartrabajo_tutor,
+            fr_s3_celular_tutor   : datos.fr_s3_celular_tutor,
+            fr_s3_telef_fijo_tutor : datos.fr_s3_telef_fijo_tutor,
+            fr_s3_telef_lab_tutor  : datos.fr_s3_telef_lab_tutor,
+            fr_s3_horario_contacto_tutor : datos.fr_s3_horario_contacto_tutor,
+            fr_s3_parentesco_tutor : datos.fr_s3_parentesco_tutor,
+            fr_s3_tipo_parentesco_tutor : datos.fr_s3_tipo_parentesco_tutor,
+            fr_s3_acredit_parent_tutor : datos.fr_s3_acredit_parent_tutor,
+            fr_s3_email_tutor : datos.fr_s3_email_tutor
+          }
+          
+          console.log('Tutor datos = ', tutor);
+  
+          await db.query('UPDATE fr_s3_tutor set ? WHERE id_frs3tutor=?',  [tutor, bdtutor[0].id_frs3tutor] );
+        }
+        else{
+            console.log('Tutor NO existe se carga ');
+            console.log('Tutor datos = ', tutor);
+           await db.query('INSERT INTO fr_s3_tutor set ?', [tutor] );
+        }
+        
+       //Actualiza Antecedentes Medicos
+       const bdantemed = await  db.query('select id_frs4antecmedicoalu from fr_s4_antec_medico_alu where id_inscripcion= ? LIMIT 1', [id]);
+       var antec_emedico = {
+        id_inscripcion,
+        fr_s1_documento : datos.fr_s1_documento,
+        fr_s4_grupo_riesgo_1 : datos.fr_s4_grupo_riesgo_1,
+        fr_s4_grupo_riesgo_2 : datos.fr_s4_grupo_riesgo_2,
+        fr_s4_grupo_riesgo_3 : datos.fr_s4_grupo_riesgo_3,
+        fr_s4_grupo_riesgo_4 : datos.fr_s4_grupo_riesgo_4
+        };
+        
+        if (bdantemed.length > 0) {
+          console.log('Antecedentes medicos existe procede actualizar ');
+          console.log('Antecedentes medicos datos = ', antec_emedico);
+          await db.query('UPDATE fr_s4_antec_medico_alu set ? WHERE id_frs4antecmedicoalu=?',  [antec_emedico, bdantemed[0].id_frs4antecmedicoalu]);
+        }
+        else{
+          //No hay registros de antecedente medicos pero si hay en la edicion, procede a cargar
+          console.log('Antecedentes medicos NO existe procede actualizar ');
+          console.log('Antecedentes medicos datos = ', antec_emedico);
+          await db.query('INSERT INTO fr_s4_antec_medico_alu set ?', [antec_emedico]);
+        }
+  
+  
+       //Actualiza Autorizacion
+       console.log('Borrando autorizaciones de retiro ');
+         
+       await db.query('DELETE FROM fr_s5_autorizazion WHERE id_inscripcion= ?',[id]);
+              //Procede a cargar las nuevas autorizaciones
+                var frs5_apynom_autoriz = datos.fr_s5_apynom_autoriz;
+                var frs5_dni_autoriz = datos.fr_s5_dni_autoriz;
+                var frs5_parentesco_autoriz  = datos.fr_s5_parentesco_autoriz;
+                var frs5_telef_autoriz = datos.fr_s5_telef_autoriz;
+                console.log('grupo fam  autoriz - frs5_apynom_autoriz ', frs5_apynom_autoriz);
+                console.log('grupo fam  autoriz - typeof ',typeof(frs5_apynom_autoriz));
+                if (typeof(frs5_apynom_autoriz) != "undefined")
+                {
+                  if (frs5_apynom_autoriz.length > 1)
+                  {
+                      var aux2=0;
+                      // Hay autorizaciones procede a cargar
+                      for (var i=1; i<frs5_apynom_autoriz.length; i++) 
+                      { 
+                      
+                        var grupoautoriz = {
+                          fr_s1_documento : datos.fr_s1_documento,
+                          id_inscripcion,
+                          fr_s5_apynom_autoriz : frs5_apynom_autoriz[i],
+                          fr_s5_dni_autoriz : frs5_dni_autoriz[i],
+                          fr_s5_parentesco_autoriz       : frs5_parentesco_autoriz[i],
+                          fr_s5_telef_autoriz : frs5_telef_autoriz[i]
+                          };
+    
+                          console.log('grupo fam  autoriz - registro= ', grupoautoriz);
+                          aux2++;
+                          await db.query('INSERT INTO fr_s5_autorizazion set ?', [grupoautoriz]);
+                      }
+                    }
+  
+                }
+                
+  
+      // Actualiza el registro de inscripcion para que sea considerado como un registro nuevo
+    await db.query('UPDATE inscripciones set inscripto=?, form_cargado=?, auditado=?, autorizado=? WHERE id_inscripcion=?',  ['N','S','N','N', id] );
+  
+  
+      // do something with someRows and otherRows
+      await db.commit();
+      console.log('Comit de transaccion');
+      id_transac=1;
+    } catch ( err ) {
+      console.log('Entro en error de transaccion');
+      console.log(err);
+      await db.rollback();
+      // handle the error
+    } finally {
+      console.log('Entro cerrar transaccion');
+      await db.close();
+    }
+   if(id_transac === 1)
+   {
+    res.redirect('/audit_edit_ok');
+   }
+   else{
+    res.redirect('/audit_edit_error');
+   }
+    
+     
+  });
+
+  router.post('/audit_edit_primaria', async (req, res) => {
+    const datos = req.body; 
+    const id  = datos.id_inscripcion;
+    const id_inscripcion= id;
+
+    const db = makeDb( database );
+  
+    console.log('entro en audit_edit_primaria');
+    console.log('valor de datos ');
+    console.log(datos);
+    
+    var id_frs2padres=0;
+    var id_transac=0;
+  
+    try {
+      await db.beginTransaction();
+    
+          console.log('id inscripcion a procesar = ', id);
+          // consulto primero si el alumno existe
+          const bdalu = await db.query('select id_frs1alumno from fr_s1_alumno where id_inscripcion= ? LIMIT 1', [id]);
+        
+          if (bdalu.length > 0) {
+            console.log('Alumno existe actualizando ');
+            var alumno ={
+              id_inscripcion,
+              fr_s1_apellido: datos.fr_s1_apellido,
+              fr_s1_nombre  : datos.fr_s1_nombre,
+              fr_s1_sexo    : datos.fr_s1_sexo,
+              fr_s1_grado   : datos.fr_s1_grado,
+              fr_s1_seccion : datos.fr_s1_seccion,
+              fr_s1_turno   : datos.fr_s1_turno,
+              fr_s1_tipo_doc : datos.fr_s1_tipo_doc,
+              fr_s1_documento : datos.fr_s1_documento,
+              fr_s1_nacionalidad : datos.fr_s1_nacionalidad,
+              fr_s1_cuil         : datos.fr_s1_cuil,
+              fr_s1_nacido_en    : datos.fr_s1_nacido_en,
+              fr_s1_provincia    : datos.fr_s1_provincia,
+              fr_s1_dia_nac      : datos.fr_s1_dia_nac,
+              fr_s1_mes_nac      : datos.fr_s1_mes_nac,
+              fr_s1_anio_nac     : datos.fr_s1_anio_nac,
+              fr_s1_domi_calle   : datos.fr_s1_domi_calle,
+              fr_s1_domi_nro     : datos.fr_s1_domi_nro,
+              fr_s1_domi_barrio  : datos.fr_s1_domi_barrio,
+              fr_s1_telef_fijo   : datos.fr_s1_telef_fijo,
+              fr_s1_telef_celu   : datos.fr_s1_telef_celu,
+              fr_s1_telef_contacto : datos.fr_s1_telef_contacto,
+              fr_s1_bauti_dia      : datos.fr_s1_bauti_dia,
+              fr_s1_bauti_mes      : datos.fr_s1_bauti_mes,
+              fr_s1_bauti_anio     : datos.fr_s1_bauti_anio,
+              fr_s1_bauti_parroquia : datos.fr_s1_bauti_parroquia,
+              fr_s1_comu_dia        : datos.fr_s1_comu_dia,
+              fr_s1_comu_mes        : datos.fr_s1_comu_mes,
+              fr_s1_comu_anio       : datos.fr_s1_comu_anio,
+              fr_s1_comu_parroquia  : datos.fr_s1_comu_parroquia,
+              fr_s1_inst_proviene   : datos.fr_s1_inst_proviene,
+              fr_s1_observ          : datos.fr_s1_observ,
+              fr_s1_correo_educa    : datos.fr_s1_correo_educa,
+              fr_s1_medio_conect : datos.fr_s1_medio_conect,
+              fr_s1_equipo_conect_celu : datos.fr_s1_equipo_conect_celu,
+              fr_s1_equipo_conect_pc  : datos.fr_s1_equipo_conect_pc,
+              fr_s1_equipo_conect_noteb : datos.fr_s1_equipo_conect_noteb,
+              fr_s1_detalle_otro        : datos.fr_s1_detalle_otro,
+              fr_s1_acceso_internet     : datos.fr_s1_acceso_internet,
+              fr_s1_celular_alum        : datos.fr_s1_celular_alum,
+              fr_s1_mediotras_caminando : datos.fr_s1_mediotras_caminando,
+              fr_s1_mediotras_medioprop : datos.fr_s1_mediotras_medioprop,
+              fr_s1_mediotras_transp    : datos.fr_s1_mediotras_transp
+            };
+              
+            console.log('id_frs1lumno a procesar = ', bdalu[0].id_frs1alumno);
+            console.log('datos del alumno = ', alumno);
+        
+            await db.query('UPDATE fr_s1_alumno set ? WHERE id_frs1alumno =?', [alumno, bdalu[0].id_frs1alumno]);
+        
+          }
+          else{
+            console.log('Alumno NO existe lo carga ');
+            console.log('datos del alumno = ', alumno);
+            await db.query('INSERT INTO fr_s1_alumno set ?', [alumno]);
+        }
+  
+      //Actualiza padres
+      console.log('procesando padres');
+      // consulto primero si registro de padre existe
+      const bdpadres = await db.query('select id_frs2padres from fr_s2_padres where id_inscripcion= ? LIMIT 1', [id]);
+      var padres ={
+        id_inscripcion: id,
+        fr_s1_documento : datos.fr_s1_documento,
+        fr_s2_apellido_padre : datos.fr_s2_apellido_padre,
+        fr_s2_nombre_padre : datos.fr_s2_nombre_padre,
+        fr_s2_nacionalidad_padre : datos.fr_s2_nacionalidad_padre,
+        fr_s2_tipo_doc_padre : datos.fr_s2_tipo_doc_padre,
+        fr_s2_documento_padre : datos.fr_s2_documento_padre,
+        fr_s2_domicilio_padre : datos.fr_s2_domicilio_padre,
+        fr_s2_localidad_padre : datos.fr_s2_localidad_padre,
+        fr_s2_provincia_padre : datos.fr_s2_provincia_padre,
+        fr_s2_profesion_padre : datos.fr_s2_profesion_padre,
+        fr_s2_celular_padre : datos.fr_s2_celular_padre,
+        fr_s2_telef_contacto_padre : datos.fr_s2_telef_contacto_padre,
+        fr_s2_telef_lab_padre : datos.fr_s2_telef_lab_padre,
+        fr_s2_email_padre : datos.fr_s2_email_padre,
+        fr_s2_vive_padre : datos.fr_s2_vive_padre,
+        fr_s2_apellido_madre : datos.fr_s2_apellido_madre,
+        fr_s2_nombre_madre : datos.fr_s2_nombre_madre,
+        fr_s2_nacionalidad_madre : datos.fr_s2_nacionalidad_madre,
+        fr_s2_tipo_doc_madre : datos.fr_s2_tipo_doc_madre,
+        fr_s2_documento_madre : datos.fr_s2_documento_madre,
+        fr_s2_domicilio_madre : datos.fr_s2_domicilio_madre,
+        fr_s2_localidad_madre : datos.fr_s2_localidad_madre,
+        fr_s2_provincia_madre : datos.fr_s2_provincia_madre,
+        fr_s2_profesion_madre : datos.fr_s2_profesion_madre,
+        fr_s2_celular_madre : datos.fr_s2_celular_madre,
+        fr_s2_telef_contacto_madre : datos.fr_s2_telef_contacto_madre,
+        fr_s2_telef_lab_madre : datos.fr_s2_telef_lab_madre,
+        fr_s2_email_madre : datos.fr_s2_email_madre,
+        fr_s2_vive_madre : datos.fr_s2_vive_madre,
+        fr_s2_religion_profesan : datos.fr_s2_religion_profesan,
+        fr_s2_matrimonio_iglesia : datos.fr_s2_matrimonio_iglesia
+       }
+  
+      if (bdpadres.length > 0) {
+        console.log('Registro de Padres existe actualizando ');
+        id_frs2padres=bdpadres[0].id_frs2padres;
+       
+        console.log('id_frs2padres = ', id_frs2padres);
+        console.log('detos de los padres= ',padres);
+  
+        await db.query('UPDATE fr_s2_padres set ? WHERE id_frs2padres=?',  [padres, id_frs2padres]);
+         
+      }
+      else{
+          // no existe inserta
+          console.log('Registro de Padres NO existe INSERTANDO ');
+          console.log('detos de los padres= ',padres);
+          await db.query('INSERT INTO fr_s2_padres  set ?',  [padres, id_frs2padres]);
+      }
+  
+       //Actualiza grupo familiar
+       console.log('GRUPO FAMILIAR ');
+       //Borra primero todo el grupo familiar cargado
+       await db.query('DELETE FROM fr_s2_grupofamiliar WHERE id_inscripcion= ?',[id]); 
+       
+         console.log('GRUPO FAMILIAR - BORRADO AHORA INSERTA');
+          var frs2_apynom_fam = datos.fr_s2_apynom_fam;
+          var frs2_parentesco = datos.fr_s2_parentesco;
+          var frs2_edad  = datos.fr_s2_edad;
+          var frs2_grupo_riesgo = datos.fr_s2_grupo_riesgo;
+          console.log('grupo fam - fr_s2_apynom ', frs2_apynom_fam);
+          if (typeof(frs2_apynom_fam) != "undefined")
+          {
+            if (frs2_apynom_fam.length > 1)
+            {
+                  
+                  // Hay grupo familiar procede a cargar
+                  for (var i=1; i<frs2_apynom_fam.length; i++) 
+                  { 
+                    
+                    var grupofarm = {
+                      fr_s1_documento : datos.fr_s1_documento,
+                      id_frs2padres,
+                      id_inscripcion : id,
+                      fr_s2_apynom_fam : frs2_apynom_fam[i],
+                      fr_s2_parentesco : frs2_parentesco[i],
+                      fr_s2_edad       : frs2_edad[i],
+                      fr_s2_grupo_riesgo : frs2_grupo_riesgo[i]
+                    };
+                    console.log('GRUPO FAMILIAR REGISTRO A INSERTAR = ', grupofarm);
+                     await db.query('INSERT INTO fr_s2_grupofamiliar set ?', [grupofarm]);
+                  }
+               
+             }
+          }
+          
+          
+       //Actualiza Tutor
+       console.log('Tutor consultando ');
+       const bdtutor = await db.query('select id_frs3tutor from fr_s3_tutor where id_inscripcion=? LIMIT 1', [id]);
+  
+        if (bdtutor.length > 0) {
+          console.log('Tutor existe actualizando ');
+          var tutor = {
+            fr_s1_documento : datos.fr_s1_documento,
+            id_inscripcion : id,
+            fr_s3_apellido_tutor : datos.fr_s3_apellido_tutor,
+            fr_s3_nombre_tutor   : datos.fr_s3_nombre_tutor,
+            fr_s3_domicilio_tutor : datos.fr_s3_domicilio_tutor,
+            fr_s3_nacionalidad_tutor : datos.fr_s3_nacionalidad_tutor,
+            fr_s3_tipo_doc_tutor  : datos.fr_s3_tipo_doc_tutor,
+            fr_s3_documento_tutor : datos.fr_s3_documento_tutor,
+            fr_s3_profesion_tutor : datos.fr_s3_profesion_tutor,
+            fr_s3_lugartrabajo_tutor : datos.fr_s3_lugartrabajo_tutor,
+            fr_s3_celular_tutor   : datos.fr_s3_celular_tutor,
+            fr_s3_telef_fijo_tutor : datos.fr_s3_telef_fijo_tutor,
+            fr_s3_telef_lab_tutor  : datos.fr_s3_telef_lab_tutor,
+            fr_s3_horario_contacto_tutor : datos.fr_s3_horario_contacto_tutor,
+            fr_s3_parentesco_tutor : datos.fr_s3_parentesco_tutor,
+            fr_s3_tipo_parentesco_tutor : datos.fr_s3_tipo_parentesco_tutor,
+            fr_s3_acredit_parent_tutor : datos.fr_s3_acredit_parent_tutor,
+            fr_s3_email_tutor : datos.fr_s3_email_tutor
+          }
+          
+          console.log('Tutor datos = ', tutor);
+  
+          await db.query('UPDATE fr_s3_tutor set ? WHERE id_frs3tutor=?',  [tutor, bdtutor[0].id_frs3tutor] );
+        }
+        else{
+            console.log('Tutor NO existe se carga ');
+            console.log('Tutor datos = ', tutor);
+           await db.query('INSERT INTO fr_s3_tutor set ?', [tutor] );
+        }
+        
+       //Actualiza Antecedentes Medicos
+       const bdantemed = await  db.query('select id_frs4antecmedicoalu from fr_s4_antec_medico_alu where id_inscripcion= ? LIMIT 1', [id]);
+       var antec_emedico = {
+        id_inscripcion,
+        fr_s1_documento : datos.fr_s1_documento,
+        fr_s4_grupo_riesgo_1 : datos.fr_s4_grupo_riesgo_1,
+        fr_s4_grupo_riesgo_2 : datos.fr_s4_grupo_riesgo_2,
+        fr_s4_grupo_riesgo_3 : datos.fr_s4_grupo_riesgo_3,
+        fr_s4_grupo_riesgo_4 : datos.fr_s4_grupo_riesgo_4
+        };
+        
+        if (bdantemed.length > 0) {
+          console.log('Antecedentes medicos existe procede actualizar ');
+          console.log('Antecedentes medicos datos = ', antec_emedico);
+          await db.query('UPDATE fr_s4_antec_medico_alu set ? WHERE id_frs4antecmedicoalu=?',  [antec_emedico, bdantemed[0].id_frs4antecmedicoalu]);
+        }
+        else{
+          //No hay registros de antecedente medicos pero si hay en la edicion, procede a cargar
+          console.log('Antecedentes medicos NO existe procede actualizar ');
+          console.log('Antecedentes medicos datos = ', antec_emedico);
+          await db.query('INSERT INTO fr_s4_antec_medico_alu set ?', [antec_emedico]);
+        }
+  
+  
+       //Actualiza Autorizacion
+       console.log('Borrando autorizaciones de retiro ');
+         
+       await db.query('DELETE FROM fr_s5_autorizazion WHERE id_inscripcion= ?',[id]);
+              //Procede a cargar las nuevas autorizaciones
+                var frs5_apynom_autoriz = datos.fr_s5_apynom_autoriz;
+                var frs5_dni_autoriz = datos.fr_s5_dni_autoriz;
+                var frs5_parentesco_autoriz  = datos.fr_s5_parentesco_autoriz;
+                var frs5_telef_autoriz = datos.fr_s5_telef_autoriz;
+                console.log('grupo fam  autoriz - frs5_apynom_autoriz ', frs5_apynom_autoriz);
+                console.log('grupo fam  autoriz - typeof ',typeof(frs5_apynom_autoriz));
+                if (typeof(frs5_apynom_autoriz) != "undefined")
+                {
+                  if (frs5_apynom_autoriz.length > 1)
+                  {
+                      var aux2=0;
+                      // Hay autorizaciones procede a cargar
+                      for (var i=1; i<frs5_apynom_autoriz.length; i++) 
+                      { 
+                      
+                        var grupoautoriz = {
+                          fr_s1_documento : datos.fr_s1_documento,
+                          id_inscripcion,
+                          fr_s5_apynom_autoriz : frs5_apynom_autoriz[i],
+                          fr_s5_dni_autoriz : frs5_dni_autoriz[i],
+                          fr_s5_parentesco_autoriz       : frs5_parentesco_autoriz[i],
+                          fr_s5_telef_autoriz : frs5_telef_autoriz[i]
+                          };
+    
+                          console.log('grupo fam  autoriz - registro= ', grupoautoriz);
+                          aux2++;
+                          await db.query('INSERT INTO fr_s5_autorizazion set ?', [grupoautoriz]);
+                      }
+                    }
+  
+                }
+                
+  
+      // Actualiza el registro de inscripcion para que sea considerado como un registro nuevo
+    await db.query('UPDATE inscripciones set inscripto=?, form_cargado=?, auditado=?, autorizado=? WHERE id_inscripcion=?',  ['N','S','N','N', id] );
+  
+  
+      // do something with someRows and otherRows
+      await db.commit();
+      console.log('Comit de transaccion');
+      id_transac=1;
+    } catch ( err ) {
+      console.log('Entro en error de transaccion');
+      console.log(err);
+      await db.rollback();
+      // handle the error
+    } finally {
+      console.log('Entro cerrar transaccion');
+      await db.close();
+    }
+   if(id_transac === 1)
+   {
+    res.redirect('/audit_edit_ok');
+   }
+   else{
+    res.redirect('/audit_edit_error');
+   }
+    
+     
+  });
+
+                                                  
 
   router.post('/audit_edit_secundaria', async (req, res) => {
     const datos = req.body; 

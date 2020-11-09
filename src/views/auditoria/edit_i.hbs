@@ -4,10 +4,10 @@
       <div class="col">
      
      <div class="overflow-auto">   
-          <h2 class="text-center">EDICION DEL FORMULARIO DE SOLICITUD DE MATRICULACIÓN ONLINE </h2>
-          <h2 class="text-center"> NIVEL SECUNDARIA </h2>
+         <h2 class="text-center">EDICION DEL FORMULARIO DE SOLICITUD DE MATRICULACIÓN ONLINE </h2>
+          <h2 class="text-center"> NIVEL INICIAL </h2>
          <BR></BR>
-        <form role="form" action="/audit_edit_secundaria" method="POST">
+        <form role="form" action="/audit_edit_inicial" method="POST">
         
                 <div class="card text-white bg-primary">
                 <div class="card-header">
@@ -18,7 +18,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-5 ">
                             <label for="fr_s1_apellido">Apellido :</label>
-                            <input type="text" required title="Ingresar el/los Apellido/s como figura en el DNI" class="form-control" id="fr_s1_apellido" name="fr_s1_apellido" value="{{fr_s1_apellido}}"  autofocus>
+                            <input type="text" required title="Ingresa el/los Apellido/s como figura en el DNI" class="form-control" id="fr_s1_apellido" name="fr_s1_apellido" value="{{fr_s1_apellido}}"  autofocus>
                         </div>
                         <div class="form-group col-md-5 ">
                             <label for="fr_s1_nombre">Nombre :</label>
@@ -33,41 +33,32 @@
                         </div>
                     </div>
                     <div class="form-row">
-                            <div class="form-group col-md-5">
-                            <label for="fr_s1_orientacion_sec">Orientación : </label>
-                            <select id="fr_s1_orientacion_sec" name="fr_s1_orientacion_sec">
-                                <option value="Ciclo Básico">Ciclo Básico</option>
-                                <option value="Ciencias Sociales y Humanidades">Ciencias Sociales y Humanidades</option>
-                                <option value="Ciencias Naturales">Ciencias Naturales</option>
+                        <div class="form-group col-md-4">
+                            <label for="fr_s1_sala">Sala: </label>
+                            <select id="fr_s1_sala" name="fr_s1_sala">
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-2">
-                            <label for="fr_s1_anio_sec">Año : </label>
-                            <select id="fr_s1_anio_sec" name="fr_s1_anio_sec">
-                                <option value="1">1ro</option>
-                                <option value="2">2do</option>
-                                <option value="3">3ro</option>
-                                <option value="4">4to</option>
-                                <option value="5">5to</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="fr_s1_division_sec">División : </label>
-                            <select id="fr_s1_division_sec" name="fr_s1_division_sec">
+                        <div class="form-group col-md-4">
+                            <label for="fr_s1_seccion">Sección: </label>
+                            <select id="fr_s1_seccion" name="fr_s1_seccion">
                                 <option value="A">A</option>
                                 <option value="B">B</option>
-                                 <option value="C">C</option>
-                                 <option value="D">C</option>
-                             </select>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                            </select>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-4">
                             <label for="fr_s1_turno">Turno: </label>
-                            <select id="fr_s1_turno" name="fr_s1_turno">
+                            <select id="fr_s1_turno" name="fr_s1_turno" >
                                 <option value="MAÑANA">MAÑANA</option>
                                 <option value="TARDE">TARDE</option>
                             </select>
                         </div>
                     </div>
+
                      <div class="form-row">
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_tipo_doc">TIPO DOCUMENTO :</label>
@@ -130,7 +121,7 @@
 
                         <div class="form-group col-md-4 ">
                             <label for="fr_s1_domi_barrio">BARRIO - MZA :</label>
-                            <input type="text" required title="Ingresar el barrio, mza, pasaje, etc del domicilio del alumno/a" class="form-control" id="fr_s1_domi_barrio" name="fr_s1_domi_barrio" value="{{fr_s1_domi_barrio}}" >
+                            <input type="text" required title="Ingresar el barrio, mza, pasaje, etc del alumno/a" class="form-control" id="fr_s1_domi_barrio" name="fr_s1_domi_barrio" value="{{fr_s1_domi_barrio}}" >
                        </div>
                         
                     </div>
@@ -142,12 +133,12 @@
                         </div>
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_telef_celu">TELÉFONO CELULAR :</label>
-                            <input type="text" required title="Ingresar un número de celular de contacto, formato: código de area + número celular. 3764XXXXXX" class="form-control" id="fr_s1_telef_celu" name="fr_s1_telef_celu" value="{{fr_s1_telef_celu}}" >
+                            <input type="text" required title="Ingresar un número de celular de contacto" class="form-control" id="fr_s1_telef_celu" name="fr_s1_telef_celu" value="{{fr_s1_telef_celu}}" >
                         </div>
 
                         <div class="form-group col-md-3 ">
                             <label for="fr_s1_telef_contacto">TELÉFONO COMTACTO :</label>
-                            <input type="text" required title="Ingresar un número de teléfono de contacto, si es celular el formato es: 3764XXXXXX" class="form-control" id="fr_s1_telef_contacto" name="fr_s1_telef_contacto" value="{{fr_s1_telef_contacto}}" >
+                            <input type="text" required title="Ingresar un número de teléfono de contacto" class="form-control" id="fr_s1_telef_contacto" name="fr_s1_telef_contacto" value="{{fr_s1_telef_contacto}}" >
                        </div>
                         
                     </div>
@@ -215,8 +206,8 @@
                     <div class="form-row">
                         <div class="form-group col-md-8 ">
                             <label for="fr_s1_correo_educa">CORREO ELECTRONICO EDUCATIVO :</label>
-                             <input type="email" required title="Ingresar un correo electrónico del alumno/a. En caso de no disponer uno del tutor" class="form-control" id="fr_s1_correo_educa" name="fr_s1_correo_educa" value="{{fr_s1_correo_educa}}">
-                             <small id="emailHelp" class="form-text text-muted">Correo Electrónico exclusivo para actividades educativas</small>
+                             <input type="email"  required title="Ingresar un correo electrónico del alumno/a. En caso de no disponer uno del tutor" class="form-control" id="fr_s1_correo_educa" name="fr_s1_correo_educa" value="{{fr_s1_correo_educa}}">
+                             <small id="emailHelp" class="form-text text-muted">Correo Electrónico del Alumno/a exclusivo para actividades educativas</small>
                         </div>
                                                
                     </div>
@@ -266,7 +257,7 @@
                      <div class="form-row">
                         <div class="form-group col-md-4 ">
                             <label for="fr_s1_celular_alum">TELÉFONO CELUAR DEL ALUMNO/A :</label>
-                            <input type="text" required title="Ingresar el número de celular del alumno/a. En caso de no disponer uno ingresar el número de celular del tutor. , formato: código de area + número celular. 3764XXXXXX" class="form-control" id="fr_s1_celular_alum" name="fr_s1_celular_alum" value="{{fr_s1_celular_alum}}" >
+                            <input type="text" required title="Ingresar el número de celular del alumno/a. En caso de no disponer uno ingresar el número de celular del tutor" class="form-control" id="fr_s1_celular_alum" name="fr_s1_celular_alum" value="{{fr_s1_celular_alum}}" >
                         </div>
 
                         <div class="form-group col-md-4 ">
@@ -295,9 +286,8 @@
                    
                         console.log('Entro en funcion js para cambiar grado, ','{{fr_s1_grado}}' );
                         document.ready = document.getElementById('fr_s1_sexo').value='{{fr_s1_sexo}}'; 
-                        document.ready = document.getElementById('fr_s1_orientacion_sec').value='{{fr_s1_orientacion_sec}}';
-                        document.ready = document.getElementById('fr_s1_anio_sec').value='{{fr_s1_anio_sec}}';
-                        document.ready = document.getElementById('fr_s1_division_sec').value='{{fr_s1_division_sec}}';
+                        document.ready = document.getElementById('fr_s1_sala').value='{{fr_s1_sala}}';
+                        document.ready = document.getElementById('fr_s1_seccion').value='{{fr_s1_seccion}}';
                         document.ready = document.getElementById('fr_s1_turno').value='{{fr_s1_turno}}';
                         document.ready = document.getElementById('fr_s1_tipo_doc').value='{{fr_s1_tipo_doc}}';
                         document.ready = document.getElementById('fr_s1_medio_conect').value='{{fr_s1_medio_conect}}';
@@ -848,7 +838,7 @@ enfisema congénito, displasia broncopulmonar, Bronquiectasias, fibrosis quísti
 
                             <div class="form-group col-md-3 ">
                                 <label for="fr_s3_email_tutor">Correo Electrónico del Tutor :</label>
-                                <input type="email" required title="Ingresar correo electronico del Tutor. Importante aqui llegará notificaciones de la matricula y otras notificaciones de la Institución"  class="form-control" id="fr_s3_email_tutor" name="fr_s3_email_tutor" value="{{fr_s3_email_tutor}}" >
+                                <input type="email" required title="Ingresar correo electronico del Tutor. Importante aqui llegará notificaciones de la matricula y otras notificaciones de la Institución" class="form-control" id="fr_s3_email_tutor" name="fr_s3_email_tutor" value="{{fr_s3_email_tutor}}" >
                             </div>
                             
                         </div>
@@ -952,7 +942,6 @@ enfisema congénito, displasia broncopulmonar, Bronquiectasias, fibrosis quísti
                  <br>
                 <div class="text-center">
                       <button type="submit" class="btn btn-primary btn-lg ">Enviar Datos</button>
-                      <a href="/inscripcion" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Cancelar</a>
                 </div>
         </form>
         </div>
