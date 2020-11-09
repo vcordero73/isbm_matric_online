@@ -1077,7 +1077,7 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
     } else if (nivel === 'S') {
       console.log('entro en email secundaria  '); 
       user_email='administracion_ns@isbm.edu.ar';
-      pass_email='isbms2020';
+      pass_email='isbms2021';
      
     }
     console.log('valor de usuario email = ',user_email);
@@ -1191,13 +1191,13 @@ router.get('/audit_autoriz', isLoggedIn, async (req, res) => {
                     } else if (nivel === 'P') {
                       console.log('entro en email primaria  ');
                       user_email='administracion_np@isbm.edu.ar';
-                      pass_email='IDZG@Qc8iF';
+                      pass_email='isbmp2020';
                       nivel_ense='PRIMARIO';
                       
                     } else if (nivel === 'S') {
                       console.log('entro en email secundaria  '); 
                       user_email='administracion_ns@isbm.edu.ar';
-                      pass_email='isbms2020';
+                      pass_email='isbms2021';
                       nivel_ense='SECUNDARIO';
                     }
                     console.log('valor de usuario email = ',user_email);
