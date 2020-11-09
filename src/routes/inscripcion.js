@@ -2047,6 +2047,7 @@ router.post('/edit_secundaria', async (req, res) => {
 
 router.get('/edit_ok', async (req, res) => {
     console.log('entro en edit ok  ');
-    res.render('inscripcion/edit_ok');
+    console.log('documento enviado ', documento_inscrip);
+    res.render('inscripcion/edit_ok',{documento_inscrip});
 });
 module.exports = router;
