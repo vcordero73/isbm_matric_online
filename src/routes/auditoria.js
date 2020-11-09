@@ -1072,7 +1072,7 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
     } else if (nivel === 'P') {
       console.log('entro en email primaria  ');
       user_email='administracion_np@isbm.edu.ar';
-      pass_email='IDZG@Qc8iF';
+      pass_email='isbmp2020';
       
     } else if (nivel === 'S') {
       console.log('entro en email secundaria  '); 
