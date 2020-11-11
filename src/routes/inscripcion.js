@@ -299,7 +299,17 @@ router.post('/new_inicial', async (req, res) => {
     pool.query('INSERT INTO inscripciones set ?', [values1], async function (error, results) {
       if (error) throw error;
       console.log('insertado en inscripciones');
-      id_inscripcion=results.insertId;
+      //id_inscripcion=results.insertId;
+
+      // si inserto busco el id del recien insertado
+    const inscripto = await pool.query('select  id_inscripcion from inscripciones where fr_alu_docu = ?', [docum]);
+   
+
+      if (inscripto.length > 0) 
+      {
+        id_inscripcion= inscripto[0].id_inscripcion;
+      }
+
       req.session.id_inscripcion = id_inscripcion;
   
       //lee id insert inscripciones
@@ -560,7 +570,15 @@ router.post('/new_primaria', async (req, res) => {
    pool.query('INSERT INTO inscripciones set ?', [values1], async function (error, results) {
     if (error) throw error;
     console.log('insertado en inscripciones');
-    id_inscripcion=results.insertId;
+   // id_inscripcion=results.insertId;
+
+    // si inserto busco el id del recien insertado
+    const inscripto = await pool.query('select  id_inscripcion from inscripciones where fr_alu_docu = ?', [docum]);
+   
+    if (inscripto.length > 0) 
+    {
+      id_inscripcion= inscripto[0].id_inscripcion;
+    }
     //lee id insert inscripciones
    console.log('Insertado inscripciones correctamente, id = ', id_inscripcion);
    req.session.id_inscripcion=id_inscripcion;
@@ -823,7 +841,15 @@ let id_inscripcion=0;
  pool.query('INSERT INTO inscripciones set ?', [values1], async function (error, results) {
   if (error) throw error;
   console.log('insertado en inscripciones');
-  id_inscripcion=results.insertId;
+  //id_inscripcion=results.insertId;
+  
+  // si inserto busco el id del recien insertado
+  const inscripto = await pool.query('select  id_inscripcion from inscripciones where fr_alu_docu = ?', [docum]);
+
+  if (inscripto.length > 0) 
+  {
+    id_inscripcion= inscripto[0].id_inscripcion;
+  }
   //lee id insert inscripciones
  console.log('Insertado inscripciones correctamente, id = ', id_inscripcion);
   req.session.id_inscripcion=id_inscripcion;
