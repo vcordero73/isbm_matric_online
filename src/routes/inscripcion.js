@@ -183,9 +183,9 @@ router.post('/',[
     
     router.get('/new_primaria', async (req, res) => {
       
-      let ciclo_lectivo = ref.flash('ciclo_inscrip');
-      let documento = ref.flash('documento_inscrip');
-      let documento_tutor = ref.flash('documento_tutor_inscrip');
+      let ciclo_lectivo = req.flash('ciclo_inscrip');
+      let documento = req.flash('documento_inscrip');
+      let documento_tutor = req.flash('documento_tutor_inscrip');
 
       //consulto si el DNI no esta inscripto ya. Si esta inscripto mando mensaje y lo mando al inicio
       const inscripto = await pool.query('select * from inscripciones where fr_alu_docu=?', [documento]);
@@ -221,9 +221,9 @@ router.post('/',[
   });
 
   router.get('/new_secundaria', async (req, res) => {
-    let ciclo_lectivo = ref.flash('ciclo_inscrip');
-    let documento = ref.flash('documento_inscrip');
-    let documento_tutor = ref.flash('documento_tutor_inscrip');
+    let ciclo_lectivo = req.flash('ciclo_inscrip');
+    let documento = req.flash('documento_inscrip');
+    let documento_tutor = req.flash('documento_tutor_inscrip');
 
        //consulto si el DNI no esta inscripto ya. Si esta inscripto mando mensaje y lo mando al inicio
        const inscripto = await pool.query('select * from inscripciones where fr_alu_docu=?', [documento]);
