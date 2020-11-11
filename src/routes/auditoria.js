@@ -126,14 +126,15 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
 
   router.post('/audit_edit_inicial', async (req, res) => {
     const datos = req.body; 
+    console.log('entro en audit_edit_inicial ');
+    console.log('valor de datos ');
+    console.log(datos);
     const id  = datos.id_inscripcion;
     const id_inscripcion= id;
 
     const db = makeDb( database );
   
-    console.log('entro en audit_edit_inicial ');
-    console.log('valor de datos ');
-    console.log(datos);
+  
     
     var id_frs2padres=0;
     var id_transac=0;

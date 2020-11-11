@@ -8,15 +8,17 @@
           <h2 class="text-center">EDICION DEL FORMULARIO DE SOLICITUD DE MATRICULACIÓN ONLINE </h2>
           <h2 class="text-center"> NIVEL INICIAL - CICLO LECTIVO: {{ciclo_inscrip}}</h2>
          <BR></BR>
-        <form role="form" action="/inscripcion/edit_inicial" method="POST">
-        
+        <form role="form" action="/inscripcion/edit_inicial/{{id_inscripcion}}" method="POST">
+                <input type="hidden" id="id_inscripcion" name="id_inscripcion" value="{{id_inscripcion}}" >
+                <input type="hidden" id="documento_inscrip" name="documento_inscrip" value="{{documento_inscrip}}" >
+
                 <div class="card text-white bg-primary">
                 <div class="card-header">
                     <h3>Datos del Alumno/a </h3>
                 </div>
                 <div class="card-body bg-light text-secondary">
                     {{#each alumno}}
-                    <div class="form-row">
+                      <div class="form-row">
                         <div class="form-group col-md-5 ">
                             <label for="fr_s1_apellido">Apellido :</label>
                             <input type="text" required title="Ingresa el/los Apellido/s como figura en el DNI" class="form-control" id="fr_s1_apellido" name="fr_s1_apellido" value="{{fr_s1_apellido}}"  autofocus>

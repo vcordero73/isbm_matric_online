@@ -23,6 +23,9 @@
                                         <p class="card-text">Nota: El comprobante será validado por la Secretaria del Nivel que corresponda </p>
                                         <br>
                                         <form action="/inscripcion/informa_pago" method="POST" enctype="multipart/form-data">
+                                            <input type="hidden" id="documento_inscrip" name="documento_inscrip" value={{documento_inscrip}} >
+                                            <input type="hidden" id="id_inscripcion" name="id_inscripcion" value={{id_inscripcion}} >
+
                                             <input type="file" name="image">
                                             <button class="btn btn-success">
                                                 Informar
