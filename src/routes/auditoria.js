@@ -287,8 +287,25 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
           console.log('grupo fam - fr_s2_apynom ', frs2_apynom_fam);
           if (typeof(frs2_apynom_fam) != "undefined")
           {
-            if (frs2_apynom_fam.length > 1)
-            {
+              if(typeof(frs2_apynom_fam) == "string")
+              {
+                console.log('frs2_apynom_fam es un string NO arreglo ', frs2_apynom_fam);
+                let grupofarm = {
+                  fr_s1_documento : datos.fr_s1_documento,
+                  id_frs2padres,
+                  id_inscripcion : id,
+                  fr_s2_apynom_fam : frs2_apynom_fam,
+                  fr_s2_parentesco : frs2_parentesco,
+                  fr_s2_edad       : frs2_edad,
+                  fr_s2_grupo_riesgo : frs2_grupo_riesgo
+                };
+
+                console.log('GRUPO FAMILIAR STRING REGISTRO A INSERTAR = ', grupofarm);
+                await db.query('INSERT INTO fr_s2_grupofamiliar set ?', [grupofarm]);
+
+              }
+              else if (frs2_apynom_fam instanceof Array )
+              {
                   
                   // Hay grupo familiar procede a cargar
                   for (var i=1; i<frs2_apynom_fam.length; i++) 
@@ -588,8 +605,25 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
           console.log('grupo fam - fr_s2_apynom ', frs2_apynom_fam);
           if (typeof(frs2_apynom_fam) != "undefined")
           {
-            if (frs2_apynom_fam.length > 1)
-            {
+            if(typeof(frs2_apynom_fam) == "string")
+              {
+                console.log('frs2_apynom_fam es un string NO arreglo ', frs2_apynom_fam);
+                let grupofarm = {
+                  fr_s1_documento : datos.fr_s1_documento,
+                  id_frs2padres,
+                  id_inscripcion : id,
+                  fr_s2_apynom_fam : frs2_apynom_fam,
+                  fr_s2_parentesco : frs2_parentesco,
+                  fr_s2_edad       : frs2_edad,
+                  fr_s2_grupo_riesgo : frs2_grupo_riesgo
+                };
+
+                console.log('GRUPO FAMILIAR STRING REGISTRO A INSERTAR = ', grupofarm);
+                await db.query('INSERT INTO fr_s2_grupofamiliar set ?', [grupofarm]);
+
+              }
+              else if (frs2_apynom_fam instanceof Array )
+              {
                   
                   // Hay grupo familiar procede a cargar
                   for (var i=1; i<frs2_apynom_fam.length; i++) 
@@ -892,8 +926,25 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
           console.log('grupo fam - fr_s2_apynom ', frs2_apynom_fam);
           if (typeof(frs2_apynom_fam) != "undefined")
           {
-            if (frs2_apynom_fam.length > 1)
-            {
+            if(typeof(frs2_apynom_fam) == "string")
+              {
+                console.log('frs2_apynom_fam es un string NO arreglo ', frs2_apynom_fam);
+                let grupofarm = {
+                  fr_s1_documento : datos.fr_s1_documento,
+                  id_frs2padres,
+                  id_inscripcion : id,
+                  fr_s2_apynom_fam : frs2_apynom_fam,
+                  fr_s2_parentesco : frs2_parentesco,
+                  fr_s2_edad       : frs2_edad,
+                  fr_s2_grupo_riesgo : frs2_grupo_riesgo
+                };
+
+                console.log('GRUPO FAMILIAR STRING REGISTRO A INSERTAR = ', grupofarm);
+                await db.query('INSERT INTO fr_s2_grupofamiliar set ?', [grupofarm]);
+
+              }
+              else if (frs2_apynom_fam instanceof Array )
+              {
                   
                   // Hay grupo familiar procede a cargar
                   for (var i=1; i<frs2_apynom_fam.length; i++) 
