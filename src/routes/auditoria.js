@@ -308,7 +308,7 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
               {
                   
                   // Hay grupo familiar procede a cargar
-                  for (var i=1; i<frs2_apynom_fam.length; i++) 
+                  for (var i=0; i<frs2_apynom_fam.length; i++) 
                   { 
                     
                     var grupofarm = {
@@ -626,7 +626,7 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
               {
                   
                   // Hay grupo familiar procede a cargar
-                  for (var i=1; i<frs2_apynom_fam.length; i++) 
+                  for (var i=0; i<frs2_apynom_fam.length; i++) 
                   { 
                     
                     var grupofarm = {
@@ -947,7 +947,7 @@ router.get('/audit',  isLoggedIn, async (req, res) => {
               {
                   
                   // Hay grupo familiar procede a cargar
-                  for (var i=1; i<frs2_apynom_fam.length; i++) 
+                  for (var i=0; i<frs2_apynom_fam.length; i++) 
                   { 
                     
                     var grupofarm = {
