@@ -419,11 +419,29 @@ router.post('/new_inicial', async (req, res) => {
               console.log('grupo fam - fr_s2_apynom ', frs2_apynom_fam);
               if (typeof(frs2_apynom_fam) != "undefined")
               {
-                  if (frs2_apynom_fam.length > 1)
-                  {
+                if(typeof(frs2_apynom_fam) == "string")
+                {
+                  console.log('frs2_apynom_fam es un string NO arreglo ', frs2_apynom_fam);
+                  let grupofarm = {
+                    fr_s1_documento : datos_new_i.fr_s1_documento,
+                    id_frs2padres,
+                    id_inscripcion ,
+                    fr_s2_apynom_fam : frs2_apynom_fam,
+                    fr_s2_parentesco : frs2_parentesco,
+                    fr_s2_edad       : frs2_edad,
+                    fr_s2_grupo_riesgo : frs2_grupo_riesgo
+                  };
+  
+                  console.log('GRUPO FAMILIAR STRING REGISTRO A INSERTAR = ', grupofarm);
+                  await db.query('INSERT INTO fr_s2_grupofamiliar set ?', [grupofarm]);
+  
+                }
+                else if (frs2_apynom_fam instanceof Array )
+                {
+                  console.log('frs2_apynom_fam es un Arreglo ', frs2_apynom_fam);
                       let aux=0;
                       // Hay grupo familiar cargado
-                      for (var i=1; i<frs2_apynom_fam.length; i++) 
+                      for (var i=0; i<frs2_apynom_fam.length; i++) 
                       { 
                       
                         let grupofarm = {
@@ -438,6 +456,11 @@ router.post('/new_inicial', async (req, res) => {
                         await db.query('INSERT INTO fr_s2_grupofamiliar set ?', [grupofarm] );
                       }
                     }
+                    else
+                    {
+                      console.log('frs2_apynom_fam es un tip =', typeof(frs2_apynom_fam));
+                    }
+
                 } 
                 console.log('Iniciando Tutor');
                     // Procesa tutor
@@ -488,11 +511,24 @@ router.post('/new_inicial', async (req, res) => {
             console.log('grupo fam  autoriz - frs5_apynom_autoriz ', frs5_apynom_autoriz);
             if (typeof(frs5_apynom_autoriz) != "undefined")
             {
-                if (frs5_apynom_autoriz.length > 1)
-                {
+              if(typeof(frs5_apynom_autoriz) == "string")
+              {
+                let grupoautoriz = {
+                  fr_s1_documento : datos_new_i.fr_s1_documento,
+                  id_inscripcion,
+                  fr_s5_apynom_autoriz : frs5_apynom_autoriz,
+                  fr_s5_dni_autoriz : frs5_dni_autoriz,
+                  fr_s5_parentesco_autoriz       : frs5_parentesco_autoriz,
+                  fr_s5_telef_autoriz : frs5_telef_autoriz
+                  };
                 
-                  // Hay autorizaciones procede a cargar
-                  for (var i=1; i<frs5_apynom_autoriz.length; i++) 
+                await db.query('INSERT INTO fr_s5_autorizazion set ?', [grupoautoriz] );
+              }
+              else if (frs5_apynom_autoriz instanceof Array )
+              {
+                
+                  // Hay autorizaciones en un arreglo, procede a cargar
+                  for (var i=0; i<frs5_apynom_autoriz.length; i++) 
                   { 
                   
                     let grupoautoriz = {
@@ -687,11 +723,28 @@ router.post('/new_primaria', async (req, res) => {
             console.log('grupo fam - fr_s2_apynom ', frs2_apynom_fam);
              if (typeof(frs2_apynom_fam) != "undefined")
              {
-                if (frs2_apynom_fam.length > 1)
-                {
+              if(typeof(frs2_apynom_fam) == "string")
+              {
+                console.log('frs2_apynom_fam es un string NO arreglo ', frs2_apynom_fam);
+                let grupofarm = {
+                  fr_s1_documento : datos_new_p.fr_s1_documento,
+                  id_frs2padres,
+                  id_inscripcion,
+                  fr_s2_apynom_fam : frs2_apynom_fam,
+                  fr_s2_parentesco : frs2_parentesco,
+                  fr_s2_edad       : frs2_edad,
+                  fr_s2_grupo_riesgo : frs2_grupo_riesgo
+                };
+
+                console.log('GRUPO FAMILIAR STRING REGISTRO A INSERTAR = ', grupofarm);
+                await db.query('INSERT INTO fr_s2_grupofamiliar set ?', [grupofarm]);
+
+              }
+              else if (frs2_apynom_fam instanceof Array )
+              {
                     let aux=0;
                     // Hay grupo familiar cargado
-                    for (var i=1; i<frs2_apynom_fam.length; i++) 
+                    for (var i=0; i<frs2_apynom_fam.length; i++) 
                     { 
                     
                       let grupofarm = {
@@ -756,11 +809,25 @@ router.post('/new_primaria', async (req, res) => {
           console.log('grupo fam  autoriz - frs5_apynom_autoriz ', frs5_apynom_autoriz);
           if (typeof(frs5_apynom_autoriz) != "undefined")
           {
-              if (frs5_apynom_autoriz.length > 1)
-              {
+            if(typeof(frs5_apynom_autoriz) == "string")
+            {
+              let grupoautoriz = {
+                fr_s1_documento : datos_new_p.fr_s1_documento,
+                id_inscripcion,
+                fr_s5_apynom_autoriz : frs5_apynom_autoriz,
+                fr_s5_dni_autoriz : frs5_dni_autoriz,
+                fr_s5_parentesco_autoriz       : frs5_parentesco_autoriz,
+                fr_s5_telef_autoriz : frs5_telef_autoriz
+                };
+              
+              await db.query('INSERT INTO fr_s5_autorizazion set ?', [grupoautoriz] );
+            }
+            else if (frs5_apynom_autoriz instanceof Array )
+            {
+              
                
                 // Hay autorizaciones procede a cargar
-                for (var i=1; i<frs5_apynom_autoriz.length; i++) 
+                for (var i=0; i<frs5_apynom_autoriz.length; i++) 
                 { 
                 
                   let grupoautoriz = {
@@ -959,11 +1026,28 @@ let id_inscripcion=0;
           console.log('grupo fam - fr_s2_apynom ', frs2_apynom_fam);
            if (typeof(frs2_apynom_fam) != "undefined")
            {
-              if (frs2_apynom_fam.length > 1)
+              if(typeof(frs2_apynom_fam) == "string")
+              {
+                console.log('frs2_apynom_fam es un string NO arreglo ', frs2_apynom_fam);
+                let grupofarm = {
+                  fr_s1_documento : datos_new_s.fr_s1_documento,
+                  id_frs2padres,
+                  id_inscripcion,
+                  fr_s2_apynom_fam : frs2_apynom_fam,
+                  fr_s2_parentesco : frs2_parentesco,
+                  fr_s2_edad       : frs2_edad,
+                  fr_s2_grupo_riesgo : frs2_grupo_riesgo
+                };
+
+                console.log('GRUPO FAMILIAR STRING REGISTRO A INSERTAR = ', grupofarm);
+                await db.query('INSERT INTO fr_s2_grupofamiliar set ?', [grupofarm]);
+
+              }
+              else if (frs2_apynom_fam instanceof Array )
               {
                   var aux=0;
                   // Hay grupo familiar cargado
-                  for (var i=1; i<frs2_apynom_fam.length; i++) 
+                  for (var i=0; i<frs2_apynom_fam.length; i++) 
                   { 
                   
                     let grupofarm = {
@@ -1028,11 +1112,24 @@ let id_inscripcion=0;
         console.log('grupo fam  autoriz - frs5_apynom_autoriz ', frs5_apynom_autoriz);
         if (typeof(frs5_apynom_autoriz) != "undefined")
         {
-            if (frs5_apynom_autoriz.length > 1)
-            {
-             
+          if(typeof(frs5_apynom_autoriz) == "string")
+          {
+            let grupoautoriz = {
+              fr_s1_documento : datos_new_s.fr_s1_documento,
+              id_inscripcion,
+              fr_s5_apynom_autoriz : frs5_apynom_autoriz,
+              fr_s5_dni_autoriz : frs5_dni_autoriz,
+              fr_s5_parentesco_autoriz       : frs5_parentesco_autoriz,
+              fr_s5_telef_autoriz : frs5_telef_autoriz
+              };
+            
+            await db.query('INSERT INTO fr_s5_autorizazion set ?', [grupoautoriz] );
+          }
+          else if (frs5_apynom_autoriz instanceof Array )
+          {
+           
               // Hay autorizaciones procede a cargar
-              for (var i=1; i<frs5_apynom_autoriz.length; i++) 
+              for (var i=0; i<frs5_apynom_autoriz.length; i++) 
               { 
               
                 let grupoautoriz = {
@@ -1400,7 +1497,7 @@ router.post('/edit_inicial/:id', async (req, res) => {
               {
                 console.log('frs2_apynom_fam es un string NO arreglo ', frs2_apynom_fam);
                 let grupofarm = {
-                  fr_s1_documento : datos_edit_p.fr_s1_documento,
+                  fr_s1_documento : datos_edit_i.fr_s1_documento,
                   id_frs2padres,
                   id_inscripcion : id,
                   fr_s2_apynom_fam : frs2_apynom_fam,
@@ -1409,7 +1506,7 @@ router.post('/edit_inicial/:id', async (req, res) => {
                   fr_s2_grupo_riesgo : frs2_grupo_riesgo
                 };
 
-                console.log('GRUPO FAMILIAR STRING REGISTRO A INSERTAR = ', grupofarm);
+                console.log('GRUPO FAMILIAR STRING REGISTRO A INSERTAR EN EDIT= ', grupofarm);
                 await db.query('INSERT INTO fr_s2_grupofamiliar set ?', [grupofarm]);
 
               }
@@ -1417,7 +1514,7 @@ router.post('/edit_inicial/:id', async (req, res) => {
               {
                     
                     // Hay grupo familiar procede a cargar
-                    for (var i=1; i<frs2_apynom_fam.length; i++) 
+                    for (var i=0; i<frs2_apynom_fam.length; i++) 
                     { 
                       
                       let grupofarm = {
@@ -1512,11 +1609,25 @@ router.post('/edit_inicial/:id', async (req, res) => {
                   console.log('grupo fam  autoriz - typeof ',typeof(frs5_apynom_autoriz));
                   if (typeof(frs5_apynom_autoriz) != "undefined")
                   {
-                    if (frs5_apynom_autoriz.length > 1)
+
+                    if(typeof(frs5_apynom_autoriz) == "string")
                     {
-                        let aux2=0;
+                      let grupoautoriz = {
+                        fr_s1_documento : datos_edit_i.fr_s1_documento,
+                        id_inscripcion,
+                        fr_s5_apynom_autoriz : frs5_apynom_autoriz,
+                        fr_s5_dni_autoriz : frs5_dni_autoriz,
+                        fr_s5_parentesco_autoriz       : frs5_parentesco_autoriz,
+                        fr_s5_telef_autoriz : frs5_telef_autoriz
+                        };
+                      
+                      await db.query('INSERT INTO fr_s5_autorizazion set ?', [grupoautoriz] );
+                    }
+                    else if (frs5_apynom_autoriz instanceof Array )
+                    {
+                         let aux2=0;
                         // Hay autorizaciones procede a cargar
-                        for (var i=1; i<frs5_apynom_autoriz.length; i++) 
+                        for (var i=0; i<frs5_apynom_autoriz.length; i++) 
                         { 
                         
                           let grupoautoriz = {
@@ -1754,7 +1865,7 @@ router.post('/edit_primaria/:id', async (req, res) => {
           {
                 
                 // Hay grupo familiar procede a cargar
-                for (var i=1; i<frs2_apynom_fam.length; i++) 
+                for (var i=0; i<frs2_apynom_fam.length; i++) 
                 { 
                   
                   let grupofarm = {
@@ -1848,11 +1959,24 @@ router.post('/edit_primaria/:id', async (req, res) => {
               console.log('grupo fam  autoriz - typeof ',typeof(frs5_apynom_autoriz));
               if (typeof(frs5_apynom_autoriz) != "undefined")
               {
-                if (frs5_apynom_autoriz.length > 1)
+                if(typeof(frs5_apynom_autoriz) == "string")
+                {
+                  let grupoautoriz = {
+                    fr_s1_documento : datos_edit_p.fr_s1_documento,
+                    id_inscripcion,
+                    fr_s5_apynom_autoriz : frs5_apynom_autoriz,
+                    fr_s5_dni_autoriz : frs5_dni_autoriz,
+                    fr_s5_parentesco_autoriz       : frs5_parentesco_autoriz,
+                    fr_s5_telef_autoriz : frs5_telef_autoriz
+                    };
+                  
+                  await db.query('INSERT INTO fr_s5_autorizazion set ?', [grupoautoriz] );
+                }
+                else if (frs5_apynom_autoriz instanceof Array )
                 {
                     var aux2=0;
                     // Hay autorizaciones procede a cargar
-                    for (var i=1; i<frs5_apynom_autoriz.length; i++) 
+                    for (var i=0; i<frs5_apynom_autoriz.length; i++) 
                     { 
                     
                       let grupoautoriz = {
@@ -2070,7 +2194,7 @@ router.post('/edit_secundaria/:id', async (req, res) => {
           {
             console.log('frs2_apynom_fam es un string NO arreglo ', frs2_apynom_fam);
             let grupofarm = {
-              fr_s1_documento : datos_edit_p.fr_s1_documento,
+              fr_s1_documento : datos_edit_s.fr_s1_documento,
               id_frs2padres,
               id_inscripcion : id,
               fr_s2_apynom_fam : frs2_apynom_fam,
@@ -2182,11 +2306,24 @@ router.post('/edit_secundaria/:id', async (req, res) => {
               console.log('grupo fam  autoriz - typeof ',typeof(frs5_apynom_autoriz));
               if (typeof(frs5_apynom_autoriz) != "undefined")
               {
-                if (frs5_apynom_autoriz.length > 1)
+                if(typeof(frs5_apynom_autoriz) == "string")
+                {
+                  let grupoautoriz = {
+                    fr_s1_documento : datos_edit_s.fr_s1_documento,
+                    id_inscripcion,
+                    fr_s5_apynom_autoriz : frs5_apynom_autoriz,
+                    fr_s5_dni_autoriz : frs5_dni_autoriz,
+                    fr_s5_parentesco_autoriz       : frs5_parentesco_autoriz,
+                    fr_s5_telef_autoriz : frs5_telef_autoriz
+                    };
+                  
+                  await db.query('INSERT INTO fr_s5_autorizazion set ?', [grupoautoriz] );
+                }
+                else if (frs5_apynom_autoriz instanceof Array )
                 {
                     var aux2=0;
                     // Hay autorizaciones procede a cargar
-                    for (var i=1; i<frs5_apynom_autoriz.length; i++) 
+                    for (var i=0; i<frs5_apynom_autoriz.length; i++) 
                     { 
                     
                       let grupoautoriz = {
