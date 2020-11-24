@@ -2209,10 +2209,10 @@ router.post('/edit_secundaria/:id', async (req, res) => {
           }
           else if (frs2_apynom_fam instanceof Array )
           {
-          
+            console.log('GRUPO FAMILIAR arrelgo = ', frs2_apynom_fam);
                 
                 // Hay grupo familiar procede a cargar
-                for (var i=1; i<frs2_apynom_fam.length; i++) 
+                for (var i=0; i<frs2_apynom_fam.length; i++) 
                 { 
                   
                   let grupofarm = {
