@@ -74,6 +74,7 @@ app.use((req, res, next) => {
 app.use(require('./routes/index.js'));
 app.use(require('./routes/authentication.js'));
 app.use(require('./routes/auditoria.js'));
+app.use(require('./routes/reporte.js'));
 app.use('/inscripcion', require('./routes/inscripcion.js'));
 
 
@@ -81,6 +82,7 @@ app.use('/inscripcion', require('./routes/inscripcion.js'));
 // una carpeta donde estara todo el codigo que el servidor podra acceder
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'pdfjs')));
+app.use(express.static(path.join(__dirname, 'reports')));
 app.use(express.static(path.join(__dirname, 'public/uploads/pagos')));
 
 //Iniciar Servidor

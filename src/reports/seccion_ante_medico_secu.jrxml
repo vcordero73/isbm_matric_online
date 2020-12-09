@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seccion_alumno_ip" language="groovy" pageWidth="595" pageHeight="842" columnWidth="591" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="95cf5fee-c4d4-4df1-afea-58347d060f32">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#000000">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="p_documento" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select distinct p.*, t.*
+from inscripciones i inner join fr_s4_antec_medico_alu p on i.id_inscripcion= p.id_inscripcion and i.fr_alu_docu = p.fr_s1_documento
+inner join fr_s3_tutor t on t.fr_s1_documento = p.fr_s1_documento
+where i.inscripto ='S' and i.fr_alu_docu=$P{p_documento}]]>
+	</queryString>
+	<field name="id_frs4antecmedicoalu" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_inscripcion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_documento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s4_grupo_riesgo_1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s4_grupo_riesgo_2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s4_grupo_riesgo_3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s4_grupo_riesgo_4" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_frs3tutor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_apellido_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_nombre_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_domicilio_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_nacionalidad_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_tipo_doc_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_documento_tutor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_profesion_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_lugartrabajo_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_celular_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_telef_fijo_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_telef_lab_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_horario_contacto_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_parentesco_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_tipo_parentesco_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_acredit_parent_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_email_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="29" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="88c6ab28-6cfc-47f7-9bb5-329d72f3ceb4" x="12" y="0" width="543" height="20" backcolor="#999999"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8fd9d8f3-c972-4b69-a65a-9bf607e18cea" x="40" y="2" width="282" height="18" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6	ANTECEDENTES MÉDICOS DEL ALUMNO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="170">
+			<staticText>
+				<reportElement uuid="cdd739c1-fa1a-465c-a666-59ca7492d779" x="26" y="-7" width="515" height="15"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Indicar si el alumno/a es una persona incluida en los grupos de riesgo que define la autoridad sanitaria nacional:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="62724f69-001e-4d0d-bc3e-29d724610cd4" x="26" y="8" width="450" height="15"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="d499b9c9-4fd3-44b9-8ba2-1b18e0013d0b" x="43" y="8" width="100" height="15"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patología:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="9c556b23-9aab-466c-bf92-66e0e673bdc9" x="476" y="8" width="65" height="15"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="c3592b01-988a-4e36-9080-e2af10c55123" x="492" y="8" width="49" height="15"/>
+				<textElement/>
+				<text><![CDATA[SI/NO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="574011b0-ca58-4c92-b93b-b1702782a6bc" x="26" y="24" width="450" height="40"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="c5d38c5d-4c7f-46d0-832b-5b249107fc40" x="40" y="25" width="436" height="40"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Enfermedades respiratorias crónicas: enfermedad pulmonar obstructivas crónica (EPOC),
+enfisema congénito, displasia broncopulmonar, Bronquiectasias, fibrosis quística y asma moderado o severo.
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="8023c8be-bf2e-40a5-80a6-aac6e5c4ec01" x="476" y="24" width="65" height="40"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="056735f4-f874-4a46-910a-14e0d95eb195" x="26" y="64" width="450" height="36"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8582d3a8-623e-4961-b25d-027a3087581c" x="26" y="100" width="450" height="25"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="7a4adfdb-5bbf-466f-a595-bd821c726713" x="476" y="64" width="65" height="36"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="9b0883be-b269-49bc-8927-12593e0777b5" x="476" y="100" width="65" height="25"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8a1d68b8-6ea5-4636-856e-9187e3239067" x="43" y="72" width="433" height="28"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Enfermedades cardíacas: Insuficiencia cardíaca, enfermedad coronaria, valvulopatías y cardiopatías congénitas.]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="edd96044-7f06-4340-89dc-f0573b4bd5c2" x="26" y="125" width="450" height="36"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="87db9768-ec7a-436b-86e2-dc90165e3d2f" x="476" y="125" width="65" height="36"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="b447f93f-e54a-45d9-9858-bd2be2456aca" x="40" y="106" width="301" height="19"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Inmunodeficiencias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="894c7342-eebd-4b6e-8c8d-2b9ab5500e67" x="39" y="131" width="433" height="26"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Diabéticos, personas con insuficiencia renal crónica en diálisis o con expectativas de ingresar a diálisis en los siguientes seis meses.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="903d5b91-6684-43bd-b0ea-954935bdc4cd" x="492" y="104" width="26" height="20"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s4_grupo_riesgo_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5784191f-358e-48f1-a7f4-14a3f5ab8c5b" x="492" y="33" width="26" height="20"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s4_grupo_riesgo_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3170a925-ad0e-4814-9394-12fe5a1f6819" x="492" y="73" width="26" height="20"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s4_grupo_riesgo_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="21969555-7b2f-44da-992b-a6c2b827d12b" x="492" y="134" width="26" height="20"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s4_grupo_riesgo_4}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

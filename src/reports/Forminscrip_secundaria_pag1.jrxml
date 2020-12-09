@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Forminscrip_secundaria_pag1" language="groovy" pageWidth="595" pageHeight="832" columnWidth="567" leftMargin="14" rightMargin="14" topMargin="14" bottomMargin="14" uuid="721e6874-83ce-4838-b704-3c2dcd207d6e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_documento" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["E:\\SanBasilio\\Formulario_Inscripcion_Online\\Reporte_FormInscripcion\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select distinct a.* from inscripciones i inner join fr_s1_alumno a on i.id_inscripcion= a.id_inscripcion and i.fr_alu_docu = a.fr_s1_documento
+where i.inscripto ='S' and i.fr_alu_docu=$P{p_documento} and i.id_nivel=3]]>
+	</queryString>
+	<field name="id_frs1alumno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_inscripcion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_apellido" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_sexo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_grado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_sala" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_seccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_orientacion_sec" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_anio_sec" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_division_sec" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_turno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_tipo_doc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_documento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_nacionalidad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_cuil" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_nacido_en" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_provincia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_dia_nac" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_mes_nac" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_anio_nac" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_domi_calle" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_domi_nro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_domi_barrio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_telef_fijo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_telef_celu" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_telef_contacto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_bauti_dia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_bauti_mes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_bauti_anio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_bauti_parroquia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_comu_dia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_comu_mes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_comu_anio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_comu_parroquia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_confirma_dia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_confirma_mes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_confirma_anio" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_confirma_parroquia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_inst_proviene" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_observ" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_materia_adeuda" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_correo_educa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_medio_conect" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_equipo_conect_celu" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_equipo_conect_pc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_equipo_conect_noteb" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_equipo_conect_otro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_detalle_otro" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_acceso_internet" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_celular_alum" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_mediotras_caminando" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_mediotras_medioprop" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_mediotras_transp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="110" splitType="Stretch">
+			<image>
+				<reportElement uuid="754f3aaf-249f-4c2d-9588-3dd1ac45650c" x="0" y="-3" width="567" height="113"/>
+				<imageExpression><![CDATA["img\\cabecera_sec.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="667" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="f18e6f16-37f9-4a93-ab4d-8128127940a3" x="53" y="13" width="466" height="23"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SOLICITUD DE MATRICULACIÓN ONLINE NIVEL SECUNDARIO CICLO LECTIVO 2021
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="37fc9f6d-98e2-4fef-a9bb-4830efd88850" x="21" y="56" width="354" height="20"/>
+				<textElement/>
+				<text><![CDATA[Sra. Rectora, nos dirigimos a Usted a fin de solicitar la Matriculación, en
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="351889cf-822a-4043-a88a-fdc0fef3aff0" mode="Transparent" x="21" y="0" width="522" height="50"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="3f7cbbce-7615-4277-b2bb-5388f9016ccf" x="375" y="56" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s1_anio_sec}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="14976d05-2968-4a93-8b84-73c6404e1818" x="436" y="56" width="71" height="20"/>
+				<textElement/>
+				<text><![CDATA[año  división ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ea847a70-61e7-4e9e-b58a-aebe538f1094" x="507" y="56" width="36" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s1_division_sec}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="602f0b8c-c6ee-4a12-8760-ea894cd9a2c8" x="21" y="76" width="68" height="20"/>
+				<textElement/>
+				<text><![CDATA[Orientación:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4c5b078f-f826-4462-ac46-980ed73c7ced" x="89" y="76" width="166" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s1_orientacion_sec}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="bf5b18ce-2068-44e2-aa64-8590491fb76a" x="255" y="76" width="44" height="20"/>
+				<textElement/>
+				<text><![CDATA[Turno:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="3f82bfec-0a9b-4dd2-a894-c636b6d6dc08" x="299" y="76" width="137" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s1_turno}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement uuid="be39c3ad-f4c0-44d5-81f7-146c9e277845" x="0" y="107" width="567" height="421"/>
+				<subreportParameter name="p_documento">
+					<subreportParameterExpression><![CDATA[$P{p_documento}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "seccion_alumno_secundaria.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement uuid="baba49aa-f4a1-4e09-81de-10b7d699cedc" x="0" y="546" width="567" height="104"/>
+				<textElement/>
+				<text><![CDATA[Teniendo pleno conocimiento del Ideario, Acuerdos de Convivencia, Normas Institucionales, Protocolos Sanitarios y reglamentaciones específicas, opto por este Instituto Confesional Católico y me comprometo a respetar todo lo establecido, conforme al Sistema de Servicios Educativos que las autoridades Jurisdiccionales autoricen. Para alumnos que solicitan matriculación en 4to y 5to Año: Acepto cursar el Taller de Informática – Operador de PC.
+
+
+										________________
+										Firma del ALUMNO
+]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="27">
+			<line>
+				<reportElement uuid="3919a1e4-c5ed-4379-ab09-872ecc72bfbe" x="0" y="0" width="567" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="026297f7-8184-425f-a994-1518d9f35d64" x="0" y="7" width="455" height="20"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Instituto San Basilio Magno -   Formulario de Inscripción Online - SECUNDARIA -   Pág. 1/3   -     DNI:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="09c387f9-0ad9-4558-8acd-5ba8015c9d2e" x="467" y="7" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{p_documento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

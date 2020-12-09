@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seccion_alumno_ip" language="groovy" pageWidth="595" pageHeight="842" columnWidth="591" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="95cf5fee-c4d4-4df1-afea-58347d060f32">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#000000">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="p_documento" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select distinct p.*, t.*
+from inscripciones i inner join fr_s4_antec_medico_alu p on i.id_inscripcion= p.id_inscripcion and i.fr_alu_docu = p.fr_s1_documento
+inner join fr_s3_tutor t on t.fr_s1_documento = p.fr_s1_documento
+where i.inscripto ='S' and i.fr_alu_docu=$P{p_documento}]]>
+	</queryString>
+	<field name="id_frs4antecmedicoalu" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_inscripcion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_documento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s4_grupo_riesgo_1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s4_grupo_riesgo_2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s4_grupo_riesgo_3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s4_grupo_riesgo_4" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_frs3tutor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_apellido_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_nombre_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_domicilio_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_nacionalidad_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_tipo_doc_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_documento_tutor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_profesion_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_lugartrabajo_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_celular_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_telef_fijo_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_telef_lab_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_horario_contacto_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_parentesco_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_tipo_parentesco_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_acredit_parent_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_email_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="29" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="88c6ab28-6cfc-47f7-9bb5-329d72f3ceb4" x="12" y="0" width="543" height="25" backcolor="#999999"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8fd9d8f3-c972-4b69-a65a-9bf607e18cea" x="26" y="3" width="152" height="18" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2	DATOS TUTOR]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="132">
+			<staticText>
+				<reportElement uuid="5589cbea-57b6-4489-b5f2-7b17cf22ad96" x="17" y="7" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido y Nombre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="89b5458b-1f0c-4432-8d28-0e0d38b6563b" x="117" y="7" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_apellido_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ea097311-6956-4440-a5b6-58ac679d461b" x="217" y="7" width="13" height="20"/>
+				<textElement/>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="65817af8-d85e-47fa-b973-5dab251f077a" x="230" y="7" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_nombre_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="617997b2-cb25-4d4d-9062-5ee883c301f4" x="333" y="7" width="53" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Doc.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0ae4d348-1544-4dfb-aaca-d13bb02ab971" x="386" y="7" width="19" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_tipo_doc_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9a3f44b6-cdfb-4003-a0ce-79199b615ea6" x="407" y="7" width="45" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nro Doc:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f7d11c37-8a41-4ca2-9b52-ef6da0e04330" x="457" y="7" width="91" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_documento_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="52ab903f-b67e-419c-94cc-f3bfd6f9c96c" x="19" y="27" width="59" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Domicilio:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="838149fd-7eb2-4ff0-ab02-3599c26d1833" x="78" y="27" width="139" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_domicilio_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="aaf969e5-118b-4781-9730-2389c084e54e" x="217" y="27" width="70" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nacionalidad:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="37b0a863-f8f1-4fc7-b866-cedcfc037bce" x="287" y="27" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_nacionalidad_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="474def7c-2373-4f23-90be-a71b44066f91" x="387" y="27" width="55" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Profesión:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="6347ad0a-c0f4-4991-b6f2-76bf2c3f1ff7" x="448" y="27" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_profesion_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f8282957-1fa6-444d-b61d-314e4b6dff71" x="19" y="47" width="88" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lugar de Trabajo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c4d1fa47-df16-4c0f-a498-02336aee549c" x="117" y="47" width="189" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_lugartrabajo_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="39be1b12-c5a6-47eb-b2d9-0ba85b718ece" x="386" y="47" width="42" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Celular:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="efcb3bcb-3a7e-47ca-981a-18ab19ffc7b9" x="430" y="47" width="118" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_celular_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="18197ede-d42d-46e2-ada0-1db381c65cc1" x="19" y="67" width="56" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléf. Fijo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="86a82f87-94bc-4267-930e-a8f99b855d94" x="78" y="67" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_telef_fijo_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b23e63fd-9201-46be-81b5-39ea7903a878" x="199" y="67" width="80" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléf. Laboral:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c6f7a9d2-2a63-4351-b398-08c22f1a6950" x="279" y="67" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_telef_lab_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6ece6203-9c39-48c3-8d89-edbcd9536df6" x="379" y="67" width="89" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Horario Contacto:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="50899491-210d-493f-b909-0f9df37cd169" x="468" y="67" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_horario_contacto_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4c478bb9-e60d-46dd-9d6b-66d6051b1b43" x="19" y="87" width="198" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Posee algún parentesco con el alumno:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0bef7497-eb37-4c05-ad1c-3c70295dd93b" x="217" y="87" width="30" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_parentesco_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dacb4c1d-1305-4c3d-8841-d5a1bf377894" x="251" y="87" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Especifique cual:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="8fffb519-a1e3-47a2-87fd-5558de2774b4" x="348" y="87" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_tipo_parentesco_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="505ed85e-d40e-4e4c-9b1d-16a570ba86ac" x="19" y="107" width="198" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documentación que acredite la Tutoría:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="02c3953d-871b-4017-85ee-62e6e520d2f1" x="217" y="107" width="131" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_acredit_parent_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1966d73b-4e11-4c0c-baff-ed23e41f06c3" x="348" y="107" width="39" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-mail:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="db149ed6-fc74-4925-9bef-181f5be095d9" x="387" y="107" width="161" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_email_tutor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

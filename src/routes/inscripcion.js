@@ -1325,6 +1325,7 @@ router.get('/edit/:id', async (req, res) => {
 router.get('/mensaje3', async (req, res) => {
   const documento_inscrip = req.session.documento_inscrip;
   const id_inscripcion = req.session.id_inscripcion;
+  
     console.log('entro en mensaje3  ');
     res.render('inscripcion/mensaje3', {documento_inscrip,id_inscripcion});
 });

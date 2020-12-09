@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cabecera_gral" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="80b57940-c355-48f3-9fa4-7f44bb67a996">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from inscripciones where inscripto='S']]>
+	</queryString>
+	<field name="id_inscripcion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_ciclo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_nivel" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nro_inscripcion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_alu_docu" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="inscripto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="form_cargado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pago_inscrip" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="auditado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="autorizado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="url_pago" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ext_pago" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="url_foto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="3" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="215" splitType="Stretch">
+			<image>
+				<reportElement uuid="6ed1e387-5735-4485-a3e2-edf6d2eb2d1f" x="0" y="0" width="555" height="101"/>
+				<imageExpression><![CDATA["E:\\SanBasilio\\Formulario_Inscripcion_Online\\Reporte_FormInscripcion\\img\\cabecera.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="888f49b0-316c-47da-afd8-81b23014d34a" x="0" y="108" width="555" height="53"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SOLICITUD DE MATRICULACION ONLINE -  NIVEL PRIMARIO
+CICLO LECTIVO 2021
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="06cbfdea-5073-4209-9c53-c65366c6082c" x="0" y="161" width="555" height="38"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Sra. Directora, me dirijo a Usted a fin de solicitar la matriculación para el Ciclo Lectivo 2021, conforme a los datos y documentaciones que declaro bajo juramento de Ley:
+]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+</jasperReport>

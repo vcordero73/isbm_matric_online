@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seccion_alumno_ip" language="groovy" pageWidth="595" pageHeight="842" columnWidth="591" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="95cf5fee-c4d4-4df1-afea-58347d060f32">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#000000">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="p_documento" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select distinct p.*, t.*
+from inscripciones i inner join fr_s4_antec_medico_alu p on i.id_inscripcion= p.id_inscripcion and i.fr_alu_docu = p.fr_s1_documento
+inner join fr_s3_tutor t on t.fr_s1_documento = p.fr_s1_documento
+where i.inscripto ='S' and i.fr_alu_docu=$P{p_documento}]]>
+	</queryString>
+	<field name="id_frs4antecmedicoalu" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_inscripcion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_documento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s4_grupo_riesgo_1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s4_grupo_riesgo_2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s4_grupo_riesgo_3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s4_grupo_riesgo_4" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_frs3tutor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_apellido_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_nombre_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_domicilio_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_nacionalidad_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_tipo_doc_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_documento_tutor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_profesion_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_lugartrabajo_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_celular_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_telef_fijo_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_telef_lab_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_horario_contacto_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_parentesco_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_tipo_parentesco_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_acredit_parent_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s3_email_tutor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="29" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="88c6ab28-6cfc-47f7-9bb5-329d72f3ceb4" x="12" y="0" width="543" height="25" backcolor="#999999"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8fd9d8f3-c972-4b69-a65a-9bf607e18cea" x="71" y="3" width="290" height="18" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3	ADHESION AL IDEARIO * REGISTRO DE FIRMA DEL TUTOR/A.-]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="466">
+			<staticText>
+				<reportElement uuid="cdd739c1-fa1a-465c-a666-59ca7492d779" x="26" y="11" width="515" height="77"/>
+				<textElement/>
+				<text><![CDATA[Teniendo pleno conocimiento del Ideario, Acuerdos de Convivencia, Protocolos Sanitarios y reglamentaciones específicas, opto por este Instituto Confesional Católico y me comprometo a respetar junto a mi hijo/a todo lo establecido, conforme al Sistema de Servicios Educativos que las autoridades Jurisdiccionales autoricen.
+
+Antecedentes Médicos
+Marcar en la siguiente tabla si el alumno/a es una persona incluida en los grupos de riesgo que define la autoridad ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="62724f69-001e-4d0d-bc3e-29d724610cd4" x="26" y="99" width="450" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="d499b9c9-4fd3-44b9-8ba2-1b18e0013d0b" x="43" y="99" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Enfermedad]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="9c556b23-9aab-466c-bf92-66e0e673bdc9" x="476" y="99" width="65" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="c3592b01-988a-4e36-9080-e2af10c55123" x="492" y="99" width="49" height="20"/>
+				<textElement/>
+				<text><![CDATA[SI/NO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="574011b0-ca58-4c92-b93b-b1702782a6bc" x="26" y="119" width="450" height="40"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="c5d38c5d-4c7f-46d0-832b-5b249107fc40" x="43" y="119" width="433" height="40"/>
+				<textElement/>
+				<text><![CDATA[Enfermedades respiratorias crónicas: enfermedad pulmonar obstructivas crónica (EPOC),
+enfisema congénito, displasia broncopulmonar, Bronquiectasias, fibrosis quística y asma moderado o severo.
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="8023c8be-bf2e-40a5-80a6-aac6e5c4ec01" x="476" y="119" width="65" height="40"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="056735f4-f874-4a46-910a-14e0d95eb195" x="26" y="159" width="450" height="36"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8582d3a8-623e-4961-b25d-027a3087581c" x="26" y="195" width="450" height="31"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="7a4adfdb-5bbf-466f-a595-bd821c726713" x="476" y="159" width="65" height="36"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="9b0883be-b269-49bc-8927-12593e0777b5" x="476" y="195" width="65" height="31"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8a1d68b8-6ea5-4636-856e-9187e3239067" x="43" y="167" width="433" height="28"/>
+				<textElement/>
+				<text><![CDATA[Enfermedades cardíacas: Insuficiencia cardíaca, enfermedad coronaria, valvulopatías y cardiopatías congénitas.]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="edd96044-7f06-4340-89dc-f0573b4bd5c2" x="26" y="226" width="450" height="36"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="87db9768-ec7a-436b-86e2-dc90165e3d2f" x="476" y="226" width="65" height="36"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="b447f93f-e54a-45d9-9858-bd2be2456aca" x="40" y="201" width="301" height="20"/>
+				<textElement/>
+				<text><![CDATA[Inmunodeficiencias]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="894c7342-eebd-4b6e-8c8d-2b9ab5500e67" x="43" y="231" width="433" height="26"/>
+				<textElement/>
+				<text><![CDATA[Diabéticos, personas con insuficiencia renal crónica en diálisis o con expectativas de ingresar a diálisis en los siguientes seis meses.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="903d5b91-6684-43bd-b0ea-954935bdc4cd" x="492" y="200" width="26" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s4_grupo_riesgo_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5784191f-358e-48f1-a7f4-14a3f5ab8c5b" x="492" y="128" width="26" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s4_grupo_riesgo_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3170a925-ad0e-4814-9394-12fe5a1f6819" x="492" y="168" width="26" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s4_grupo_riesgo_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="21969555-7b2f-44da-992b-a6c2b827d12b" x="492" y="236" width="26" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s4_grupo_riesgo_4}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="85f54859-592a-4a59-9c44-4accc8d7d2ff" x="26" y="272" width="515" height="47"/>
+				<textElement/>
+				<text><![CDATA[
+Notificado              ………….…………………….       .…………..………………….      …………………….
+                              Firma del Tutor                                        Aclaración                              D.N.I
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b5bc931f-41ea-488e-80a9-444eaa2c929f" mode="Opaque" x="12" y="322" width="100" height="20" backcolor="#E3E3E3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datos Tutor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5589cbea-57b6-4489-b5f2-7b17cf22ad96" x="10" y="342" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido y Nombre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="89b5458b-1f0c-4432-8d28-0e0d38b6563b" x="110" y="342" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_apellido_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ea097311-6956-4440-a5b6-58ac679d461b" x="210" y="342" width="13" height="20"/>
+				<textElement/>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="65817af8-d85e-47fa-b973-5dab251f077a" x="223" y="342" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_nombre_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="617997b2-cb25-4d4d-9062-5ee883c301f4" x="326" y="342" width="53" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Doc.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0ae4d348-1544-4dfb-aaca-d13bb02ab971" x="379" y="342" width="19" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_tipo_doc_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9a3f44b6-cdfb-4003-a0ce-79199b615ea6" x="400" y="342" width="45" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nro Doc:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f7d11c37-8a41-4ca2-9b52-ef6da0e04330" x="450" y="342" width="91" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_documento_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="52ab903f-b67e-419c-94cc-f3bfd6f9c96c" x="12" y="362" width="59" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Domicilio:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="838149fd-7eb2-4ff0-ab02-3599c26d1833" x="71" y="362" width="139" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_domicilio_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="aaf969e5-118b-4781-9730-2389c084e54e" x="210" y="362" width="70" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nacionalidad:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="37b0a863-f8f1-4fc7-b866-cedcfc037bce" x="280" y="362" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_nacionalidad_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="474def7c-2373-4f23-90be-a71b44066f91" x="380" y="362" width="55" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Profesión:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="6347ad0a-c0f4-4991-b6f2-76bf2c3f1ff7" x="441" y="362" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_profesion_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f8282957-1fa6-444d-b61d-314e4b6dff71" x="12" y="382" width="88" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lugar de Trabajo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c4d1fa47-df16-4c0f-a498-02336aee549c" x="110" y="382" width="189" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_lugartrabajo_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="39be1b12-c5a6-47eb-b2d9-0ba85b718ece" x="379" y="382" width="42" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Celular:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="efcb3bcb-3a7e-47ca-981a-18ab19ffc7b9" x="423" y="382" width="118" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_celular_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="18197ede-d42d-46e2-ada0-1db381c65cc1" x="12" y="402" width="56" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléf. Fijo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="86a82f87-94bc-4267-930e-a8f99b855d94" x="71" y="402" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_telef_fijo_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b23e63fd-9201-46be-81b5-39ea7903a878" x="192" y="402" width="80" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléf. Laboral:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="c6f7a9d2-2a63-4351-b398-08c22f1a6950" x="272" y="402" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_telef_lab_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6ece6203-9c39-48c3-8d89-edbcd9536df6" x="372" y="402" width="89" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Horario Contacto:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="50899491-210d-493f-b909-0f9df37cd169" x="461" y="402" width="80" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_horario_contacto_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4c478bb9-e60d-46dd-9d6b-66d6051b1b43" x="12" y="422" width="198" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Posee algún parentesco con el alumno:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0bef7497-eb37-4c05-ad1c-3c70295dd93b" x="210" y="422" width="30" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_parentesco_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="dacb4c1d-1305-4c3d-8841-d5a1bf377894" x="244" y="422" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Especifique cual:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="8fffb519-a1e3-47a2-87fd-5558de2774b4" x="341" y="422" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_tipo_parentesco_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="505ed85e-d40e-4e4c-9b1d-16a570ba86ac" x="12" y="442" width="198" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documentación que acredite la Tutoría:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="02c3953d-871b-4017-85ee-62e6e520d2f1" x="210" y="442" width="131" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_acredit_parent_tutor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1966d73b-4e11-4c0c-baff-ed23e41f06c3" x="341" y="442" width="39" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-mail:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="db149ed6-fc74-4925-9bef-181f5be095d9" x="380" y="442" width="161" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fr_s3_email_tutor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

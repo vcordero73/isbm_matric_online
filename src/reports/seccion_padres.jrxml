@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seccion_alumno_ip" language="groovy" pageWidth="595" pageHeight="842" columnWidth="591" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" uuid="95cf5fee-c4d4-4df1-afea-58347d060f32">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_documento" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select distinct p.* from inscripciones i inner join fr_s2_padres p on i.id_inscripcion= p.id_inscripcion and i.fr_alu_docu = p.fr_s1_documento
+where i.inscripto ='S' and i.fr_alu_docu=$P{p_documento}]]>
+	</queryString>
+	<field name="id_frs2padres" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_inscripcion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s1_documento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_apellido_padre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_nombre_padre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_nacionalidad_padre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_tipo_doc_padre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_documento_padre" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_domicilio_padre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_localidad_padre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_provincia_padre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_profesion_padre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_celular_padre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_telef_contacto_padre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_telef_lab_padre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_email_padre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_vive_padre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_apellido_madre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_nombre_madre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_nacionalidad_madre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_tipo_doc_madre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_documento_madre" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_domicilio_madre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_localidad_madre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_provincia_madre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_profesion_madre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_celular_madre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_telef_contacto_madre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_telef_lab_madre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_email_madre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_vive_madre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_religion_profesan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fr_s2_matrimonio_iglesia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="226" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="88c6ab28-6cfc-47f7-9bb5-329d72f3ceb4" x="12" y="0" width="543" height="25" backcolor="#999999"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8fd9d8f3-c972-4b69-a65a-9bf607e18cea" x="17" y="4" width="232" height="18" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2	Datos de los Padres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5c094681-3e1e-4a17-8f00-f9f700143c05" x="12" y="30" width="144" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido y Nombre del Padre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="054bbcdd-b874-485b-a7d1-8e58f4bd7dc9" x="156" y="30" width="93" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_apellido_padre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="14bacee1-74c1-4952-95d7-ff7785343a5a" x="249" y="30" width="6" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[, ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="670ceb51-8f88-4168-8e3d-5de429673b73" x="260" y="30" width="155" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_nombre_padre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="bb43244f-45a8-4974-bb21-5fed41a64b59" x="420" y="30" width="65" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nacionalidad:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="a19f5a02-d379-4d09-b1a7-47e3d4da73bc" x="495" y="30" width="60" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_nacionalidad_padre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d585dab6-55fc-4e5a-973c-d37a55525352" x="12" y="50" width="100" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documento: Tipo: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="23416eed-7f67-42e3-b342-24450970e56b" x="112" y="50" width="44" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_tipo_doc_padre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="29f9d8b4-3f4a-4625-9065-61c89a5f87a1" x="156" y="50" width="16" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="187b3b5f-e99d-46c9-a3cd-472da26ffcf1" x="172" y="50" width="82" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_documento_padre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="314e11ea-4659-441c-850e-87919e5dad03" x="12" y="70" width="53" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Profesión: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="acb3511a-96ce-489e-9f70-5119c03edd74" x="72" y="70" width="100" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_profesion_padre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="028f88e5-2a14-4d23-85af-50bfca1ab7c4" x="255" y="50" width="55" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Localidad: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="009bd85b-e261-4214-84fd-2d07b236bec8" x="327" y="50" width="79" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_localidad_padre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6f92bb16-4659-4e82-997c-afa5da739832" x="420" y="50" width="52" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Provincia:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="cf5938ef-8eef-4d1c-8281-f61e9f290d37" x="472" y="50" width="83" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_provincia_padre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1f3578fe-45ca-4a98-b4c8-6e746153ef67" x="230" y="70" width="41" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Celular:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="8fba3d41-0876-4462-8ba4-63313e44483c" x="275" y="70" width="88" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_celular_padre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="da260042-7240-4421-9933-732a289945b6" x="369" y="70" width="103" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono Contacto:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="55c2c306-4654-437d-b8e5-96c508827b9e" x="472" y="70" width="83" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_telef_contacto_padre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="379bac6d-2fa0-414a-8c59-88d2c57a7e33" x="12" y="90" width="85" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono Laboral:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e3f3bd65-914c-45dd-a355-30e86f32ca09" x="100" y="90" width="85" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_telef_lab_padre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d54f06a3-3676-4a18-8ce6-330bf411703e" x="187" y="90" width="147" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo Electrónico del Padre: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="60faf069-248a-4142-b92a-dbd1d29c3463" x="339" y="90" width="146" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_email_padre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5b7b4672-07af-4536-9a17-0d03602fa376" x="485" y="90" width="34" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vive:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4dc0d334-1b8a-4858-9757-8b44ad2d4c0b" x="520" y="90" width="25" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_vive_padre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="902900eb-affd-4b36-ad6e-8e100ee3bb59" x="12" y="119" width="160" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido y Nombre de la Madre:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="aab37edc-ad81-4386-8800-70df2859cd3b" x="175" y="119" width="100" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_apellido_madre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3411ea58-54c8-432b-904f-1ae74ed05c7b" x="275" y="119" width="10" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="dccc7dec-c6ae-4464-8eac-edb096b68634" x="285" y="119" width="100" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_nombre_madre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="149902c4-f9c5-4a94-bbab-9622af0890b4" x="387" y="119" width="66" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nacionalidad:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0bc80e51-b758-41f5-813e-10e46ae218ab" x="459" y="119" width="90" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_nacionalidad_madre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6f0ba39a-c21e-441a-9032-0fb5250ad337" x="420" y="139" width="52" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Provincia:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7e613422-396a-45cf-8637-b7ebceec7123" x="156" y="139" width="16" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2a8b10e5-7bac-4961-8276-9b787adf5045" x="12" y="139" width="100" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documento: Tipo: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="86a7bf91-2bc4-4251-a53c-e64778141a3e" x="255" y="139" width="55" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Localidad: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ed96355b-ec1b-4290-a3ab-a5b952313046" x="112" y="139" width="33" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_tipo_doc_madre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2157d3e2-bc23-4e58-aa2e-a3650123ba35" x="175" y="139" width="74" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_documento_madre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c33607ca-d6d2-454d-9a82-22cc0296f80c" x="315" y="139" width="100" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_localidad_madre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0f0864d9-7f68-4254-9095-916233ad9b88" x="473" y="139" width="77" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_provincia_madre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1ae7cb63-4cb7-4506-9fb5-3da79f36d566" x="369" y="159" width="103" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono Contacto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="eb36a797-2bc7-4b10-b6ef-74492c1afd8b" x="230" y="159" width="41" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Celular:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8f1fe1c-1991-4e3a-a658-daf36bf63fdf" x="12" y="159" width="53" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Profesión: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="3ab59e0a-1e2c-4898-bd74-d40db95a3524" x="72" y="159" width="100" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_profesion_madre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ecd6754d-59e7-4aa4-9d2d-8cbd0f4caeea" x="275" y="159" width="88" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_celular_madre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="53a615c6-171d-42b7-9f0d-8f37e0b0a01b" x="473" y="159" width="77" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_telef_contacto_madre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="def12f46-fa67-4d4f-9395-a7c82d4a1121" x="187" y="179" width="147" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo Electrónico del Padre: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1d7fe12e-fad3-4e76-acde-ab16a9fa5a61" x="485" y="179" width="34" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vive:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f5df8830-efee-4c94-867c-1d90eb4b7c7d" x="12" y="179" width="85" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono Laboral:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="47d19d82-9d2e-4aca-a220-15f8ed2447bc" x="97" y="179" width="88" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_telef_lab_madre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2439e97d-5d25-4d61-8866-a703e5e30c5b" x="339" y="179" width="146" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_email_madre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="904a6dc5-d66c-41d7-8fe4-3d9619e1ae0b" x="525" y="179" width="20" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_vive_madre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b81bdd24-d012-47a4-9e18-8ab5fc8fcd82" x="12" y="207" width="122" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Religión que profesan: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b379b9b1-28f4-4967-9b1a-6d26bf7688c1" x="134" y="207" width="151" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_religion_profesan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="84b60668-1ab2-4080-97d4-bc501f6c176e" x="287" y="207" width="156" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Matrimonio por Iglesia (Sí-No):]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1e448387-a4d2-4861-8077-b60ca054e279" x="445" y="207" width="100" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fr_s2_matrimonio_iglesia}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+</jasperReport>
